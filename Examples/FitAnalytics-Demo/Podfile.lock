@@ -1,0 +1,16 @@
+PODS:
+  - FitAnalytics-WebWidget (0.0.1)
+
+DEPENDENCIES:
+  - FitAnalytics-WebWidget (from `../../FitAnalytics-WebWidget`)
+
+EXTERNAL SOURCES:
+  FitAnalytics-WebWidget:
+    :path: ../../FitAnalytics-WebWidget
+
+SPEC CHECKSUMS:
+  FitAnalytics-WebWidget: 99ae0052dde0e8c7611b95015d20945fb4c565a8
+
+PODFILE CHECKSUM: 6b1116edcb0f5c2de5f2dfa4be8ac9b741ec9389
+
+COCOAPODS: 1.2.0.beta.3

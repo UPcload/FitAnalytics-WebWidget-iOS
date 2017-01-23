@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,27 +14,21 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="470" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnb-a3-Q69">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <dataDetectorType key="dataDetectorTypes"/>
-                            </webView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jV1-YW-cwQ">
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WC2-s9-zih">
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product ID ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gN4-Rp-Nya">
-                                                <frame key="frameInset" minX="8" width="313" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product ID ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gN4-Rp-Nya">
                                                 <accessibility key="accessibilityConfiguration" hint="product ID" label="Product ID">
                                                     <bool key="isElement" value="YES"/>
                                                 </accessibility>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3p-Ra-567">
-                                                <frame key="frameInset" minX="333" width="34" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3p-Ra-567">
                                                 <state key="normal" title="Load"/>
                                             </button>
                                         </subviews>
@@ -64,18 +58,22 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="cdy-9i-2kC"/>
+                                    <constraint firstAttribute="height" constant="65" id="cdy-9i-2kC"/>
                                 </constraints>
                             </stackView>
+                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnb-a3-Q69">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jV1-YW-cwQ" secondAttribute="trailing" id="7B4-Si-9H9"/>
-                            <constraint firstAttribute="bottom" secondItem="jV1-YW-cwQ" secondAttribute="bottom" id="7Oe-ar-Hep"/>
-                            <constraint firstItem="jV1-YW-cwQ" firstAttribute="top" secondItem="Nnb-a3-Q69" secondAttribute="bottom" constant="8" id="FjW-kT-te7"/>
-                            <constraint firstItem="Nnb-a3-Q69" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GPb-Po-9NK"/>
+                            <constraint firstItem="jV1-YW-cwQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="7B4-Si-9H9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nnb-a3-Q69" secondAttribute="bottom" id="FeK-Xn-oNT"/>
+                            <constraint firstItem="jV1-YW-cwQ" firstAttribute="bottom" secondItem="Nnb-a3-Q69" secondAttribute="top" id="FjW-kT-te7"/>
+                            <constraint firstItem="Nnb-a3-Q69" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="GPb-Po-9NK"/>
                             <constraint firstItem="Nnb-a3-Q69" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="M20-R8-Mf6"/>
-                            <constraint firstAttribute="trailing" secondItem="Nnb-a3-Q69" secondAttribute="trailing" id="elj-Es-lNJ"/>
+                            <constraint firstItem="Nnb-a3-Q69" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="elj-Es-lNJ"/>
                             <constraint firstItem="jV1-YW-cwQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hiA-ov-ifw"/>
                         </constraints>
                     </view>

@@ -63,8 +63,16 @@
 
 - (IBAction)onLoad
 {
+    NSString *productSerial = self.productIdInput.text;
+
     NSLog(@"LOAD");
-    [self.widget create:@"gaastra-35310045" options:nil];
+
+    if (productSerial != nil && ![productSerial isEqualToString:@""]) {
+        [self.widget reconfigure:productSerial options:nil];
+    } else {
+        NSLog(@"Invalid productSerial: %@", productSerial);
+        [self setMessage:@"Invalid product serial"];
+    }
 }
 
 - (IBAction)onOpen
@@ -87,8 +95,11 @@
 - (void)webWidgetDidBecomeReady:(FITAWebWidget *)widget
 {
     NSLog(@"READY");
+
     self.loadButton.enabled = YES;
     self.loadButton.userInteractionEnabled = YES;
+
+    [self.widget create:nil options:nil];
 }
 
 - (void)webWidgetInitialized:(FITAWebWidget *)widget
@@ -98,7 +109,7 @@
 
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details {
     NSLog(@"LOAD event %@", productId);
-    
+
     // We have all the info we need now - enable all buttons
     
     self.openButton.enabled = YES;

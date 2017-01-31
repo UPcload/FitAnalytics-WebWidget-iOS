@@ -88,7 +88,6 @@ window.__driver = {\
         }
     }
     NSString *code = [NSString stringWithFormat:@"window.__driver['%@'].apply(__driver, %@)", name, argsString];
-    NSLog(@"XX CODE %@", code);
     return [self evalJavascript:code];
 }
 

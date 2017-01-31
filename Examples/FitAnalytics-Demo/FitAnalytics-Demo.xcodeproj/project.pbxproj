@@ -13,7 +13,6 @@
 		1D22D5391DAAF65B0074AE7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D22D5371DAAF65B0074AE7B /* Main.storyboard */; };
 		1D22D53B1DAAF65B0074AE7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D22D53A1DAAF65B0074AE7B /* Assets.xcassets */; };
 		1D22D53E1DAAF65B0074AE7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D22D53C1DAAF65B0074AE7B /* LaunchScreen.storyboard */; };
-		61C12B6E188DED5B49757666 /* libPods-FitAnalytics-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C229B1F85C1960B2B09EAB /* libPods-FitAnalytics-Demo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		1D22D53A1DAAF65B0074AE7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D22D53D1DAAF65B0074AE7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D22D53F1DAAF65B0074AE7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50C229B1F85C1960B2B09EAB /* libPods-FitAnalytics-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FitAnalytics-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7488EE07145811F97092550C /* Pods-FitAnalytics-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitAnalytics-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitAnalytics-Demo/Pods-FitAnalytics-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		E04F57B172C9CE80AA454C21 /* Pods-FitAnalytics-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitAnalytics-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitAnalytics-Demo/Pods-FitAnalytics-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,7 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61C12B6E188DED5B49757666 /* libPods-FitAnalytics-Demo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +86,6 @@
 		9F90A6F72EE129C4AC66869E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				50C229B1F85C1960B2B09EAB /* libPods-FitAnalytics-Demo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,12 +128,11 @@
 		1D22D5231DAAF65B0074AE7B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Stefan;
 				TargetAttributes = {
 					1D22D52A1DAAF65B0074AE7B = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 6R6H7839X5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -272,6 +267,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -319,6 +315,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -347,7 +344,7 @@
 			baseConfigurationReference = 7488EE07145811F97092550C /* Pods-FitAnalytics-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6R6H7839X5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "FitAnalytics-Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -362,7 +359,7 @@
 			baseConfigurationReference = E04F57B172C9CE80AA454C21 /* Pods-FitAnalytics-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6R6H7839X5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "FitAnalytics-Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

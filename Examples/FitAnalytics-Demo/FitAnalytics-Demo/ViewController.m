@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 
+/**
+ *Import the FITWebWidget Header and the Handler
+ */
 #import "FITAWebWidget.h"
 #import "FITAWebWidgetHandler.h"
 
 @interface ViewController () <FITAWebWidgetHandler>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
 @property (weak, nonatomic) IBOutlet UIButton *openButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIButton *recommendButton;
@@ -62,7 +64,7 @@
 - (IBAction)onLoad
 {
     NSLog(@"LOAD");
-    [self.widget createWithOptions:@"gaastra-35310045" options:nil];
+    [self.widget create:@"gaastra-35310045" options:nil];
 }
 
 - (IBAction)onOpen

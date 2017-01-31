@@ -15,14 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol FITAWebWidgetHandler <NSObject>
 
 /**
- * This method will be called when widget container inside the WebView has succesfully loaded
+ * This method will be called when widget container inside the WebView has successfully loaded
  * and is ready to accept commands.
  * @param widget The widget controller instance
  */
 - (void)webWidgetDidBecomeReady:(FITAWebWidget *)widget;
 
 /**
- * This method will be called when widget container inside the WebView has succesfully loaded
+ * This method will be called when widget container inside the WebView has successfully loaded
  * and is ready to accept commands.
  * @param widget The widget controller instance
  */
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)webWidgetDidFailLoading:(FITAWebWidget *)widget withError:(NSError *)error;
 
 /**
- * This method will be called when widget successfuly loaded the product info.
+ * This method will be called when widget successfully loaded the product info.
  * It means the product is supported and the widget should be able to provide
  * a size recommendation for it.
  * @param widget The widget controller instance

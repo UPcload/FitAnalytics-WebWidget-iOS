@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FITAWebWidget : NSObject
 
+/**
+ * Initialize webview and assigned the callback handler
+ */
 - (instancetype)initWithWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler;
 
 /**
@@ -22,16 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)load;
 
 /**
- * Creates the widget
- * Must be called after the -[FITAWebWidgetHandler onWebWidgetDidBecomeReady] callback
- */
-- (BOOL)create;
-
-/**
  * Creates the widget with a product serial and/or widget options
  * Must be called after the -[FITAWebWidgetHandler onWebWidgetDidBecomeReady] callback
  */
-- (BOOL)createWithOptions:(nullable NSString *)productSerial options:(nullable NSDictionary *)options;
+- (BOOL)create:(nullable NSString *)productSerial options:(nullable NSDictionary *)options;
 
 /**
  * Shows the actual widget. When the widget finishes opening, it will call the

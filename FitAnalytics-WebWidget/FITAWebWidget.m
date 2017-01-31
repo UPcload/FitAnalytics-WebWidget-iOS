@@ -8,6 +8,7 @@
 
 #import "FITAWebWidget.h"
 #import "FITAWebWidgetHandler.h"
+#import <netinet/in.h>
 
 // the default widget container page
 static NSString *const kWidgetURLString = @"https://widget.fitanalytics.com/widget/app-embed.html";
@@ -21,7 +22,7 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 @interface FITAWebWidget() <UIWebViewDelegate>
 
 @property (nonatomic, weak) UIWebView *webView;
-@property (nonatomic, weak) id<FITAWebWidgetHandler> handler;
+@property (nonatomic, strong) id<FITAWebWidgetHandler> handler;
 @property BOOL isLoading;
 @property BOOL isLoaded;
 @property (nonatomic, strong) WidgetEventCallback onLoadCallback;
@@ -145,11 +146,6 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 
 #pragma mark - iOS-to-JS communication -
 
-- (NSString *)evalJavascript:(NSString *)code
-{
-    return [self.webView stringByEvaluatingJavaScriptFromString:code];
-}
-
 - (NSString *)encodeMessage:(NSDictionary *)message
 {
     // encode dictionary to JSON
@@ -257,12 +253,8 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
     }
 }
 
-- (BOOL)create
-{
-    return [self createWithOptions:nil options:@{}];
-}
 
-- (BOOL)createWithOptions:(nullable NSString *)productSerial options:(nullable NSDictionary *)options
+- (BOOL)create:(nullable NSString *)productSerial options:(nullable NSDictionary *)options
 {
     if (self.isLoading) {
         return NO;

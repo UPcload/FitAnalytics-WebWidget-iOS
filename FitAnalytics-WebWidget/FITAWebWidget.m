@@ -145,6 +145,11 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 
 #pragma mark - iOS-to-JS communication -
 
+- (NSString *)evalJavascript:(NSString *)code
+{
+    return [self.webView stringByEvaluatingJavaScriptFromString:code];
+}
+
 - (NSString *)encodeMessage:(NSDictionary *)message
 {
     // encode dictionary to JSON

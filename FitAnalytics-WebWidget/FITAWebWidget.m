@@ -63,8 +63,6 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
     // decode base64
     NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:encodedMessage options:0];
     NSString *message = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
-    
-    NSLog(message);
 
     // decode JSON to dictionary
     NSData *jsonData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -165,14 +163,12 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 
 - (BOOL)sendMessage:(NSDictionary *)message
 {
-    NSLog(@"sendMessage");
     NSString *encodedMessage = [self encodeMessage:message];
     if (!encodedMessage) {
         return NO;
     }
     NSString *code = [NSString stringWithFormat:@"window.__widgetManager.receiveMessage('%@');", encodedMessage];
-    NSLog(code);
-    NSLog([self.webView stringByEvaluatingJavaScriptFromString:code]);
+    [self.webView stringByEvaluatingJavaScriptFromString:code];
     return YES;
 }
 
@@ -246,7 +242,6 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 - (BOOL)load
 {
     if (!self.isLoading) {
-        NSLog(@"Loading");
         self.isLoading = YES;
         NSURL *widgetURL = [NSURL URLWithString:kWidgetURLString];
         NSURLRequest *widgetURLRequest = [NSURLRequest requestWithURL:widgetURL];

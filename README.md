@@ -2,9 +2,9 @@
 
 ## Overview
 
-The WebWidget SDK allows integrating the FitAnalytics Size Advisor widget into your own rojects. The method of integration currently supported by this SDK is by loading HTML/JS-based widget code in a separate UIWebView instance and establishing a communication between the host app and the embedded web widget.
+The WebWidget SDK allows integrating the FitAnalytics Size Advisor widget into your own projects. The method of integration currently supported by this SDK is by loading HTML/JS-based widget code in a separate UIWebView instance and establishing a communication between the host app and the embedded web widget.
 
-The SDK exports the **FitAWebWidget** class, which serves as a main widget controller. It creates and initialises the widget in a provided web view instance and exposes several methods that allow controlling the widget.
+The SDK exports the **FitAWebWidget** class, which serves as a main widget controller. It creates and initializes the widget in a provided web view instance and exposes several methods that allow controlling the widget.
 
 Additionally, it defines the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller during various events (e.g. when the user closes the widget, the when widget has received a recommendation etc).
 
@@ -25,14 +25,14 @@ https://cocoapods.org/
 
 **Step 3.** Now you can install the dependencies in your project by using `pod install` command.
 
-**Step 4.** Make Sure you always open **Xcode Workspace** instead of Xcode Project. You can do it by
+**Step 4.** Make sure you always open **Xcode Workspace** instead of Xcode Project. You can do it by
 using **open YourApp.xcworkspace** command in terminal.
 
 ---
 
 ## Integration Procedure
 
-We're presuming the a simple app with a single main ViewController class.
+We're presuming a simple app with the single main ViewController class.
 
 Import the **FitAWebWidget.h** and the **FITAWebWidgetHandler.h** in your **ViewController.m**
  
@@ -81,7 +81,7 @@ Begin loading the HTML widget container page.
 
 Create  and (optionally) initialize it with product serial and other options.
 
-Create a widget instance inside the container page by passing the `productSerial` and `options`. Option can be ‘NIL’ or a dictionary of various options argument. Important supported options are listed [here](#configurable-widget-options).
+Create a widget instance inside the container page by passing the `productSerial` and `options`. Options can be `nil` or a dictionary of various options argument. Important supported options are listed [here](#configurable-widget-options).
 
 This method should be called only after the **WebWidgetDidBecomeReady** callback has been called (or inside the callback) and will return a `true` when the widget was successfully created.
 
@@ -113,7 +113,7 @@ Configure the widget with new productSerial and/or options and show it. See `ope
 
 **`- (void) close`**
 
-Close the widget and removes the widget markup. Will trigger the **webWidgetDidClose** callback when it has finished.
+Close the widget and remove the widget markup. Will trigger the **webWidgetDidClose** callback when it has finished.
 
 ```objc
 [self.widget close];

@@ -182,7 +182,7 @@ This method will be called when widget inside the WebView has failed to load or 
 &nbsp;
 
 ```objc
-- (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;**
+- (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;
 ```
 
 This method will be called when widget successfully loaded the product info. It means the product is supported and the widget should be able to provide a size recommendation for it.
@@ -190,7 +190,7 @@ This method will be called when widget successfully loaded the product info. It 
 &nbsp;
 
 ```objc
-- (void)webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;**
+- (void)webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;
 ```
 
 This method will be called when widget failed to load the product info or the product is not supported.

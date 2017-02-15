@@ -67,7 +67,7 @@ self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
 
 ## Methods
 
- - **- (BOOL)load**
+ - `- (BOOL)load`
 
 Begin loading the HTML widget container page.
 
@@ -75,7 +75,7 @@ Begin loading the HTML widget container page.
 [self.widget load];
 ```
 
- - **- (BOOL)create:productSerial options:NSDictionary**
+ - `- (BOOL)create:productSerial options:NSDictionary`
 
 Create  and (optionally) initialize it with product serial and other options.
 
@@ -87,7 +87,7 @@ This method should be called only after the **WebWidgetDidBecomeReady** callback
 [self.widget create:@"example-123456" options:@{ "sizes": @[ @"S", @"XL" ] }];
 ```
 
- - **- (void)open**
+ - `- (void)open`
 
 Show the actual widget. It may trigger loading additional resources over network, and will show the widget only after all assets have been loaded. When the opening has finished the **WebWidgetDidOpen** callback will be called on the callback handler.
 
@@ -95,7 +95,7 @@ Show the actual widget. It may trigger loading additional resources over network
 [self.widget open];
 ```
 
- - **- (void)openWithOptions:productSerial options:NSDictionary**
+ - `- (void)openWithOptions:productSerial options:NSDictionary`
 
 Configure the widget with new productSerial and/or options and show it. See `open` above for more details.
 
@@ -103,7 +103,7 @@ Configure the widget with new productSerial and/or options and show it. See `ope
 [self.widget open:@"example-123456" options:@{ "sizes": @[ @"S", @"XL" ] ];
 ```
 
- - **- (void) close**
+ - `- (void) close`
 
 Close the widget and removes the widget markup. Will trigger the **webWidgetDidClose** callback when it has finished.
 
@@ -111,7 +111,7 @@ Close the widget and removes the widget markup. Will trigger the **webWidgetDidC
 [self.widget close];
 ```
 
- - **- (void) recommend**
+ - `- (void) recommend`
 
 Request a recommendation. The recommended size and additional details will be returned as arguments to the **WebWidgetDidRecommend** callback.
 
@@ -119,7 +119,7 @@ Request a recommendation. The recommended size and additional details will be re
 [self.widget recommend];
 ```
 
- - **3.7 - (void) recommendWithOptions:productSerial options:NSDictionary**
+ - `- (void) recommendWithOptions:productSerial options:NSDictionary`
 
 Configure the widget with the new productSerial and/or widget options and request a recommendation. See `recommend` above for more details.
 
@@ -127,7 +127,7 @@ Configure the widget with the new productSerial and/or widget options and reques
 [self.widget recommend:@"example-123456" options:nil];
 ```
 
- - **- (void)reconfigure:productSerial options:NSDictionary**
+ - `- (void)reconfigure:productSerial options:NSDictionary`
 
 Configure the widget with the new productSerial and/or widget options. If the `productSerial` argument is non-nil and is different from the last provided product serial, this will trigger a request for the product information. After the new product info has been loaded, the **webWidgetDidLoadProduct** will be called. If the product serial is invalid or the product isn't supported by FitAnalytics, the **webWidgetDidFailLoadingProduct** will be called.
 

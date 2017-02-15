@@ -67,7 +67,7 @@ self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
 
 ## Methods
 
- - `- (BOOL)load`
+**`- (BOOL)load`**
 
 Begin loading the HTML widget container page.
 
@@ -75,7 +75,9 @@ Begin loading the HTML widget container page.
 [self.widget load];
 ```
 
- - `- (BOOL)create:productSerial options:NSDictionary`
+&nbsp;
+
+**`- (BOOL)create:productSerial options:NSDictionary`**
 
 Create  and (optionally) initialize it with product serial and other options.
 
@@ -87,7 +89,9 @@ This method should be called only after the **WebWidgetDidBecomeReady** callback
 [self.widget create:@"example-123456" options:@{ "sizes": @[ @"S", @"XL" ] }];
 ```
 
- - `- (void)open`
+&nbsp;
+
+**`- (void)open`**
 
 Show the actual widget. It may trigger loading additional resources over network, and will show the widget only after all assets have been loaded. When the opening has finished the **WebWidgetDidOpen** callback will be called on the callback handler.
 
@@ -95,7 +99,9 @@ Show the actual widget. It may trigger loading additional resources over network
 [self.widget open];
 ```
 
- - `- (void)openWithOptions:productSerial options:NSDictionary`
+&nbsp;
+
+**`- (void)openWithOptions:productSerial options:NSDictionary`**
 
 Configure the widget with new productSerial and/or options and show it. See `open` above for more details.
 
@@ -103,7 +109,9 @@ Configure the widget with new productSerial and/or options and show it. See `ope
 [self.widget open:@"example-123456" options:@{ "sizes": @[ @"S", @"XL" ] ];
 ```
 
- - `- (void) close`
+&nbsp;
+
+**`- (void) close`**
 
 Close the widget and removes the widget markup. Will trigger the **webWidgetDidClose** callback when it has finished.
 
@@ -111,7 +119,9 @@ Close the widget and removes the widget markup. Will trigger the **webWidgetDidC
 [self.widget close];
 ```
 
- - `- (void) recommend`
+&nbsp;
+
+**`- (void) recommend`**
 
 Request a recommendation. The recommended size and additional details will be returned as arguments to the **WebWidgetDidRecommend** callback.
 
@@ -119,7 +129,9 @@ Request a recommendation. The recommended size and additional details will be re
 [self.widget recommend];
 ```
 
- - `- (void) recommendWithOptions:productSerial options:NSDictionary`
+&nbsp;
+
+**`- (void) recommendWithOptions:productSerial options:NSDictionary`**
 
 Configure the widget with the new productSerial and/or widget options and request a recommendation. See `recommend` above for more details.
 
@@ -127,7 +139,9 @@ Configure the widget with the new productSerial and/or widget options and reques
 [self.widget recommend:@"example-123456" options:nil];
 ```
 
- - `- (void)reconfigure:productSerial options:NSDictionary`
+&nbsp;
+
+**`- (void)reconfigure:productSerial options:NSDictionary`**
 
 Configure the widget with the new productSerial and/or widget options. If the `productSerial` argument is non-nil and is different from the last provided product serial, this will trigger a request for the product information. After the new product info has been loaded, the **webWidgetDidLoadProduct** will be called. If the product serial is invalid or the product isn't supported by FitAnalytics, the **webWidgetDidFailLoadingProduct** will be called.
 
@@ -149,6 +163,7 @@ Reconfigure the widget with new product serial and/or widget options object.
 
 This method will be called when widget container inside the WebView has successfully loaded and is ready to accept commands.
 
+&nbsp;
 
 ```objc
 - (void)webWidgetInitialized:(FITAWebWidget *)widget;
@@ -156,6 +171,7 @@ This method will be called when widget container inside the WebView has successf
 
 This method will be called when widget container inside the WebView has successfully loaded.
 
+&nbsp;
 
 ```objc
 - (void)webWidgetDidFailLoading:(FITAWebWidget *)widget withError:(NSError *)error;
@@ -163,6 +179,7 @@ This method will be called when widget container inside the WebView has successf
 
 This method will be called when widget inside the WebView has failed to load or initialize for some reason.
 
+&nbsp;
 
 ```objc
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;**
@@ -170,6 +187,7 @@ This method will be called when widget inside the WebView has failed to load or 
 
 This method will be called when widget successfully loaded the product info. It means the product is supported and the widget should be able to provide a size recommendation for it.
 
+&nbsp;
 
 ```objc
 - (void)webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;**
@@ -177,6 +195,7 @@ This method will be called when widget successfully loaded the product info. It 
 
 This method will be called when widget failed to load the product info or the product is not supported.
 
+&nbsp;
 
 ```objc
 - (void)webWidgetDidOpen:(FITAWebWidget *)widget productId:(NSString *)productId;

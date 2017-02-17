@@ -2,11 +2,15 @@
 
 ## Overview
 
-The WebWidget SDK allows integrating the FitAnalytics Size Advisor widget into your own projects. The method of integration currently supported by this SDK is by loading HTML/JS-based widget code in a separate UIWebView instance and establishing a communication between the host app and the embedded web widget.
+The WebWidget SDK allows integrating the Fit Analytics Size Advisor widget into your own iOS app.
 
-The SDK exports the **FitAWebWidget** class, which serves as a main widget controller. It creates and initializes the widget in a provided web view instance and exposes several methods that allow controlling the widget.
+As a first step, we suggest that you familiarize yourself with the Fit Analytics web-based Size Advisor service by:
+1. Reading through the Fit Analytics website and trying out a sample product - https://www.fitanalytics.com/
+2. Reading through the Fit Analytics web developers guide - http://developers.fitanalytics.com/documentation
 
-Additionally, it defines the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller during various events (e.g. when the user closes the widget, the when widget has received a recommendation etc).
+The integration method currently supported by this SDK is loading HTML/JS-based widget code in a separate UIWebView instance and establishing a communication between the host app and the embedded web widget. This SDK introduces a layer that imitates a web-based (JavaScript) integration of the Fit Analytics widget. It exports the **FitAWebWidget** class, which serves as a main widget controller. It creates and initializes the widget in a provided web view instance and exposes several methods that allow controlling the widget.
+
+Additionally, it defines the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller during various events (e.g. when a user closes the widget, when the widget displayed a recommendation, etc.).
 
 ---
 
@@ -16,7 +20,7 @@ Additionally, it defines the **FITAWebWidgetHandler** interface, which allows re
 
 XCode 7 or higher
 
-IOS 8 or higher
+iOS 8 or higher
 
 **Step 1.** Make sure you already have cocoapods installed in your system. Otherwise you can follow steps in cocoapods documentation to install
 https://cocoapods.org/
@@ -34,14 +38,14 @@ using **open YourApp.xcworkspace** command in terminal.
 
 We're presuming a simple app with the single main ViewController class.
 
-Import the **FitAWebWidget.h** and the **FITAWebWidgetHandler.h** in your **ViewController.m**
+Import the **FitAWebWidget.h** and the **FITAWebWidgetHandler.h** header file into your **ViewController.m**
  
 ```objc
 #import "FITAWebWidget.h"
 #import “FITAWebWidgetHandler.h"
 ```
 
-The view controller class implements the **FITAWebWidgetHandler** interface, so the widget callback can be implemented directly on it.
+The view controller class implements the **FITAWebWidgetHandler** interface, so that the widget callback can be implemented directly on it.
 
 ```objc
 @interface ViewController ()<FITAWebWidgetHandler>
@@ -53,7 +57,7 @@ Add a property for storing the reference to the widget.
 @property (nonatomic, strong) FITAWebWidget *widget;
 ```
 
-Add property for the webView reference. This is the UIWebView instance that will contain the load widget container page.
+Add a property for the WebView reference. This is the UIWebView instance that will contain the load widget container page.
 
 ```objc
 @property (weak, nonatomic) IBOutlet UIWebView *webView;

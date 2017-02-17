@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol FITAWebWidgetHandler <NSObject>
 
 /**
- * This method will be called when widget container inside the WebView has successfully loaded
+ * This method will be called when the widget container inside the WebView has successfully loaded
  * and is ready to accept commands.
  * @param widget The widget controller instance
  */

@@ -4,25 +4,27 @@
 
 The WebWidget SDK allows integrating the Fit Analytics Size Advisor widget into your own iOS app.
 
-As a first step, we suggest that you familiarize yourself with the Fit Analytics web-based Size Advisor service by:
-1. Reading through the Fit Analytics website and trying out a sample product - https://www.fitanalytics.com/
-2. Reading through the Fit Analytics web developers guide - http://developers.fitanalytics.com/documentation
+As a first step, we suggest that you familiarize yourself with the Fit Analytics web-based Size Advisor service by:  
+1. Reading through the Fit Analytics website and trying out a sample product - https://www.fitanalytics.com/  
+2. Reading through the Fit Analytics web developers guide - http://developers.fitanalytics.com/documentation  
 
-The integration method currently supported by this SDK is loading HTML/JS-based widget code in a separate UIWebView instance and establishing a communication between the host app and the embedded web widget. This SDK introduces a layer that imitates a web-based (JavaScript) integration of the Fit Analytics widget. It exports the **FitAWebWidget** class, which serves as a main widget controller. It creates and initializes the widget in a provided web view instance and exposes several methods that allow controlling the widget.
+The integration method currently supported by this SDK is based on loading HTML/JS-based widget code in a separate UIWebView instance and establishing communication between the host app and the embedded web widget.  
 
-Additionally, it defines the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller during various events (e.g. when a user closes the widget, when the widget displayed a recommendation, etc.).
+The SDK introduces a layer that imitates a web-based (JavaScript) integration of the Fit Analytics widget by:  
+1. Exporting the **FitAWebWidget** class, which serves as a main widget controller.   
+2. Creating and initializing the widget in a provided web view instance.  
+3. Exposing several methods that allow controlling the widget.  
+4. Defining the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller through various events (e.g. when a user closes the widget, when the widget displays a recommendation,   etc.).  
 
 ---
 
 ## Installation (using Cocoapods)
 
 **Prerequisities:** 
+1. XCode 7 or higher  
+2. iOS 8 or higher  
 
-XCode 7 or higher
-
-iOS 8 or higher
-
-**Step 1.** Make sure you already have cocoapods installed in your system. Otherwise you can follow steps in cocoapods documentation to install
+**Step 1.** Make sure you already have cocoapods installed in your system. Otherwise you can follow the steps in cocoapods documentation to install
 https://cocoapods.org/
 
 **Step 2.** To initialize the pod in your project use `pod init` command to create a Podfile with smart defaults.
@@ -63,7 +65,7 @@ Add a property for the WebView reference. This is the UIWebView instance that wi
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 ```
 
-Initialize the widger controller with the UIWebView instance and assign self as the callback handler.
+Initialize the widget controller with the UIWebView instance and assign self as the callback handler.
 
 ```objc
 self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
@@ -83,9 +85,9 @@ Begin loading the HTML widget container page.
 
 **`- (BOOL)create:productSerial options:NSDictionary`**
 
-Create  and (optionally) initialize it with product serial and other options.
+Create and (optionally) initialize it with product serial and other options.
 
-Create a widget instance inside the container page by passing the `productSerial` and `options`. Options can be `nil` or a dictionary of various options argument. Important supported options are listed [here](#configurable-widget-options).
+Create a widget instance inside the container page by passing the `productSerial` and `options`. Options can be `nil` or a dictionary of various options arguments. Important supported options are listed [here](#configurable-widget-options).
 
 This method should be called only after the **WebWidgetDidBecomeReady** callback has been called (or inside the callback) and will return a `true` when the widget was successfully created.
 
@@ -97,7 +99,7 @@ This method should be called only after the **WebWidgetDidBecomeReady** callback
 
 **`- (void)open`**
 
-Show the actual widget. It may trigger loading additional resources over network, and will show the widget only after all assets have been loaded. When the opening has finished the **WebWidgetDidOpen** callback will be called on the callback handler.
+Show the actual widget. It may trigger loading additional resources over network, and will show the widget only after all assets have been loaded. When the opening is finished, the **WebWidgetDidOpen** callback will be called on the callback handler.
 
 ```objc
 [self.widget open];
@@ -117,7 +119,7 @@ Configure the widget with new productSerial and/or options and show it. See `ope
 
 **`- (void) close`**
 
-Close the widget and remove the widget markup. Will trigger the **webWidgetDidClose** callback when it has finished.
+Close the widget and remove the widget markup. Will trigger the **webWidgetDidClose** callback when it finishes.
 
 ```objc
 [self.widget close];
@@ -147,7 +149,7 @@ Configure the widget with the new productSerial and/or widget options and reques
 
 **`- (void)reconfigure:productSerial options:NSDictionary`**
 
-Configure the widget with the new productSerial and/or widget options. If the `productSerial` argument is non-nil and is different from the last provided product serial, this will trigger a request for the product information. After the new product info has been loaded, the **webWidgetDidLoadProduct** will be called. If the product serial is invalid or the product isn't supported by FitAnalytics, the **webWidgetDidFailLoadingProduct** will be called.
+Configure the widget with the new productSerial and/or widget options. If the `productSerial` argument is non-nil and is different from the last provided product serial, this will trigger a request for the product information. After the new product info is loaded, the **webWidgetDidLoadProduct** will be called. If the product serial is invalid or the product isn't supported by Fit Analytics, the **webWidgetDidFailLoadingProduct** will be called.
 
 ```objc
 [self.widget reconfigure:@"example-123456" options:nil];
@@ -157,7 +159,7 @@ Configure the widget with the new productSerial and/or widget options. If the `p
 [self.widget reconfigure:nil options:@{ "sizes": @[ @"XL" ] ];
 ```
 
-Reconfigure the widget with new product serial and/or widget options object.
+Reconfigure the widget with a new product serial and/or widget options object.
 
 ## Callbacks
 
@@ -189,7 +191,7 @@ This method will be called when widget inside the WebView has failed to load or 
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;
 ```
 
-This method will be called when widget successfully loaded the product info. It means the product is supported and the widget should be able to provide a size recommendation for it.
+This method will be called when the widget has successfully loaded the product info. A successful load means that the product is supported by Fit Analytics and the widget should be able to provide a size recommendation for it.
 
 &nbsp;
 
@@ -205,18 +207,18 @@ This method will be called when widget failed to load the product info or the pr
 - (void)webWidgetDidOpen:(FITAWebWidget *)widget productId:(NSString *)productId;
 ```
 
-This method will be called when widget has successfully opened after the `open` method call.
+This method will be called when the widget has successfully opened after the `open` method call.
 
 ## Configurable widget options
 
-`sizes` ..  an array of available sizes for the current product
+`sizes` ..  an array of in-stock sizes for the current product
 
-`manufacturedSizes` .. a dictionary of all manfactured sizes for the current product, including their availability status
+`manufacturedSizes` .. a dictionary of all manfactured sizes for the current product, including their in/out-of-stock status
 
 `userId` .. the shop's user id, in case the user is logged in
 
-`shopCountry` .. the country of the shop
+`shopCountry` .. the ISO code of the shop's country (e.g. US, DE, FR, GB, etc.)
 
-`language` .. the language mutation of the shop
+`language` .. the language mutation of the shop (e.g. en, de, fr, es, it, etc.)
 
 For the complete list of available widget options and their description, please see http://developers.fitanalytics.com/documentation#list-callbacks-parameters

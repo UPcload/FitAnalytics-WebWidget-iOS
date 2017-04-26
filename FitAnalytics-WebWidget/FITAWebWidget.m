@@ -57,7 +57,7 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 /**
  * Decode and deserialize incoming message.
  * @param  {NSString *encodedMessage} Base64-encoded JSON object
- * @return {NSDictionary *} Resulting NSDictionary representation of the JSON inside the messager
+ * @return {NSDictionary *} Resulting NSDictionary representation of the JSON inside the message
  */
 - (NSDictionary *)decodeMessage:(NSString *)encodedMessage
 {

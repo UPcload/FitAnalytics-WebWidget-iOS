@@ -120,7 +120,8 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
         else if ([action isEqualToString:@"close"]) {
             if (arguments != nil && [self.handler respondsToSelector:@selector(webWidgetDidClose:productId:size:details:)]) {
                 NSString *productId = [arguments objectAtIndex:0];
-                NSString *size = [arguments objectAtIndex:1];
+                id sizeObject = [arguments objectAtIndex:1];
+                NSString *size = [sizeObject isKindOfClass:[NSString class]] ? sizeObject : nil;
                 NSDictionary *details = [arguments objectAtIndex:2];
                 [self.handler webWidgetDidClose:self productId:productId size:size details:details];
             }

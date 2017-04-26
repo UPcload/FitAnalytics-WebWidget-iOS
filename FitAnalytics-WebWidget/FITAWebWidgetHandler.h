@@ -68,17 +68,17 @@ NS_ASSUME_NONNULL_BEGIN
  * This method will be called when user of the widget has specifically requested closing of the widget by clicking on the close button.
  * @param widget The widget controller instance
  * @param productId The ID of the product
- * @param size The recommended size of the product, if there was a recommendation. `null` if there wasn't any recommendation
+ * @param size The recommended size of the product, if there was a recommendation. `null` if there wasn't any recommendation.
  * @param details The details object.
  */
 @optional
-- (void)webWidgetDidClose:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details;
+- (void)webWidgetDidClose:(FITAWebWidget *)widget productId:(NSString *)productId size:(nullable NSString *)size details:(NSDictionary *)details;
 
 /**
  * This method will be called when user of the widget has specifically clicked on the add-to-cart inside the widget.
  * @param widget The widget controller instance
  * @param productId The ID of the product
- * @param size The recommended size of the product, if there was a recommendation. `null` if there wasn't any recommendation
+ * @param size The size of the product that should be added to cart.
  * @param details The details object.
  */
 @optional
@@ -87,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * This method will be called after the `getRecommendation` call on the FITAWebWidget controller, when the widget has received and processed the size recommendation.
  * @param productId The ID of the product
- * @param size The recommended size of the product, if there was a recommendation. `null` if there wasn't any recommendation.
+ * @param size The recommended size of the product.
  * @param details The details object.
  */
 @optional

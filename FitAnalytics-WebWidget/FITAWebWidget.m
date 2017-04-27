@@ -214,8 +214,6 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 {
     NSDictionary *arguments;
     NSDictionary *defaultArguments = @{
-       @"showMobile": @1,
-       @"forceVersion": @"mobile",
        @"open": @YES
     };
 

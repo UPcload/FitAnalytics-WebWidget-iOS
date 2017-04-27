@@ -98,47 +98,70 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
             }
         }
         else if ([action isEqualToString:@"load"]) {
-            if (arguments != nil && [self.handler respondsToSelector:@selector(webWidgetDidLoadProduct:productId:details:)]) {
+            if (arguments != nil && [arguments count] > 0 && [self.handler respondsToSelector:@selector(webWidgetDidLoadProduct:productId:details:)]) {
                 NSString *productId = [arguments objectAtIndex:0];
-                NSDictionary *details = [arguments objectAtIndex:1];
+                NSDictionary *details = nil;
+                if ([arguments count] > 1 && [[arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
+                    details = [arguments objectAtIndex:1];
+                }
                 [self.handler webWidgetDidLoadProduct:self productId:productId details:details];
             } 
         }
         else if ([action isEqualToString:@"error"]) {
-            if (arguments != nil && [self.handler respondsToSelector:@selector(webWidgetDidFailLoadingProduct:productId:details:)]) {
+            if (arguments != nil && [arguments count] > 0 && [self.handler respondsToSelector:@selector(webWidgetDidFailLoadingProduct:productId:details:)]) {
                 NSString *productId = [arguments objectAtIndex:0];
-                NSDictionary *details = [arguments objectAtIndex:1];
+                NSDictionary *details = nil;
+                if ([arguments count] > 1 && [[arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
+                    details = [arguments objectAtIndex:1];
+                }
                 [self.handler webWidgetDidFailLoadingProduct:self productId:productId details:details];
             }
         }
         else if ([action isEqualToString:@"open"]) {
-            if (arguments != nil && [self.handler respondsToSelector:@selector(webWidgetDidOpen:productId:)]) {
+            if (arguments != nil && [arguments count] > 0 && [self.handler respondsToSelector:@selector(webWidgetDidOpen:productId:)]) {
                 NSString *productId = [arguments objectAtIndex:0];
                 [self.handler webWidgetDidOpen:self productId:productId];
             }
         }
         else if ([action isEqualToString:@"close"]) {
-            if (arguments != nil && [self.handler respondsToSelector:@selector(webWidgetDidClose:productId:size:details:)]) {
+            if (arguments != nil && [arguments count] > 0 && [self.handler respondsToSelector:@selector(webWidgetDidClose:productId:size:details:)]) {
                 NSString *productId = [arguments objectAtIndex:0];
-                id sizeObject = [arguments objectAtIndex:1];
-                NSString *size = [sizeObject isKindOfClass:[NSString class]] ? sizeObject : nil;
-                NSDictionary *details = [arguments objectAtIndex:2];
+                NSString *size = nil;
+                if ([arguments count] > 1 && [[arguments objectAtIndex:1] isKindOfClass:[NSString class]]) {
+                    size = [arguments objectAtIndex:1];
+                }
+                NSDictionary *details = nil;
+                if ([arguments count] > 2 && [[arguments objectAtIndex:2] isKindOfClass:[NSDictionary class]]) {
+                    details = [arguments objectAtIndex:2];
+                }
                 [self.handler webWidgetDidClose:self productId:productId size:size details:details];
             }
         }
         else if ([action isEqualToString:@"cart"]) {
-            if (arguments != nil && [self.handler respondsToSelector:@selector(webWidgetDidAddToCart:productId:size:details:)]) {
+            if (arguments != nil && [arguments count] > 1 && [self.handler respondsToSelector:@selector(webWidgetDidAddToCart:productId:size:details:)]) {
                 NSString *productId = [arguments objectAtIndex:0];
-                NSString *size = [arguments objectAtIndex:1];
-                NSDictionary *details = [arguments objectAtIndex:2];
+                NSString *size = nil;
+                if ([arguments count] > 1 && [[arguments objectAtIndex:1] isKindOfClass:[NSString class]]) {
+                    size = [arguments objectAtIndex:1];
+                }
+                NSDictionary *details = nil;
+                if ([arguments count] > 2 && [[arguments objectAtIndex:2] isKindOfClass:[NSDictionary class]]) {
+                    details = [arguments objectAtIndex:2];
+                }
                 [self.handler webWidgetDidAddToCart:self productId:productId size:size details:details];
             }
         }
         else if ([action isEqualToString:@"recommend"]) {
-            if (arguments != nil && [self.handler respondsToSelector:@selector(webWidgetDidRecommend:productId:size:details:)]) {
+            if (arguments != nil && [arguments count] > 1 && [self.handler respondsToSelector:@selector(webWidgetDidRecommend:productId:size:details:)]) {
                 NSString *productId = [arguments objectAtIndex:0];
-                NSString *size = [arguments objectAtIndex:1];
-                NSDictionary *details = [arguments objectAtIndex:2];
+                NSString *size = nil;
+                if ([arguments count] > 1 && [[arguments objectAtIndex:1] isKindOfClass:[NSString class]]) {
+                    size = [arguments objectAtIndex:1];
+                }
+                NSDictionary *details = nil;
+                if ([arguments count] > 2 && [[arguments objectAtIndex:2] isKindOfClass:[NSDictionary class]]) {
+                    details = [arguments objectAtIndex:2];
+                }
                 [self.handler webWidgetDidRecommend:self productId:productId size:size details:details];
             }
         }

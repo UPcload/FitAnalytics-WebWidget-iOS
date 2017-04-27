@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param details The details object
  */
 @optional
-- (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;
+- (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(nullable NSDictionary *)details;
 
 /**
  * This method will be called when widget failed to load the product info or the product is not supported.
@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param details The details object
  */
 @optional
-- (void)webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;
+- (void)webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(nullable NSDictionary *)details;
 
 /**
  * This method will be called when widget has successfully opened after the `open` method call.
@@ -72,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param details The details object.
  */
 @optional
-- (void)webWidgetDidClose:(FITAWebWidget *)widget productId:(NSString *)productId size:(nullable NSString *)size details:(NSDictionary *)details;
+- (void)webWidgetDidClose:(FITAWebWidget *)widget productId:(NSString *)productId size:(nullable NSString *)size details:(nullable NSDictionary *)details;
 
 /**
  * This method will be called when user of the widget has specifically clicked on the add-to-cart inside the widget.
@@ -82,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param details The details object.
  */
 @optional
-- (void)webWidgetDidAddToCart:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details;
+- (void)webWidgetDidAddToCart:(FITAWebWidget *)widget productId:(NSString *)productId size:(nullable NSString *)size details:(nullable NSDictionary *)details;
 
 /**
  * This method will be called after the `getRecommendation` call on the FITAWebWidget controller, when the widget has received and processed the size recommendation.
@@ -91,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param details The details object.
  */
 @optional
-- (void)webWidgetDidRecommend:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details;
+- (void)webWidgetDidRecommend:(FITAWebWidget *)widget productId:(NSString *)productId size:(nullable NSString *)size details:(nullable NSDictionary *)details;
 
 @end
 

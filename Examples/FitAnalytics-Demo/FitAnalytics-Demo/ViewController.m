@@ -68,7 +68,11 @@
     NSLog(@"LOAD");
 
     if (productSerial != nil && ![productSerial isEqualToString:@""]) {
-        [self.widget reconfigure:productSerial options:nil];
+        [self.widget reconfigure:productSerial options:@{
+            // we need to provide these two values here, otherwise many productSerials won't work
+            @"language": @"en",
+            @"shopCountry": @"US"
+        }];
     } else {
         NSLog(@"Invalid productSerial: %@", productSerial);
         [self setMessage:@"Invalid product serial"];

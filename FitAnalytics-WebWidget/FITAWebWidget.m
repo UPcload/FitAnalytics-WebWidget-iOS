@@ -348,6 +348,10 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
         [self receiveMessage:message];
         return NO;
     }
+    else if (navigationType == UIWebViewNavigationTypeLinkClicked ) {
+        [[UIApplication sharedApplication] openURL:[request URL]];
+        return NO;
+    }
     else {
         return YES;
     }

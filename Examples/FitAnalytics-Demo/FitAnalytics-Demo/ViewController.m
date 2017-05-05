@@ -103,7 +103,9 @@
     self.loadButton.enabled = YES;
     self.loadButton.userInteractionEnabled = YES;
 
-    [self.widget create:nil options:nil];
+    [self.widget create:nil options:@{
+        @"cart": @YES
+    }];
 }
 
 - (void)webWidgetInitialized:(FITAWebWidget *)widget
@@ -158,6 +160,12 @@
 - (void)webWidgetDidClose:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details
 {
     NSLog(@"CLOSE event %@, %@", productId, size);
+    [self setRecommendedSize:size];
+}
+
+- (void)webWidgetDidAddToCart:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details;
+{
+    NSLog(@"CART event %@, %@", productId, size);
     [self setRecommendedSize:size];
 }
 

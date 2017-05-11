@@ -56,7 +56,7 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 
 /**
  * Decode and deserialize incoming message.
- * @param  {NSString *encodedMessage} Base64-encoded JSON object
+ * @param encodedMessage {NSString *encodedMessage} Base64-encoded JSON object
  * @return {NSDictionary *} Resulting NSDictionary representation of the JSON inside the message
  */
 - (NSDictionary *)decodeMessage:(NSString *)encodedMessage
@@ -75,7 +75,7 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 /**
  * Decode and dispatch the incoming widget event message
  * to corresponding event handlers
- * @param {NSString *} encodedMessage Incoming base64-encoded message
+ * @param encodedMessage {NSString *} encodedMessage Incoming base64-encoded message
  */
 - (void)receiveMessage:(NSString *)encodedMessage
 {
@@ -201,7 +201,9 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
  * Utility method for compiling and sending action message to the widget.
  * All actions are composed of an action name (e.g. "open") and an array of arguments.
  * The widget controller inside the container page accepts several pre-defined actions.
- * @param {NSString *}action 
+ * @param action {NSString *} name of the action
+ * @param arguments {NSArray *} array of arguments; each argument should be a JSON-serializable value
+ * @return status {BOOL} status of the messager delivery
  */
 - (BOOL)createAndSendAction:(NSString *)action withArguments:(NSArray *)arguments
 {

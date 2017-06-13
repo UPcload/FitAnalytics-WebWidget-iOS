@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @protocol FITAWebWidgetHandler;
 
@@ -15,9 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FITAWebWidget : NSObject
 
 /**
- * Initialize webview and assign the callback handler
+ * Initialize with UIWebView instance and assign the callback handler
  */
 - (instancetype)initWithWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler;
+
+/**
+ * Initialize with WKWebView and assign the callback handler
+ */
+- (instancetype)initWithWKWebView:(WKWebView *)webView handler:(id<FITAWebWidgetHandler>)handler;
 
 /**
  * Load the HTML widget container page.

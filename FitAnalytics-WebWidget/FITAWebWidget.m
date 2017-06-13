@@ -17,23 +17,26 @@ static NSString *const kWidgetURLString = @"https://widget.fitanalytics.com/widg
 static NSString *const kUriPrefix = @"fita:";
 
 typedef void (^WidgetEventCallback)(FITAWebWidget *);
+typedef void (^WidgetMessageCallback)(id, NSError *);
 
 // FITAWebWidget class extension to hide members
-@interface FITAWebWidget() <UIWebViewDelegate>
+@interface FITAWebWidget() <UIWebViewDelegate,WKNavigationDelegate>
 
 @property (nonatomic, weak) UIWebView *webView;
+@property (nonatomic, weak) WKWebView *wkWebView;
 @property (nonatomic, strong) id<FITAWebWidgetHandler> handler;
 @property BOOL isLoading;
 @property BOOL isLoaded;
 @property (nonatomic, strong) WidgetEventCallback onLoadCallback;
+@property (nonatomic, strong) WidgetMessageCallback onMessageSendCallback;
 
 @end
 
 @implementation FITAWebWidget
 
 /**
- * Initialize the controller with WebView instance and the callback handler
- * @param webView The WebView instance that will contain the load widget container page
+ * Initialize the controller with UIWebView instance and the callback handler
+ * @param webView The UIWebView instance that will contain the load widget container page
  * @param handler The handler contains callbacks that are invoked by the widget
  */
 - (instancetype)initWithWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler
@@ -44,6 +47,30 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
     if (self = [super init]) {
         _webView = webView;
         _webView.delegate = self;
+        _handler = handler;
+        _isLoading = NO;
+        _isLoaded = NO;
+    }
+
+    return self;
+}
+
+/**
+ * Initialize the controller with WKWebView instance and the callback handler
+ * @param webView The WKWebView instance that will contain the load widget container page
+ * @param handler The handler contains callbacks that are invoked by the widget
+ */
+- (instancetype)initWithWKWebView:(WKWebView *)webView handler:(id<FITAWebWidgetHandler>)handler
+{
+    NSParameterAssert(webView);
+    NSParameterAssert(handler);
+
+    if (self = [super init]) {
+        _wkWebView = webView;
+        [_wkWebView setNavigationDelegate: self];
+        _onMessageSendCallback = ^(id result, NSError *error) {
+            // NOOP
+        };
         _handler = handler;
         _isLoading = NO;
         _isLoaded = NO;
@@ -186,6 +213,11 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
     return encodedString;
 }
 
+- (void) messageCompletionHandler:(id)result error:(NSError *)error
+{
+    // NOOP
+}
+
 - (BOOL)sendMessage:(NSDictionary *)message
 {
     NSString *encodedMessage = [self encodeMessage:message];
@@ -193,7 +225,12 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
         return NO;
     }
     NSString *code = [NSString stringWithFormat:@"window.__widgetManager.receiveMessage('%@');", encodedMessage];
-    [self.webView stringByEvaluatingJavaScriptFromString:code];
+    if (_webView) {
+        [self.webView stringByEvaluatingJavaScriptFromString:code];
+    }
+    else if (_wkWebView) {
+        [self.wkWebView evaluateJavaScript:code completionHandler:_onMessageSendCallback];
+    }
     return YES;
 }
 
@@ -257,6 +294,27 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
     arguments = [self cloneAndExtendArguments:defaultArguments extendArguments:arguments];
     
     return arguments;
+}
+
+- (void)onFinishLoad
+{
+    self.isLoading = YES;
+    self.isLoaded = YES;
+
+    if (self.onLoadCallback) {
+        self.onLoadCallback(self);
+        self.onLoadCallback = nil;
+    }
+}
+
+- (void)onLoadError:(NSError *)error
+{
+    self.isLoading = NO;
+    self.isLoaded = NO;
+
+    if ([self.handler respondsToSelector:@selector(webWidgetDidFailLoading:withError:)]) {
+        [self.handler webWidgetDidFailLoading:self withError:error];
+    }
 }
 
 #pragma mark - Public API -
@@ -361,23 +419,43 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    self.isLoading = YES;
-    self.isLoaded = YES;
-
-    if (self.onLoadCallback) {
-        self.onLoadCallback(self);
-        self.onLoadCallback = nil;
-    }
+    [self onFinishLoad];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    self.isLoading = NO;
-    self.isLoaded = NO;
+    [self onLoadError:error];
+}
 
-    if ([self.handler respondsToSelector:@selector(webWidgetDidFailLoading:withError:)]) {
-        [self.handler webWidgetDidFailLoading:self withError:error];
+#pragma mark - WKNavigationDelegate -
+
+// JS-to-iOS bridge via custom URI schema
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
+    NSString *uri = [[navigationAction.request URL] absoluteString];
+
+    if ([uri hasPrefix:kUriPrefix]) {
+        NSString *message = [uri stringByReplacingOccurrencesOfString:kUriPrefix withString:@""];
+        [self receiveMessage:message];
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
+    else if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        [[UIApplication sharedApplication] openURL:[navigationAction.request URL]];
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
+    else {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    [self onFinishLoad];
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    [self onLoadError:error];
 }
 
 @end

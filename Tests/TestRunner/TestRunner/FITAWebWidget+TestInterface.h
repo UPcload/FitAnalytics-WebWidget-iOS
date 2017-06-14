@@ -11,23 +11,33 @@
 
 #import <Foundation/Foundation.h>
 
+@import PromiseKit;
+
 #import "FITAWebWidget.h"
 
 @interface FITAWebWidget (TestInterface)
 
-- (NSString *)evalJavascript:(NSString *)code;
-- (NSString *)initializeDriver;
-- (NSString *)driverCall:(NSString *)name arguments:(NSArray *)arguments;
+@property (nonatomic, weak) UIWebView *webView;
+@property (nonatomic, weak) WKWebView *wkWebView;
 
-- (NSString *)testHasManager;
-- (NSString *)testHasWidget;
-- (NSString *)testIsWidgetOpen;
-- (NSString *)testGetScreenName;
-- (NSString *)testGetHeight;
-- (NSString *)testGetWeight;
-- (NSString *)testSetHeight:(NSString *)value;
-- (NSString *)testSetWeight:(NSString *)value;
-- (NSString *)testSubmitBodyMassForm;
+// original eval method from FITAWebWidget class
+- (void)evaluateJavaScript:(NSString *)code done:(void (^)(id, NSError *))done;
+
+// promisified eval method
+- (AnyPromise *)evaluateJavaScriptAsync:(NSString *)code;
+
+- (AnyPromise *)initializeDriver;
+- (AnyPromise *)driverCall:(NSString *)name arguments:(NSArray *)arguments;
+
+- (AnyPromise *)testHasManager;
+- (AnyPromise *)testHasWidget;
+- (AnyPromise *)testIsWidgetOpen;
+- (AnyPromise *)testGetScreenName;
+- (AnyPromise *)testGetHeight;
+- (AnyPromise *)testGetWeight;
+- (AnyPromise *)testSetHeight:(NSString *)value;
+- (AnyPromise *)testSetWeight:(NSString *)value;
+- (AnyPromise *)testSubmitBodyMassForm;
 
 @end
 

@@ -218,6 +218,16 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
     // NOOP
 }
 
+- (void)evaluateJavaScript:(NSString *)code done:(void (^)(id, NSError *))done
+{
+    if (_webView) {
+        done([self.webView stringByEvaluatingJavaScriptFromString:code], nil);
+    }
+    else if (_wkWebView) {
+        [self.wkWebView evaluateJavaScript:code completionHandler:done];
+    }
+}
+
 - (BOOL)sendMessage:(NSDictionary *)message
 {
     NSString *encodedMessage = [self encodeMessage:message];

@@ -6,6 +6,8 @@
 //  Copyright © 2016 FitAnalytics. All rights reserved.
 //
 
+@import PromiseKit;
+
 #import "FITAWebWidget+TestInterface.h"
 
 static NSString *const driverSource = @"\
@@ -69,14 +71,37 @@ window.__driver = {\
 };\
 ";
 
+@interface FITAWebWidget() <UIWebViewDelegate,WKNavigationDelegate>
+
+@property (nonatomic, weak) UIWebView *webView;
+@property (nonatomic, weak) WKWebView *wkWebView;
+
+@end
+
+typedef void (^EvalCallback)(id, NSError *);
+
+static const EvalCallback noopFunction = ^(id result, NSError *error) {
+    // NOOP
+};
+
 @implementation FITAWebWidget (TestInterface)
 
-- (NSString *)initializeDriver
+- (AnyPromise *)evaluateJavaScriptAsync:(NSString *)code
 {
-    return [self evalJavascript:driverSource];
+    FITAWebWidget *widget = self;
+    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        [widget evaluateJavaScript:code done:^(id result, NSError *error) {
+            resolve(error ? error : result);
+        }];
+    }];
 }
 
-- (NSString *)driverCall:(NSString *)name arguments:(NSArray *)arguments
+- (AnyPromise *)initializeDriver
+{
+    return [self evaluateJavaScriptAsync:driverSource];
+}
+
+- (AnyPromise *)driverCall:(NSString *)name arguments:(NSArray *)arguments
 {
     NSString *argsString = @"[]";
 
@@ -88,46 +113,47 @@ window.__driver = {\
         }
     }
     NSString *code = [NSString stringWithFormat:@"window.__driver['%@'].apply(__driver, %@)", name, argsString];
-    return [self evalJavascript:code];
+
+    return [self evaluateJavaScriptAsync:code];
 }
 
-- (NSString *)testHasManager {
+- (AnyPromise *)testHasManager {
     return [self driverCall:@"hasManager" arguments:nil];
 }
-- (NSString *)testHasWidget {
+- (AnyPromise *)testHasWidget {
     return [self driverCall:@"hasWidget" arguments:nil];
 }
-- (NSString *)testIsWidgetOpen {
+- (AnyPromise *)testIsWidgetOpen {
     return [self driverCall:@"isWidgetOpen" arguments:nil];
 }
-- (NSString *)testGetScreenName {
+- (AnyPromise *)testGetScreenName {
     return [self driverCall:@"getScreenName" arguments:nil];
 }
-- (NSString *)testGetInputValueByRef:(NSString *)ref {
+- (AnyPromise *)testGetInputValueByRef:(NSString *)ref {
     return [self driverCall:@"getInputValueByRef" arguments:@[ ref ]];
 }
-- (NSString *)testSetInputValueByRef:(NSString *)ref value:(NSString *)value {
+- (AnyPromise *)testSetInputValueByRef:(NSString *)ref value:(NSString *)value {
     return [self driverCall:@"setInputValueByRef" arguments:@[ ref, value ]];
 }
-- (NSString *)testGetComponentValue:(NSString *)path {
+- (AnyPromise *)testGetComponentValue:(NSString *)path {
     return [self driverCall:@"getComponentValue" arguments:@[ path ]];
 }
-- (NSString *)testSetComponentValue:(NSString *)path value:(NSString *)value {
+- (AnyPromise *)testSetComponentValue:(NSString *)path value:(NSString *)value {
     return [self driverCall:@"setComponentValue" arguments:@[ path, value ]];
 }
-- (NSString *)testGetHeight {
+- (AnyPromise *)testGetHeight {
     return [self testGetComponentValue:@"form.height"];
 }
-- (NSString *)testGetWeight {
+- (AnyPromise *)testGetWeight {
     return [self testGetComponentValue:@"form.weight"];
 }
-- (NSString *)testSetHeight:(NSString *)value {
+- (AnyPromise *)testSetHeight:(NSString *)value {
     return [self testSetComponentValue:@"form.height" value:value];
 }
-- (NSString *)testSetWeight:(NSString *)value {
+- (AnyPromise *)testSetWeight:(NSString *)value {
     return [self testSetComponentValue:@"form.weight" value:value];
 }
-- (NSString *)testSubmitBodyMassForm {
+- (AnyPromise *)testSubmitBodyMassForm {
     return [self driverCall:@"click" arguments:@[ @".uclw_submit_form_button" ]];
 }
 

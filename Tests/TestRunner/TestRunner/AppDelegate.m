@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  TestRunner
 //
-//  Created by Tomas Jelen on 30/01/17.
+//  Created by FitAnalytics on 30/01/17.
 //  Copyright © 2017 FitAnalytics. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.initialViewController = self.window.rootViewController;
     return YES;
 }
 

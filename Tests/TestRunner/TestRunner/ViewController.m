@@ -6,66 +6,100 @@
 //  Copyright © 2016 FitAnalytics. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+@import PromiseKit;
+
 #import "ViewController.h"
 
 #import "FITAWebWidget+TestInterface.h"
 #import "FITAWebWidgetHandler.h"
 
-@interface ViewController () <FITAWebWidgetHandler>
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@interface ViewController () <FITAWebWidgetHandler> {
 
-@property (nonatomic, strong) FITAWebWidget *widget;
-
-@end
+@protected
+    PMKResolver readyResolve;
+    PMKResolver initResolve;
+    PMKResolver productLoadResolve;
+    PMKResolver openResolve;
+    PMKResolver recommendResolve;
+} @end
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
-    self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
-    [self.widget load];
+   [super viewDidLoad];
 }
 
 #pragma mark - FITAWebWidgetHandler -
 
 - (void)webWidgetDidBecomeReady:(FITAWebWidget *)widget
 {
-    NSLog(@"XX READY");
-    [widget initializeDriver];
-    NSLog(@"XX widget eval: %@", [widget evalJavascript:@"JSON.stringify(window.__driver)"]);
-    NSLog(@"XX widget eval: %@", [widget evalJavascript:@"!!window.__widgetManager"]);
-    NSLog(@"XX widget eval: %@", [widget evalJavascript:@"__driver.hasManager()"]);
-    NSLog(@"XX widget eval: %@", [widget evalJavascript:@"__driver['hasManager']()"]);
-    
-    NSLog(@"XX Is Manager present: %@", [widget testHasManager]);
-    [widget createWithOptions:nil options:@{ @"productSerial": @"upcload-XX-test" }];
+    if (readyResolve) {
+        readyResolve(widget);
+    }
 }
 
 - (void)webWidgetInitialized:(FITAWebWidget *)widget
 {
-    NSLog(@"XX INIT");
-    NSLog(@"XX Is Widget present: %@", [widget testHasWidget]);
-    [widget open];
+    if (initResolve) {
+        initResolve(widget);
+    }
+    NSLog(@"XX INIT event");
+
+    [widget testHasWidget]
+    .then(^(NSString *res){
+        NSLog(@"XX is widget present: %@", res);
+        [widget open];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"XX error: %@", error);
+    });
 }
 
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details
 {
+   if (productLoadResolve) {
+        productLoadResolve(widget);
+    }
     NSLog(@"XX LOAD event %@", productId);
 }
 
 - (void) webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details
 {
+//    if (productLoadResolve) {
+//        productLoadResolve();
+//    }
     NSLog(@"XX LOADERROR event %@", productId);
 }
 
 - (void)webWidgetDidOpen:(FITAWebWidget *)widget productId:(NSString *)productId
 {
+    if (openResolve) {
+        openResolve(widget);
+    }
     NSLog(@"XX OPEN event %@", productId);
     NSLog(@"XX is widget open: %@", [widget testIsWidgetOpen]);
     [self performSelector:@selector(setFormInputs:) withObject:@{ @"height": @"180", @"weight": @"90" } afterDelay:2.0];
 }
+
+#pragma mark - TestInterface -
+
+- (FITAWebWidget *)initializeWidget
+{
+    self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
+    return self.widget;
+}
+
+- (AnyPromise *)widgetLoad
+{
+    ViewController *view = self;
+    [self.widget load];
+    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        view->readyResolve = resolve;
+    }];
+}
+
 - (void)setFormInputs:(NSDictionary *)inputs
 {
     [self.widget testSetHeight:[inputs valueForKey:@"height"]];

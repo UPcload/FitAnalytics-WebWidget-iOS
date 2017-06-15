@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,35 +17,38 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="470" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jV1-YW-cwQ">
-                                <rect key="frame" x="0.0" y="25" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="25" width="320" height="65"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WC2-s9-zih">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="27"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="27"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product ID ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gN4-Rp-Nya">
-                                                <rect key="frame" x="8" y="0.0" width="313" height="27"/>
+                                                <rect key="frame" x="8" y="0.0" width="258" height="27"/>
                                                 <accessibility key="accessibilityConfiguration" hint="product ID" label="Product ID">
                                                     <bool key="isElement" value="YES"/>
                                                 </accessibility>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="27" id="s5d-AH-O75"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3p-Ra-567">
-                                                <rect key="frame" x="333" y="0.0" width="34" height="27"/>
+                                                <rect key="frame" x="278" y="0.0" width="34" height="27"/>
                                                 <state key="normal" title="Load"/>
                                             </button>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="redraw" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nc1-ph-Y5A">
-                                        <rect key="frame" x="0.0" y="35" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="35" width="320" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="left" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k05-Lm-ahN" userLabel="openButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="88" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                                                     <bool key="isElement" value="NO"/>
@@ -53,15 +56,15 @@
                                                 <state key="normal" title="Open"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfg-jm-OaG" userLabel="closeBtn">
-                                                <rect key="frame" x="96" y="0.0" width="87.5" height="30"/>
+                                                <rect key="frame" x="82" y="0.0" width="74" height="30"/>
                                                 <state key="normal" title="Close"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dE3-cA-eaT" userLabel="recommendButton">
-                                                <rect key="frame" x="191.5" y="0.0" width="88" height="30"/>
+                                                <rect key="frame" x="164" y="0.0" width="74" height="30"/>
                                                 <state key="normal" title="Rec."/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USv-uR-2f2">
-                                                <rect key="frame" x="287.5" y="0.0" width="87.5" height="30"/>
+                                                <rect key="frame" x="246" y="0.0" width="74" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -70,24 +73,37 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="WC2-s9-zih" firstAttribute="top" secondItem="jV1-YW-cwQ" secondAttribute="top" id="DBb-sq-OJQ"/>
                                     <constraint firstAttribute="height" constant="65" id="cdy-9i-2kC"/>
                                 </constraints>
                             </stackView>
-                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnb-a3-Q69">
-                                <rect key="frame" x="0.0" y="90" width="375" height="577"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <dataDetectorType key="dataDetectorTypes"/>
-                            </webView>
+                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-71-Isc" userLabel="widgetView">
+                                <rect key="frame" x="0.0" y="90" width="320" height="478"/>
+                                <subviews>
+                                    <webView multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnb-a3-Q69">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <dataDetectorType key="dataDetectorTypes"/>
+                                    </webView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Nnb-a3-Q69" secondAttribute="bottom" id="Lpa-4k-t6Y"/>
+                                    <constraint firstItem="Nnb-a3-Q69" firstAttribute="top" secondItem="JbH-71-Isc" secondAttribute="top" id="OA3-Fk-eK1"/>
+                                    <constraint firstItem="Nnb-a3-Q69" firstAttribute="leading" secondItem="JbH-71-Isc" secondAttribute="leading" id="drz-ex-quO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nnb-a3-Q69" secondAttribute="trailing" id="kRE-gX-hOo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="JbH-71-Isc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4SE-wr-7Ao"/>
                             <constraint firstItem="jV1-YW-cwQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="7B4-Si-9H9"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nnb-a3-Q69" secondAttribute="bottom" id="FeK-Xn-oNT"/>
-                            <constraint firstItem="jV1-YW-cwQ" firstAttribute="bottom" secondItem="Nnb-a3-Q69" secondAttribute="top" id="FjW-kT-te7"/>
-                            <constraint firstItem="Nnb-a3-Q69" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="GPb-Po-9NK"/>
-                            <constraint firstItem="Nnb-a3-Q69" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="M20-R8-Mf6"/>
-                            <constraint firstItem="Nnb-a3-Q69" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="elj-Es-lNJ"/>
+                            <constraint firstAttribute="trailing" secondItem="JbH-71-Isc" secondAttribute="trailing" id="Nis-UV-adL"/>
+                            <constraint firstItem="JbH-71-Isc" firstAttribute="top" secondItem="jV1-YW-cwQ" secondAttribute="bottom" priority="250" id="WcN-3g-1t8"/>
+                            <constraint firstItem="jV1-YW-cwQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="cnn-PY-Z6G"/>
                             <constraint firstItem="jV1-YW-cwQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hiA-ov-ifw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JbH-71-Isc" secondAttribute="bottom" id="uPH-ig-0O3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -98,6 +114,7 @@
                         <outlet property="recommendButton" destination="dE3-cA-eaT" id="sjj-Cg-xbn"/>
                         <outlet property="recommendDisplay" destination="USv-uR-2f2" id="loa-Ya-IcN"/>
                         <outlet property="webView" destination="Nnb-a3-Q69" id="F9g-iF-IU8"/>
+                        <outlet property="widgetView" destination="JbH-71-Isc" id="brL-hF-7mG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -6,6 +6,7 @@
 //  Copyright © 2016 FitAnalytics. All rights reserved.
 //
 
+#import <WebKit/WebKit.h>
 #import "ViewController.h"
 
 /**
@@ -16,12 +17,15 @@
 
 @interface ViewController () <FITAWebWidgetHandler>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIView *widgetView;
 @property (weak, nonatomic) IBOutlet UIButton *openButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIButton *recommendButton;
 @property (weak, nonatomic) IBOutlet UILabel *recommendDisplay;
 @property (weak, nonatomic) IBOutlet UITextField *productIdInput;
 @property (weak, nonatomic) IBOutlet UIButton *loadButton;
+
+@property (strong, nonatomic) WKWebView *wkWebView;
 
 - (void)onLoad;
 - (void)onOpen;
@@ -53,7 +57,30 @@
     self.loadButton.enabled = NO;
     self.loadButton.userInteractionEnabled = NO;
 
-    self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
+    // we're using the app launch argument 'com.fitanalytics.useWKWebView' presence
+    // for selecting the WKWebView instead of UIWebView
+    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+    BOOL useWKWebView = [arguments containsObject:@"com.fitanalytics.useWKWebView"];
+
+    if (useWKWebView) {
+        NSLog(@"using WKWebView");
+        // clone frame from UIWebView
+        CGRect frame = [self.webView frame];
+
+        // remove the UIWebView
+        [self.webView removeFromSuperview];
+
+        // create the WKWebView instance and attach it instead
+        self.wkWebView = [[WKWebView alloc] initWithFrame:frame];
+        [self.widgetView addSubview:self.wkWebView];
+
+        self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];
+    }
+    else {
+        NSLog(@"using UIWebView");
+        self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
+    }
+
     [self.widget load];
 }
 

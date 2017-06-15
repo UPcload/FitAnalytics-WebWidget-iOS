@@ -21,6 +21,7 @@
     PMKResolver initResolve;
     PMKResolver productLoadResolve;
     PMKResolver openResolve;
+    PMKResolver closeResolve;
     PMKResolver recommendResolve;
 } @end
 
@@ -29,6 +30,26 @@
 - (void)viewDidLoad
 {
    [super viewDidLoad];
+    
+    // we're using the app launch argument 'com.fitanalytics.useWKWebView' presence
+    // for selecting the WKWebView instead of UIWebView
+    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+    _useWKWebView = [arguments containsObject:@"com.fitanalytics.useWKWebView"];
+
+    // clone frame from UIWebView
+    CGRect frame = [self.view frame];
+
+    if (_useWKWebView) {
+        NSLog(@"using WKWebView");
+        // create the WKWebView instance
+        self.wkWebView = [[WKWebView alloc] initWithFrame:frame];
+        [self.view addSubview:self.wkWebView];
+    }
+    else {
+        NSLog(@"using UIWebView");
+        self.webView = [[UIWebView alloc] initWithFrame:frame];
+        [self.view addSubview:self.webView];
+    }
 }
 
 #pragma mark - FITAWebWidgetHandler -
@@ -36,99 +57,159 @@
 - (void)webWidgetDidBecomeReady:(FITAWebWidget *)widget
 {
     if (readyResolve) {
-        readyResolve(widget);
+        readyResolve(@[]);
+        readyResolve = nil;
     }
 }
 
 - (void)webWidgetInitialized:(FITAWebWidget *)widget
 {
     if (initResolve) {
-        initResolve(widget);
+        initResolve(@[]);
+        initResolve = nil;
     }
-    NSLog(@"XX INIT event");
-
-    [widget testHasWidget]
-    .then(^(NSString *res){
-        NSLog(@"XX is widget present: %@", res);
-        [widget open];
-    })
-    .catch(^(NSError *error) {
-        NSLog(@"XX error: %@", error);
-    });
 }
 
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details
 {
-   if (productLoadResolve) {
-        productLoadResolve(widget);
+    if (productLoadResolve) {
+        productLoadResolve(@[ productId, details ]);
+        productLoadResolve = nil;
     }
-    NSLog(@"XX LOAD event %@", productId);
 }
 
 - (void) webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details
 {
-//    if (productLoadResolve) {
-//        productLoadResolve();
-//    }
-    NSLog(@"XX LOADERROR event %@", productId);
+    if (productLoadResolve) {
+        productLoadResolve([NSError init]);
+        productLoadResolve = nil;
+    }
 }
 
 - (void)webWidgetDidOpen:(FITAWebWidget *)widget productId:(NSString *)productId
 {
     if (openResolve) {
-        openResolve(widget);
+        openResolve(@[ productId ]);
+        openResolve = nil;
     }
-    NSLog(@"XX OPEN event %@", productId);
-    NSLog(@"XX is widget open: %@", [widget testIsWidgetOpen]);
-    [self performSelector:@selector(setFormInputs:) withObject:@{ @"height": @"180", @"weight": @"90" } afterDelay:2.0];
+}
+
+- (void)webWidgetDidClose:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details
+{
+    if (closeResolve) {
+        closeResolve(@[ productId, details ]);
+        closeResolve = nil;
+    }
+}
+
+- (void)webWidgetDidRecommend:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details
+{
+    if (recommendResolve) {
+        recommendResolve(@[ productId, size, details ]);
+        recommendResolve = nil;
+    }
 }
 
 #pragma mark - TestInterface -
 
 - (FITAWebWidget *)initializeWidget
 {
-    self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
+    if (_useWKWebView) {
+        self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];
+    }
+    else {
+        self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
+    }
     return self.widget;
 }
 
 - (AnyPromise *)widgetLoad
 {
     ViewController *view = self;
-    [self.widget load];
-    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+    AnyPromise *promise =  [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
         view->readyResolve = resolve;
     }];
+    [self.widget load];
+    return promise;
 }
 
-- (void)setFormInputs:(NSDictionary *)inputs
+- (AnyPromise *)widgetCreate:(nullable NSString *)productSerial options:(nullable NSDictionary *)options
 {
-    [self.widget testSetHeight:[inputs valueForKey:@"height"]];
-    [self.widget testSetWeight:[inputs valueForKey:@"weight"]];
-    NSLog(@"XX HEIGHT %@", [self.widget testGetHeight]);
-    NSLog(@"XX WEIGHT %@", [self.widget testGetWeight]);
-    [self performSelector:@selector(submitForm) withObject:nil afterDelay:2.0];
+    ViewController *view = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        view->productLoadResolve = resolve;
+    }];
+    [self.widget create:productSerial options:options];
+    return promise;
 }
-- (void)submitForm
+
+- (AnyPromise *)widgetOpen
 {
-    [self.widget testSubmitBodyMassForm];
-    [self performSelector:@selector(closeWidget) withObject:nil afterDelay:2.0];
+    ViewController *view = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        view->openResolve = resolve;
+    }];
+    [self.widget open];
+    return promise;
 }
-- (void)closeWidget
+
+- (AnyPromise *)widgetOpenWithOptions:(nullable NSString *)productSerial options:(nullable NSDictionary *)options
 {
+    ViewController *view = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        view->openResolve = resolve;
+    }];
+    [self.widget openWithOptions:productSerial options:options];
+    return promise;
+}
+
+- (AnyPromise *)widgetReconfigure:(nullable NSString *)productSerial options:(nullable NSDictionary *)options
+{
+    ViewController *view = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        view->productLoadResolve = resolve;
+    }];
+    [self.widget reconfigure:productSerial options:options];
+    return promise;
+}
+
+- (AnyPromise *)widgetClose
+{
+    ViewController *view = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        view->closeResolve = resolve;
+    }];
     [self.widget close];
+    return promise;
 }
-- (void)webWidgetDidClose:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details
+
+- (AnyPromise *)widgetRecommend
 {
-    NSLog(@"XX CLOSE event %@, %@", productId, size);
-    [self performSelector:@selector(getRecommendation) withObject:nil afterDelay:1.0];
-}
-- (void)getRecommendation
-{
+    ViewController *view = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        view->recommendResolve = resolve;
+    }];
     [self.widget recommend];
+    return promise;
 }
-- (void)webWidgetDidRecommend:(FITAWebWidget *)widget productId:(NSString *)productId size:(NSString *)size details:(NSDictionary *)details
+
+- (AnyPromise *)setFormInputs:(NSDictionary *)inputs
 {
-    NSLog(@"XX RECOMMEND event %@, %@", productId, size);
+    return [self.widget testSetHeight:[inputs valueForKey:@"height"]]
+    .then(^() {
+        return [self.widget testSetWeight:[inputs valueForKey:@"weight"]];
+    })
+    .then(^() {
+        return [self.widget testSetWeight:[inputs valueForKey:@"weight"]];
+    })
+    .then(^() { return PMKAfter(1); })
+    .then(^() {
+        return [self.widget testSubmitBodyMassForm];
+    })
+    .then(^() { return PMKAfter(1); })
+    .then(^() {
+        return [self widgetClose];
+    });
 }
 
 @end

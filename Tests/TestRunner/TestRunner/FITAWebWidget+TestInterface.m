@@ -68,7 +68,7 @@ window.__driver = {\
             size1: this.$.trim(fp.find('.uclw_bar_middle .uclw_label').text()),\
         }\
     },\
-};\
+};true;\
 ";
 
 @interface FITAWebWidget() <UIWebViewDelegate,WKNavigationDelegate>
@@ -112,7 +112,7 @@ static const EvalCallback noopFunction = ^(id result, NSError *error) {
             argsString = [[NSString alloc] initWithData:argsData encoding:NSUTF8StringEncoding];
         }
     }
-    NSString *code = [NSString stringWithFormat:@"window.__driver['%@'].apply(__driver, %@)", name, argsString];
+    NSString *code = [NSString stringWithFormat:@"JSON.stringify(window.__driver['%@'].apply(__driver, %@))", name, argsString];
 
     return [self evaluateJavaScriptAsync:code];
 }

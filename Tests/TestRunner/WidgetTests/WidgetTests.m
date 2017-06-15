@@ -25,15 +25,42 @@
     [super tearDown];
 }
 
-- (void)testWidgetLoad {
+- (void)testWidgetContainerLoad {
     [self initContext];
     XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
-    
+
     [viewController widgetLoad].then(^(){
         NSLog(@"widget load");
         [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
     });
     
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testJavascriptEval {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    [viewController widgetLoad].then(^(){
+        return [widget evaluateJavaScriptAsync:@"String(1 + 1)"];
+    })
+    .then(^(NSString *res) {
+        XCTAssertEqualObjects(res, @"2");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+
     [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
         XCTAssertNil(error);
     }];
@@ -44,12 +71,13 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
 
     [viewController widgetLoad].then(^(){
+    }).then(^(){
         return [widget initializeDriver];
     }).then(^(){
         return [widget evaluateJavaScriptAsync:@"JSON.stringify(window.__driver)"];
     }).then(^(NSString *res) {
         XCTAssertEqualObjects(res, @"{}");
-        return [widget evaluateJavaScriptAsync:@"!!window.__widgetManager"];
+        return [widget evaluateJavaScriptAsync:@"JSON.stringify(!!window.__widgetManager)"];
     }).then(^(NSString *res) {
         XCTAssertEqualObjects(res, @"true", @"widget manager not present");
         return [widget testHasManager];
@@ -63,6 +91,33 @@
         [expectation fulfill];
     });
     
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssert(!error);
+    }];
+}
+
+- (void)testWidgetCreateAndOpen {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    [viewController widgetLoad].then(^(){
+    }).then(^(){
+        return [widget initializeDriver];
+    }).then(^(){
+        return [viewController widgetCreate:@"upcload-XX-test" options:nil];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"upcload-XX-test");
+        return [viewController widgetOpen];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"upcload-XX-test");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+
     [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
         XCTAssert(!error);
     }];

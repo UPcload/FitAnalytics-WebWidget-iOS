@@ -20,22 +20,10 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOt-be-QtM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GOt-be-QtM" secondAttribute="bottom" id="38I-db-2YG"/>
-                            <constraint firstItem="GOt-be-QtM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BPJ-qL-mTr"/>
-                            <constraint firstItem="GOt-be-QtM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Su4-5s-6qU"/>
-                            <constraint firstItem="GOt-be-QtM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mD0-36-Qqm"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="GOt-be-QtM" id="NKr-Rs-qd4"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="j1u-iD-EFK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

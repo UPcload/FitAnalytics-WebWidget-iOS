@@ -7,17 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 @import PromiseKit;
 
 #import "FITAWebWidget+TestInterface.h"
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) WKWebView *wkWebView;
+@property BOOL useWKWebView;
+
 @property (nonatomic, strong) FITAWebWidget *widget;
 
 - (FITAWebWidget *)initializeWidget;
-- (AnyPromise *)widgetLoad;
+- (nonnull AnyPromise *)widgetLoad;
+
+- (nonnull AnyPromise *)widgetCreate:(nullable NSString *)productSerial options:(nullable NSDictionary *)options;
+- (nonnull AnyPromise *)widgetOpen;
+- (nonnull AnyPromise *)widgetOpenWithOptions:(nullable NSString *)productSerial options:(nullable NSDictionary *)options;
+- (nonnull AnyPromise *)widgetReconfigure:(nullable NSString *)productSerial options:(nullable NSDictionary *)options;
+- (nonnull AnyPromise *)widgetClose;
+- (nonnull AnyPromise *)widgetRecommend;
+- (nonnull AnyPromise *)setFormInputs:(nonnull NSDictionary *)inputs;
 
 @end
 

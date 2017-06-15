@@ -339,6 +339,12 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
         NSURL *widgetURL = [NSURL URLWithString:kWidgetURLString];
         NSURLRequest *widgetURLRequest = [NSURLRequest requestWithURL:widgetURL];
         [self.webView loadRequest:widgetURLRequest];
+        if (_webView) {
+            [self.webView loadRequest:widgetURLRequest];
+        }
+        else if (_wkWebView) {
+            [self.wkWebView loadRequest:widgetURLRequest];
+        }
         return YES;
     } else {
         return NO;

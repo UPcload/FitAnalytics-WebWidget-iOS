@@ -11,7 +11,7 @@
 #import <netinet/in.h>
 
 // the default widget container page
-static NSString *const kWidgetURLString = @"https://widget.fitanalytics.com/widget/app-embed.html";
+static NSString *const kWidgetURLString = @"https://widget.fitanalytics.com/widget/app-embed.html?rel=0.3.0";
 
 // the custom protocol prefix
 static NSString *const kUriPrefix = @"fita:";
@@ -39,7 +39,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
  * @param webView The UIWebView instance that will contain the load widget container page
  * @param handler The handler contains callbacks that are invoked by the widget
  */
-- (instancetype)initWithWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler
+- (instancetype)initWithUIWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler
 {
     NSParameterAssert(webView);
     NSParameterAssert(handler);
@@ -53,6 +53,16 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
     }
 
     return self;
+}
+
+/**
+ * Legacy initializer that uses UIWebView, for backwards compatibility
+ * @param webView The UIWebView instance that will contain the load widget container page
+ * @param handler The handler contains callbacks that are invoked by the widget
+ */
+- (instancetype)initWithWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler
+{
+    return [self initWithUIWebView:webView handler:handler];
 }
 
 /**

@@ -123,6 +123,18 @@
     return self.widget;
 }
 
+// for testing the messaging interface
+- (AnyPromise *)sendProductLoadMessage:(NSString *)productId details:(NSDictionary *)details
+{
+    ViewController *view = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+        view->productLoadResolve = resolve;
+    }];
+    [self.widget sendCallbackMessage:@"load" arguments:@[ productId, details ]];
+
+    return promise;
+}
+
 - (AnyPromise *)widgetLoad
 {
     ViewController *view = self;

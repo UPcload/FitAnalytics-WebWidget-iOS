@@ -51,6 +51,7 @@ window.__driver = {\
     },\
     clickByRef: function (ref, value) { this.click(compileRefSelector(ref)) },\
     existsByRef: function (ref, value) { return this.exists(compileRefSelector(ref)) },\
+    sendMessage: function (action, args) { window.__widgetManager.sendMessage({ action: action, arguments: args }); return true; },\
 \
 /* tests */ \
     hasManager: function () { return !!window.__widgetManager },\
@@ -68,14 +69,12 @@ window.__driver = {\
             size1: this.$.trim(fp.find('.uclw_bar_middle .uclw_label').text()),\
         }\
     },\
-};true;\
+};\
+window.__widgetManager && (window.__widgetManager.enableLogs = true);\
+true;\
 ";
 
 @interface FITAWebWidget() <UIWebViewDelegate,WKNavigationDelegate>
-
-@property (nonatomic, weak) UIWebView *webView;
-@property (nonatomic, weak) WKWebView *wkWebView;
-
 @end
 
 typedef void (^EvalCallback)(id, NSError *);
@@ -115,6 +114,10 @@ static const EvalCallback noopFunction = ^(id result, NSError *error) {
     NSString *code = [NSString stringWithFormat:@"JSON.stringify(window.__driver['%@'].apply(__driver, %@))", name, argsString];
 
     return [self evaluateJavaScriptAsync:code];
+}
+
+- (AnyPromise *)sendCallbackMessage:(NSString *)action arguments:(NSArray *)arguments {
+    return [self driverCall:@"sendMessage" arguments:@[ action, arguments ]];
 }
 
 - (AnyPromise *)testHasManager {

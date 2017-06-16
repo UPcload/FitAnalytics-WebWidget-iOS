@@ -21,7 +21,9 @@
 @property (nonatomic, strong) FITAWebWidget *widget;
 
 - (FITAWebWidget *)initializeWidget;
+
 - (nonnull AnyPromise *)widgetLoad;
+- (nonnull AnyPromise *)sendProductLoadMessage:(NSString *)productId details:(nullable NSDictionary *)details;
 
 - (nonnull AnyPromise *)widgetCreate:(nullable NSString *)productSerial options:(nullable NSDictionary *)options;
 - (nonnull AnyPromise *)widgetOpen;

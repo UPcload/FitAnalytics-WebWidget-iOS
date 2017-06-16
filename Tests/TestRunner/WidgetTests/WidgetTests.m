@@ -96,6 +96,32 @@
     }];
 }
 
+- (void)testWidgetMessageCallback {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+    
+    [viewController widgetLoad].then(^(){
+    }).then(^(){
+        return [widget initializeDriver];
+    }).then(^(){
+        return [viewController sendProductLoadMessage:@"upcload-XX-test" details:@{ @"test": @"test" }];
+    }).then(^(NSArray *res) {
+        NSLog(@"Response: %@", res);
+        XCTAssertEqualObjects([res objectAtIndex:0], @"upcload-XX-test");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTAssert(!error);
+    }];
+}
+
 - (void)testWidgetCreateAndOpen {
     [self initContext];
     XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
@@ -104,11 +130,16 @@
     }).then(^(){
         return [widget initializeDriver];
     }).then(^(){
+        return [widget evaluateJavaScriptAsync:@"JSON.stringify(window.__driver)"];
+    }).then(^(NSString *res) {
+        NSLog(@"driver %@", res);
         return [viewController widgetCreate:@"upcload-XX-test" options:nil];
     }).then(^(NSArray *res) {
+        NSLog(@"create");
         XCTAssertEqualObjects([res objectAtIndex:0], @"upcload-XX-test");
         return [viewController widgetOpen];
     }).then(^(NSArray *res) {
+        NSLog(@"open");
         XCTAssertEqualObjects([res objectAtIndex:0], @"upcload-XX-test");
         [expectation fulfill];
     })

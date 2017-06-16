@@ -17,9 +17,6 @@
 
 @interface FITAWebWidget (TestInterface)
 
-@property (nonatomic, weak) UIWebView *webView;
-@property (nonatomic, weak) WKWebView *wkWebView;
-
 // original eval method from FITAWebWidget class
 - (void)evaluateJavaScript:(NSString *)code done:(void (^)(id, NSError *))done;
 
@@ -28,6 +25,7 @@
 
 - (AnyPromise *)initializeDriver;
 - (AnyPromise *)driverCall:(NSString *)name arguments:(NSArray *)arguments;
+- (AnyPromise *)sendCallbackMessage:(NSString *)action arguments:(NSArray *)arguments;
 
 - (AnyPromise *)testHasManager;
 - (AnyPromise *)testHasWidget;

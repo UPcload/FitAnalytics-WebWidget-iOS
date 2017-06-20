@@ -71,6 +71,14 @@ Initialize the widget controller with the UIWebView instance and assign self as 
 self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
 ```
 
+### WKWebView support
+
+Alternatively, you can initialize the widget controller with a WKWebView instance. In such case, the integration should work exactly the same way as with UIWebView.
+
+```objc
+self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];
+```
+
 ## Methods
 
 **`- (BOOL)load`**

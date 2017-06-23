@@ -24,7 +24,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 
 @property (nonatomic, weak) UIWebView *webView;
 @property (nonatomic, weak) WKWebView *wkWebView;
-@property (nonatomic, strong) id<FITAWebWidgetHandler> handler;
+@property (nonatomic, weak) id<FITAWebWidgetHandler> handler;
 @property BOOL isLoading;
 @property BOOL isLoaded;
 @property (nonatomic, strong) WidgetEventCallback onLoadCallback;

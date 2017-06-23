@@ -331,6 +331,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 {
     self.isLoading = NO;
     self.isLoaded = NO;
+    self.onLoadCallback = nil;
 
     if ([self.handler respondsToSelector:@selector(webWidgetDidFailLoading:withError:)]) {
         [self.handler webWidgetDidFailLoading:self withError:error];

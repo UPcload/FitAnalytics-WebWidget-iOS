@@ -22,7 +22,8 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 @interface FITAWebWidget() <UIWebViewDelegate>
 
 @property (nonatomic, weak) UIWebView *webView;
-@property (nonatomic, strong) id<FITAWebWidgetHandler> handler;
+@property (nonatomic, weak) id<FITAWebWidgetHandler> handler;
+
 @property BOOL isLoading;
 @property BOOL isLoaded;
 @property (nonatomic, strong) WidgetEventCallback onLoadCallback;

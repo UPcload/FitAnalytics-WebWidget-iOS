@@ -13,3 +13,7 @@ end
 target 'WidgetTests' do
   shared_pods
 end
+
+target 'ReporterTests' do
+  shared_pods
+end

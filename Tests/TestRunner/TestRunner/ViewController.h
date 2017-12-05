@@ -14,16 +14,16 @@
 
 @interface ViewController : UIViewController
 
-@property (strong, nonatomic) UIWebView *webView;
-@property (strong, nonatomic) WKWebView *wkWebView;
+@property (strong, nonatomic, nullable) UIWebView *webView;
+@property (strong, nonatomic, nullable) WKWebView *wkWebView;
 @property BOOL useWKWebView;
 
-@property (nonatomic, strong) FITAWebWidget *widget;
+@property (nonatomic, strong, nullable) FITAWebWidget *widget;
 
-- (FITAWebWidget *)initializeWidget;
+- (nonnull FITAWebWidget *)initializeWidget;
 
 - (nonnull AnyPromise *)widgetLoad;
-- (nonnull AnyPromise *)sendProductLoadMessage:(NSString *)productId details:(nullable NSDictionary *)details;
+- (nonnull AnyPromise *)sendProductLoadMessage:(nullable NSString *)productId details:(nullable NSDictionary *)details;
 
 - (nonnull AnyPromise *)widgetCreate:(nullable NSString *)productSerial options:(nullable NSDictionary *)options;
 - (nonnull AnyPromise *)widgetOpen;

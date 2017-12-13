@@ -16,9 +16,12 @@
 static NSString *const kReportUrl0 = @"https://collector.fitanalytics.com/purchases";
 static NSString *const kReportUrl1 = @"https://collector-de.fitanalytics.com/purchases";
 
+static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
+
+
 @interface FITAPurchaseReporter()
 
-@property NSOperationQueue *operationQueue;
+@property (nonatomic, strong) NSUserDefaults *defaults;
 
 @end
 
@@ -27,7 +30,7 @@ static NSString *const kReportUrl1 = @"https://collector-de.fitanalytics.com/pur
 - (instancetype)init
 {
     if (self = [super init]) {
-        _operationQueue = [[NSOperationQueue alloc] init];
+        _defaults = [[NSUserDefaults alloc] init];
     }
 
     return self;
@@ -45,7 +48,7 @@ static NSString *const kReportUrl1 = @"https://collector-de.fitanalytics.com/pur
 
     [self sendRequest:urlString0 done:done];
     [self sendRequest:urlString1 done:nil];
-    
+
     return YES;
 }
 
@@ -82,8 +85,17 @@ static NSString *const kReportUrl1 = @"https://collector-de.fitanalytics.com/pur
         [dict setValue:value forKey:@"ean"];
     if ((value = report.funnel) != nil)
         [dict setValue:value forKey:@"funnel"];
-    if ((value = report.sid) != nil)
-        [dict setValue:value forKey:@"sid"];
+    if ((value = report.hostname) != nil)
+        [dict setValue:value forKey:@"hostname"];
+
+    NSString *sid = nil;
+    if (report.sid != nil)
+        sid = report.sid;
+    else
+        sid = [_defaults objectForKey:kSidKey];
+
+    if (sid != nil && [sid isKindOfClass:[NSString class]])
+        [dict setValue:sid forKey:@"sid"];
 
     [dict setValue:@"callback" forKey:@"sender"];
     [dict setValue:@"embed-ios" forKey:@"hostname"];

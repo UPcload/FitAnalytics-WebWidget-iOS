@@ -15,6 +15,7 @@ static NSString *const kWidgetURLString = @"https://widget.fitanalytics.com/widg
 
 // the custom protocol prefix
 static NSString *const kUriPrefix = @"fita:";
+static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
 
 typedef void (^WidgetEventCallback)(FITAWebWidget *);
 typedef void (^WidgetMessageCallback)(id, NSError *);
@@ -29,6 +30,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 @property BOOL isLoaded;
 @property (nonatomic, strong) WidgetEventCallback onLoadCallback;
 @property (nonatomic, strong) WidgetMessageCallback onMessageSendCallback;
+@property (nonatomic, strong) NSUserDefaults *defaults;
 
 @end
 
@@ -50,6 +52,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
         _handler = handler;
         _isLoading = NO;
         _isLoaded = NO;
+        _defaults = [[NSUserDefaults alloc] init];
     }
 
     return self;
@@ -84,6 +87,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
         _handler = handler;
         _isLoading = NO;
         _isLoaded = NO;
+        _defaults = [[NSUserDefaults alloc] init];
     }
 
     return self;
@@ -140,6 +144,13 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
                 NSDictionary *details = nil;
                 if ([arguments count] > 1 && [[arguments objectAtIndex:1] isKindOfClass:[NSDictionary class]]) {
                     details = [arguments objectAtIndex:1];
+                    // persist the SID, if present
+                    if ([details isKindOfClass:[NSDictionary class]] && [[details objectForKey:@"sid"] isKindOfClass:[NSString class]]) {
+                        NSString *sid = [details objectForKey:@"sid"];
+                        if (sid != nil) {
+                            [_defaults setObject:sid forKey:kSidKey];
+                        }
+                    }
                 }
                 [self.handler webWidgetDidLoadProduct:self productId:productId details:details];
             } 

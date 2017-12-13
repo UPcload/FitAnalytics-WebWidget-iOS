@@ -19,12 +19,14 @@
 @property (nonatomic) NSString *price;
 @property (nonatomic) NSString *currency;
 @property (nonatomic) NSString *sizeRegion;
+@property (nonatomic) NSString *shop;
 @property (nonatomic) NSString *shopCountry;
 @property (nonatomic) NSString *shopLanguage;
 @property (nonatomic) NSString *shopSizingSystem;
 @property (nonatomic) NSString *ean;
 @property (nonatomic) NSString *funnel;
 @property (nonatomic) NSString *sid;
+@property (nonatomic) NSString *hostname;
 
 /**
  * Initialize empty

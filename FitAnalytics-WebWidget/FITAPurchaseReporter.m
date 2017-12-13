@@ -70,6 +70,8 @@ static NSString *const kReportUrl1 = @"https://collector-de.fitanalytics.com/pur
         [dict setValue:value forKey:@"currency"];
     if ((value = report.sizeRegion) != nil)
         [dict setValue:value forKey:@"sizeRegion"];
+    if ((value = report.shop) != nil)
+        [dict setValue:value forKey:@"shop"];
     if ((value = report.shopCountry) != nil)
         [dict setValue:value forKey:@"shopCountry"];
     if ((value = report.shopLanguage) != nil)
@@ -117,13 +119,13 @@ static NSString *const kReportUrl1 = @"https://collector-de.fitanalytics.com/pur
 - (BOOL)sendRequest:(NSString *)urlString done:(void (^)(NSError *))done
 {
     NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSession *session = [NSURLSession sharedSession];
 
-    [NSURLConnection sendAsynchronousRequest:request queue:_operationQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (done != nil) {
-            done(connectionError);
+            done(error);
         }
-    }];
+    }] resume];
 
     return YES;
 }

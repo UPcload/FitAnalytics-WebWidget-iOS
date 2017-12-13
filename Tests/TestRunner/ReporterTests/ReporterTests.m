@@ -32,12 +32,23 @@
 
     FITAPurchaseReport *report = [[FITAPurchaseReport alloc] init];
 
-    report.productSerial = @"test-1234567";
-    report.price = @"34";
+    report.orderId = @"12345";
+    report.userId = @"X53RSwaOlvHXrysT";
+    report.productSerial = @"test-case|1";
+    report.shopArticleCode = @"test-article1";
+    report.purchasedSize = @"M tåll";
+    report.sizeRegion = @"EU";
+    report.price = @"30";
     report.currency = @"EUR";
-    report.purchasedSize = @"S";
+    report.shopCountry = @"DE";
+    report.shopLanguage = @"de";
+    report.shopSizingSystem = @"MANUFACTURED";
+    report.ean = @"9783598215001";
+    report.funnel = @"sizeAdvisor";
 
-    [reporter sendReportAsync:report].then(^(){
+    [reporter sendReportAsync:report]
+    .then(^() { return PMKAfter(1); }) // wait for 1 sec for both requests to finish
+    .then(^(){
         NSLog(@"reporter done");
         [expectation fulfill];
     })
@@ -46,7 +57,7 @@
         XCTFail();
         [expectation fulfill];
     });
-    
+
     [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
         XCTAssertNil(error);
     }];
@@ -58,13 +69,23 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
 
     FITAPurchaseReport *report = [[FITAPurchaseReport alloc] initWithDictionary:@{
-        @"productSerial": @"test-1234567",
-        @"price": @"34",
-        @"currency": @"EUR",
-        @"purchasedSize": @"S"
+        @"orderId": @"51-13412",
+        @"productSerial": @"test-case2",
+        @"shopArticleCode": @"test-article2",
+        @"purchasedSize": @"34/32",
+        @"sizeRegion": @"US",
+        @"price": @"60",
+        @"currency": @"USD",
+        @"shopCountry": @"US",
+        @"shopLanguage": @"en",
+        @"shopSizingSystem": @"MANUFACTURED",
+        @"ean": @"9783598215221",
+        @"funnel": @"sizeChart"
     }];
 
-    [reporter sendReportAsync:report].then(^(){
+    [reporter sendReportAsync:report]
+    .then(^() { return PMKAfter(1); }) // wait for 1 sec for both requests to finish
+    .then(^(){
         NSLog(@"reporter done");
         [expectation fulfill];
     })

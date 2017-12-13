@@ -239,14 +239,14 @@ For the complete list of available widget options and their description, please 
 
 Purchase reporting usually means that when the user arrives on the order confirmation page (OCP), the app will collect individual items on the order and will report them to FitAnalytics. The reporting is done by sending a simple HTTP request.
 
-The usual report is a collection of attributes like Order ID, product serial for each purchased item, purchased size, price, currency and so on. Most common attributes are:
+The usual report is a collection of attributes like the order ID, the product serial for each purchased item, purchased size, price, currency and so on. Most common attributes are:
 
-**orderId** .. (required) unique identifier of the order
-**userId** .. if the user is registered customer, their shop-specific ID
-**productSerial** .. serial number/ID of the product (independent on purchased size); should be with `productSerial` that was used for widget.
-**shopArticleCode** .. (optional) the size-specific identifier
-**purchasedSize** .. the size code of the purchased size
-**shopCountry** .. if the shop has country-specific versions, specify it via this attribute
+* **orderId** .. (required) unique identifier of the order
+* **userId** .. if the user is registered customer, their shop-specific ID
+* **productSerial** .. serial number/ID of the product (independent on purchased size); should be with `productSerial` that was used for widget.
+* **shopArticleCode** .. (optional) the size-specific identifier
+* **purchasedSize** .. the size code of the purchased size
+* **shopCountry** .. if the shop has country-specific versions, specify it via this attribute
 
 For the complete list of possible reported fields and their description, please see https://developers.fitanalytics.com/documentation#sales-data-exchange
 

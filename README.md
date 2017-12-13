@@ -16,6 +16,8 @@ The SDK introduces a layer that imitates a web-based (JavaScript) integration of
 3. Exposing several methods that allow controlling the widget.  
 4. Defining the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller through various events (e.g. when a user closes the widget, when the widget displays a recommendation,   etc.).  
 
+Optionally, you can also include the purchase reporting for the order confirmantion page/view.
+
 ---
 
 ## Installation (using Cocoapods)
@@ -36,7 +38,7 @@ using **open YourApp.xcworkspace** command in terminal.
 
 ---
 
-## Integration Procedure
+## Widget integration Procedure
 
 We're presuming a simple app with the single main ViewController class.
 
@@ -229,4 +231,77 @@ This method will be called when the widget has successfully opened after the `op
 
 `language` .. the language mutation of the shop (e.g. en, de, fr, es, it, etc.)
 
-For the complete list of available widget options and their description, please see http://developers.fitanalytics.com/documentation#list-callbacks-parameters
+For the complete list of available widget options and their description, please see https://developers.fitanalytics.com/documentation#list-callbacks-parameters
+
+---
+
+## Purchase reporting
+
+Purchase reporting usually means that when the user arrives on the order confirmation page (OCP), the app will collect individual items on the order and will report them to FitAnalytics. The reporting is done by sending a simple HTTP request.
+
+The usual report is a collection of attributes like Order ID, product serial for each purchased item, purchased size, price, currency and so on. Most common attributes are:
+
+**orderId** .. (required) unique identifier of the order
+**userId** .. if the user is registered customer, their shop-specific ID
+**productSerial** .. serial number/ID of the product (independent on purchased size); should be with `productSerial` that was used for widget.
+**shopArticleCode** .. (optional) the size-specific identifier
+**purchasedSize** .. the size code of the purchased size
+**shopCountry** .. if the shop has country-specific versions, specify it via this attribute
+
+For the complete list of possible reported fields and their description, please see https://developers.fitanalytics.com/documentation#sales-data-exchange
+
+### Usage
+
+Import the **FITAPurchaseReport.h** and the **FITAPurchaseReporter.h** header file.
+ 
+```objc
+#import "FITAPurchaseReport.h"
+#import "FITAPurchaseReporter.h"
+```
+
+Create a new instance of the purchase reporter (**FITAPurchaseReporter**).
+
+```objc
+FITAPurchaseReporter *reporter = [[FITAPurchaseReporter alloc] init];
+```
+
+For each line item present on the customer's order, create a new instance of **FITAPurchaseReport** and send it via reporter.
+
+```objc
+FITAPurchaseReporter *report = [[FITAPurchaseReport alloc] init];
+
+report.orderId = @"0034";
+report.userId = @"003242A32A";
+report.productSerial = @"test-55322214";
+report.purchasedSize = @"XXL";
+
+[reporter sendReport:report];
+```
+
+Alternatively, you can initialize the report instance with a dictionary. That can be useful for setting shared defaults, for example.
+
+```objc
+
+NSDictionary *reportDefaults = @{
+  @"orderId": @"0034",
+  @"userId": @"003242A32A"
+};
+
+FITAPurchaseReporter *report = [[FITAPurchaseReport alloc] initWithDictionary:reportDefaults];
+
+report.productSerial = @"test-55322214";
+report.purchasedSize = @"XXL";
+
+[reporter sendReport:report];
+```
+
+If you wish to wait until reporting has finished, you can pass a callback function.
+
+```objc
+[reporter sendReport:report done:^(NSError *error) {
+  if (error != nil)
+    NSLog("ERROR: %@", error);
+  else
+    NSLog("SUCCESS");
+}]
+```

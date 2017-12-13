@@ -52,6 +52,11 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
     return YES;
 }
 
+- (BOOL)sendReport:(FITAPurchaseReport *)report
+{
+    return [sendReport report done:nil];
+}
+
 - (NSDictionary *)processReport:(FITAPurchaseReport *)report 
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];

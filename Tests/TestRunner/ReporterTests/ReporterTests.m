@@ -100,4 +100,67 @@
     }];
 }
 
+- (void)testReporterDictionaryAsDefaults {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    NSDictionary *orderDefaults = @{
+        @"orderId": @"A7423",
+        @"currency": @"EUR",
+        @"shopCountry": @"FR",
+        @"shopLanguage": @"fr",
+        @"funnel": @"sizeChart"
+    };
+
+    FITAPurchaseReport *report = [[FITAPurchaseReport alloc] initWithDictionary:orderDefaults];
+
+    report.productSerial = @"test-69992";
+    report.purchasedSize = @"48";
+    report.sizeRegion = @"EU";
+    report.price = @"34";
+    report.currency = @"EUR";
+
+    [reporter sendReportAsync:report]
+    .then(^() { return PMKAfter(1); }) // wait for 1 sec for both requests to finish
+    .then(^(){
+        NSLog(@"reporter done");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testReporterNoCallback {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    FITAPurchaseReport *report = [[FITAPurchaseReport alloc] init];
+
+    report.orderId = @"222-nocallback";
+    report.productSerial = @"test-case|2";
+    report.purchasedSize = @"L";
+    report.price = @"30";
+    report.currency = @"EUR";
+    report.shopCountry = @"DE";
+
+    [reporter sendReport:report];
+
+    PMKAfter(1)
+    .then(^(){
+        NSLog(@"reporter done");
+        [expectation fulfill];
+    });
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssertNil(error);
+    }];
+}
+
 @end

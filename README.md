@@ -237,16 +237,19 @@ For the complete list of available widget options and their description, please 
 
 ## Purchase reporting
 
-Purchase reporting usually means that when the user arrives on the order confirmation page (OCP), the app will collect individual items on the order and will report them to FitAnalytics. The reporting is done by sending a simple HTTP request.
+Purchase reporting usually means that when the user receives a confirmation of a successful purchases, namely, the user sees the Order Confirmation Page (a.k.a OCP or checkout page), the app will report all items in the order to Fit Analytics. The reporting is done by sending a simple HTTP request.
 
-The usual report is a collection of attributes like the order ID, the product serial for each purchased item, purchased size, price, currency and so on. Most common attributes are:
+The usual report is a collection of attributes such as the order ID, the product serial for each purchased item, purchased size, price, currency, etc.
+
+The most common attributes are:
 
 * **orderId** .. (required) unique identifier of the order
 * **userId** .. if the user is registered customer, their shop-specific ID
-* **productSerial** .. serial number/ID of the product (independent on purchased size); should be with `productSerial` that was used for widget.
+* **productSerial** .. serial number/ID of the product (independent of purchased size!); it should match with the `productSerial` that was used for PDP size advisor.
 * **shopArticleCode** .. (optional) the size-specific identifier
 * **purchasedSize** .. the size code of the purchased size
 * **shopCountry** .. if the shop has country-specific versions, specify it via this attribute
+* **language** .. if your shop has language-specific versions, you can specify the language in which the purchase was made (which helps identify the user's sizing system)
 
 For the complete list of possible reported fields and their description, please see https://developers.fitanalytics.com/documentation#sales-data-exchange
 
@@ -265,7 +268,7 @@ Create a new instance of the purchase reporter (**FITAPurchaseReporter**).
 FITAPurchaseReporter *reporter = [[FITAPurchaseReporter alloc] init];
 ```
 
-For each line item present on the customer's order, create a new instance of **FITAPurchaseReport** and send it via reporter.
+For each line item present in the customer's order, create a new instance of **FITAPurchaseReport** and send it via reporter.
 
 ```objc
 FITAPurchaseReporter *report = [[FITAPurchaseReport alloc] init];
@@ -274,6 +277,7 @@ report.orderId = @"0034";
 report.userId = @"003242A32A";
 report.productSerial = @"test-55322214";
 report.purchasedSize = @"XXL";
+// add additional attributes, such as shopCountry, lanugage etc. here.
 
 [reporter sendReport:report];
 ```

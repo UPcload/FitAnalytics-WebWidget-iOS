@@ -24,7 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)init;
 
-- (BOOL)sendReport:(FITAPurchaseReport *)report done:(void (^)(NSError *))done;
+- (BOOL)sendReport:(FITAPurchaseReport *)report;
+- (BOOL)sendReport:(FITAPurchaseReport *)report done:(nullable void (^)(NSError *))done;
 
 @end
 

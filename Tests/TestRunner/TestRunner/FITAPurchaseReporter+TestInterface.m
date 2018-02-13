@@ -20,7 +20,7 @@
 {
     FITAPurchaseReporter *reporter = self;
     return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
-        [reporter sendReport:report done:^(NSError *error) {
+        [reporter sendReport:report completionHandler:^(NSError *error) {
             resolve(error ? error : NULL);
         }];
     }];

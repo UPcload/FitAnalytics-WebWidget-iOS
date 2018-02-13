@@ -36,7 +36,7 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
     return self;
 }
 
-- (BOOL)sendReport:(FITAPurchaseReport *)report done:(void (^)(NSError *))done
+- (BOOL)sendReport:(FITAPurchaseReport *)report completionHandler:(void (^)(NSError * _Nullable))completionHandler
 {
     NSDictionary *processedReport = [self processReport:report];
     if (!processedReport) {
@@ -46,7 +46,7 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
     NSString *urlString0 = [self buildUrlString:kReportUrl0 attrs:processedReport];
     NSString *urlString1 = [self buildUrlString:kReportUrl1 attrs:processedReport];
 
-    [self sendRequest:urlString0 done:done];
+    [self sendRequest:urlString0 done:completionHandler];
     [self sendRequest:urlString1 done:nil];
 
     return YES;
@@ -54,7 +54,7 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
 
 - (BOOL)sendReport:(FITAPurchaseReport *)report
 {
-    return [self sendReport:report done:nil];
+    return [self sendReport:report completionHandler:nil];
 }
 
 - (NSDictionary *)processReport:(FITAPurchaseReport *)report 
@@ -133,7 +133,7 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
     return [NSString stringWithFormat:@"%@?%@", serverUrl, query];
 }
 
-- (BOOL)sendRequest:(NSString *)urlString done:(void (^)(NSError *))done
+- (BOOL)sendRequest:(NSString *)urlString done:(void (^)(NSError * _Nullable))done
 {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLSession *session = [NSURLSession sharedSession];

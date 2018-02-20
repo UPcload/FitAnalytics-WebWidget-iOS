@@ -18,13 +18,23 @@
 		BA7E53C41E3F777C001CA657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7E53C21E3F777C001CA657 /* LaunchScreen.storyboard */; };
 		BA7E53DB1E3F7933001CA657 /* FITAWebWidget+TestInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7E53DA1E3F7933001CA657 /* FITAWebWidget+TestInterface.m */; };
 		BA8C88C81FD1B0DB006DC3DB /* ReporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB4FC081FB4A04B0045F3CB /* ReporterTests.m */; };
+		BA8DBBF6203497BF0016BA26 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA8DBBD9203494640016BA26 /* Info.plist */; };
+		BA8DBBF7203497EE0016BA26 /* ReporterSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB6C117203346EF006450A2 /* ReporterSwiftTests.swift */; };
 		BAAB07731EF13C2A006F1DCE /* WidgetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BAAB07721EF13C2A006F1DCE /* WidgetTests.m */; };
 		BAAB077C1EF14BE6006F1DCE /* WidgetTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BAAB077B1EF14BE6006F1DCE /* WidgetTestCase.m */; };
 		BAB4FC2E1FB4B8A80045F3CB /* ReporterTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB4FC001FB49FDF0045F3CB /* ReporterTestCase.m */; };
 		BAB4FC311FB4BA7B0045F3CB /* FITAPurchaseReporter+TestInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB4FC301FB4BA7B0045F3CB /* FITAPurchaseReporter+TestInterface.m */; };
+		D73DAC383F2910B1A0FD4F84 /* Pods_ReporterSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD32B555955A343741493EF /* Pods_ReporterSwiftTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BA8DBBF12034969A0016BA26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA7E53A91E3F777C001CA657 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA7E53B01E3F777C001CA657;
+			remoteInfo = TestRunner;
+		};
 		BAAB07751EF13C2A006F1DCE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BA7E53A91E3F777C001CA657 /* Project object */;
@@ -47,6 +57,8 @@
 		0E3CC30650942A502887FC5A /* Pods-ReporterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReporterTests/Pods-ReporterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1097B83AD3CA369A3524B82E /* Pods-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UITests/Pods-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		211E02DC9E32CF7ECD45D025 /* Pods_TestRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		392006A0B4312D63680A494F /* Pods-ReporterSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		907C4F9349095430604D8EA3 /* Pods-ReporterSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C0E60A5C29FC3E5ADA0FC41 /* Pods_WidgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6FB93D855A366C544D6C28 /* Pods-ReporterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReporterTests/Pods-ReporterTests.release.xcconfig"; sourceTree = "<group>"; };
 		A0AB93FF35B66EA48BEA8DE8 /* Pods-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UITests/Pods-UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +75,8 @@
 		BA7E53C51E3F777C001CA657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA7E53D91E3F78F0001CA657 /* FITAWebWidget+TestInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FITAWebWidget+TestInterface.h"; sourceTree = "<group>"; };
 		BA7E53DA1E3F7933001CA657 /* FITAWebWidget+TestInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FITAWebWidget+TestInterface.m"; sourceTree = "<group>"; };
+		BA8DBBD9203494640016BA26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ReporterSwiftTests/Info.plist; sourceTree = SOURCE_ROOT; };
+		BA8DBBEC2034969A0016BA26 /* ReporterSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReporterSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAAB07701EF13C2A006F1DCE /* WidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAAB07721EF13C2A006F1DCE /* WidgetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WidgetTests.m; sourceTree = "<group>"; };
 		BAAB07741EF13C2A006F1DCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,7 +89,10 @@
 		BAB4FC241FB4B8920045F3CB /* ReporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB4FC2F1FB4BA0E0045F3CB /* FITAPurchaseReporter+TestInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FITAPurchaseReporter+TestInterface.h"; sourceTree = "<group>"; };
 		BAB4FC301FB4BA7B0045F3CB /* FITAPurchaseReporter+TestInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FITAPurchaseReporter+TestInterface.m"; sourceTree = "<group>"; };
+		BAB6C116203346EE006450A2 /* ReporterSwiftTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ReporterSwiftTests-Bridging-Header.h"; path = "ReporterSwiftTests/ReporterSwiftTests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		BAB6C117203346EF006450A2 /* ReporterSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReporterSwiftTests.swift; path = ReporterSwiftTests/ReporterSwiftTests.swift; sourceTree = SOURCE_ROOT; };
 		D34F55E4C972AF3A0EBC2EC8 /* Pods_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBD32B555955A343741493EF /* Pods_ReporterSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReporterSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D0C70286678452D86C0F9D /* Pods-TestRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestRunner/Pods-TestRunner.release.xcconfig"; sourceTree = "<group>"; };
 		E32708061CB96D32E78F89E7 /* Pods-TestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestRunner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestRunner/Pods-TestRunner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +103,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7EEAD5C5CBF0F627E60F63B /* Pods_TestRunner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA8DBBE92034969A0016BA26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73DAC383F2910B1A0FD4F84 /* Pods_ReporterSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +140,7 @@
 				D34F55E4C972AF3A0EBC2EC8 /* Pods_UITests.framework */,
 				9C0E60A5C29FC3E5ADA0FC41 /* Pods_WidgetTests.framework */,
 				02668E3008536679B865D02B /* Pods_ReporterTests.framework */,
+				DBD32B555955A343741493EF /* Pods_ReporterSwiftTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +156,8 @@
 				A15BD6CBD519443EBC7B1E17 /* Pods-WidgetTests.release.xcconfig */,
 				0E3CC30650942A502887FC5A /* Pods-ReporterTests.debug.xcconfig */,
 				9E6FB93D855A366C544D6C28 /* Pods-ReporterTests.release.xcconfig */,
+				907C4F9349095430604D8EA3 /* Pods-ReporterSwiftTests.debug.xcconfig */,
+				392006A0B4312D63680A494F /* Pods-ReporterSwiftTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -137,6 +165,7 @@
 		BA7E53A81E3F777C001CA657 = {
 			isa = PBXGroup;
 			children = (
+				BA8DBBD8203494370016BA26 /* ReporterSwiftTests */,
 				BA7E53B31E3F777C001CA657 /* TestRunner */,
 				BAAB07711EF13C2A006F1DCE /* WidgetTests */,
 				BAB4FC071FB4A04B0045F3CB /* ReporterTests */,
@@ -152,6 +181,7 @@
 				BA7E53B11E3F777C001CA657 /* TestRunner.app */,
 				BAAB07701EF13C2A006F1DCE /* WidgetTests.xctest */,
 				BAB4FC241FB4B8920045F3CB /* ReporterTests.xctest */,
+				BA8DBBEC2034969A0016BA26 /* ReporterSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +213,16 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		BA8DBBD8203494370016BA26 /* ReporterSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA8DBBD9203494640016BA26 /* Info.plist */,
+				BAB6C116203346EE006450A2 /* ReporterSwiftTests-Bridging-Header.h */,
+				BAB6C117203346EF006450A2 /* ReporterSwiftTests.swift */,
+			);
+			path = ReporterSwiftTests;
+			sourceTree = SOURCE_ROOT;
 		};
 		BAAB07711EF13C2A006F1DCE /* WidgetTests */ = {
 			isa = PBXGroup;
@@ -228,6 +268,27 @@
 			productName = TestRunner;
 			productReference = BA7E53B11E3F777C001CA657 /* TestRunner.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BA8DBBEB2034969A0016BA26 /* ReporterSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA8DBBF32034969A0016BA26 /* Build configuration list for PBXNativeTarget "ReporterSwiftTests" */;
+			buildPhases = (
+				19CA21D4CD17A878D11FF9AB /* [CP] Check Pods Manifest.lock */,
+				BA8DBBE82034969A0016BA26 /* Sources */,
+				BA8DBBE92034969A0016BA26 /* Frameworks */,
+				BA8DBBEA2034969A0016BA26 /* Resources */,
+				B8A2F3EA02BCCEAA0E406747 /* [CP] Embed Pods Frameworks */,
+				99913799CD76AA9D09BC3136 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA8DBBF22034969A0016BA26 /* PBXTargetDependency */,
+			);
+			name = ReporterSwiftTests;
+			productName = ReporterSwiftTests;
+			productReference = BA8DBBEC2034969A0016BA26 /* ReporterSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		BAAB076F1EF13C2A006F1DCE /* WidgetTests */ = {
 			isa = PBXNativeTarget;
@@ -277,6 +338,7 @@
 		BA7E53A91E3F777C001CA657 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = FitAnalytics;
 				TargetAttributes = {
@@ -284,6 +346,12 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 6R6H7839X5;
 						ProvisioningStyle = Automatic;
+					};
+					BA8DBBEB2034969A0016BA26 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 6R6H7839X5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BA7E53B01E3F777C001CA657;
 					};
 					BAAB076F1EF13C2A006F1DCE = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -294,6 +362,7 @@
 					BAB4FC231FB4B8920045F3CB = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 6R6H7839X5;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = BA7E53B01E3F777C001CA657;
 					};
@@ -315,6 +384,7 @@
 				BA7E53B01E3F777C001CA657 /* TestRunner */,
 				BAAB076F1EF13C2A006F1DCE /* WidgetTests */,
 				BAB4FC231FB4B8920045F3CB /* ReporterTests */,
+				BA8DBBEB2034969A0016BA26 /* ReporterSwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -327,6 +397,14 @@
 				BA7E53C41E3F777C001CA657 /* LaunchScreen.storyboard in Resources */,
 				BA7E53C11E3F777C001CA657 /* Assets.xcassets in Resources */,
 				BA7E53BF1E3F777C001CA657 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA8DBBEA2034969A0016BA26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA8DBBF6203497BF0016BA26 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +438,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		19CA21D4CD17A878D11FF9AB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		2923FF9541F12C2A5363E37F /* [CP] Copy Pods Resources */ = {
@@ -422,6 +515,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		99913799CD76AA9D09BC3136 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AA5FE2E0635EB296F604329D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -435,6 +543,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8A2F3EA02BCCEAA0E406747 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C50B58AC471ABE4DA441EE61 /* [CP] Copy Pods Resources */ = {
@@ -497,6 +620,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA8DBBE82034969A0016BA26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA8DBBF7203497EE0016BA26 /* ReporterSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BAAB076C1EF13C2A006F1DCE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -518,6 +649,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BA8DBBF22034969A0016BA26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA7E53B01E3F777C001CA657 /* TestRunner */;
+			targetProxy = BA8DBBF12034969A0016BA26 /* PBXContainerItemProxy */;
+		};
 		BAAB07761EF13C2A006F1DCE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BA7E53B01E3F777C001CA657 /* TestRunner */;
@@ -590,6 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "Pods/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -631,6 +768,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "Pods/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -644,6 +782,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6R6H7839X5;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = TestRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
@@ -658,11 +797,85 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6R6H7839X5;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = TestRunner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.TestRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BA8DBBF42034969A0016BA26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 907C4F9349095430604D8EA3 /* Pods-ReporterSwiftTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6R6H7839X5;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = (
+					"../../FitAnalytics-WebWidget",
+					"Pods/**",
+				);
+				INFOPLIST_FILE = ReporterSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "ReporterSwiftTests/ReporterSwiftTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
+			};
+			name = Debug;
+		};
+		BA8DBBF52034969A0016BA26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 392006A0B4312D63680A494F /* Pods-ReporterSwiftTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6R6H7839X5;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = (
+					"../../FitAnalytics-WebWidget",
+					"Pods/**",
+				);
+				INFOPLIST_FILE = ReporterSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ReporterSwiftTests/ReporterSwiftTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Release;
 		};
@@ -706,13 +919,18 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEVELOPMENT_TEAM = 6R6H7839X5;
+				HEADER_SEARCH_PATHS = "../../FitAnalytics-WebWidget";
 				INFOPLIST_FILE = ReporterTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ReporterTests/ReporterTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Debug;
@@ -723,13 +941,17 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEVELOPMENT_TEAM = 6R6H7839X5;
+				HEADER_SEARCH_PATHS = "../../FitAnalytics-WebWidget";
 				INFOPLIST_FILE = ReporterTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ReporterTests/ReporterTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Release;
@@ -751,6 +973,15 @@
 			buildConfigurations = (
 				BA7E53D41E3F777C001CA657 /* Debug */,
 				BA7E53D51E3F777C001CA657 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA8DBBF32034969A0016BA26 /* Build configuration list for PBXNativeTarget "ReporterSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA8DBBF42034969A0016BA26 /* Debug */,
+				BA8DBBF52034969A0016BA26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

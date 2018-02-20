@@ -16,9 +16,9 @@
 #import "FITAWebWidget+TestInterface.h"
 #import "FITAPurchaseReporter.h"
 
-@interface ReporterTestCase : XCTestCase {
-    
-    // add instance variables to the test case class
+@interface ReporterTestCase: XCTestCase {
+
+// add instance variables to the test case class
 @protected
     ViewController *viewController;
     UIWebView *webView;

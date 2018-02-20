@@ -17,3 +17,7 @@ end
 target 'ReporterTests' do
   shared_pods
 end
+
+target 'ReporterSwiftTests' do
+  shared_pods
+end

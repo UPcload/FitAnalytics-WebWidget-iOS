@@ -271,7 +271,7 @@ FITAPurchaseReporter *reporter = [[FITAPurchaseReporter alloc] init];
 For each line item present in the customer's order, create a new instance of **FITAPurchaseReport** and send it via reporter.
 
 ```objc
-FITAPurchaseReporter *report = [[FITAPurchaseReport alloc] init];
+FITAPurchaseReport *report = [[FITAPurchaseReport alloc] init];
 
 report.orderId = @"0034";
 report.userId = @"003242A32A";

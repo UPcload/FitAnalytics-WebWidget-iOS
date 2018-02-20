@@ -54,4 +54,43 @@ class ReporterSwiftTests: XCTestCase {
             XCTAssertNil(error)
         })
     }
+
+    func testSwiftPlainWithDictionary() {
+        self.initContext()
+        let expectation:XCTestExpectation = self.expectation(description: "finished")
+
+        let dict:Dictionary = [
+            "orderId": "51-13412",
+            "productSerial": "test-case2",
+            "shopArticleCode": "test-article2",
+            "purchasedSize": "34/32",
+            "sizeRegion": "US",
+            "price": "60",
+            "currency": "USD",
+            "shopCountry": "US",
+            "shopLanguage": "en",
+            "shopSizingSystem": "MANUFACTURED",
+            "ean": "9783598215221",
+            "funnel": "sizeChart"
+        ]
+
+        let report:FITAPurchaseReport = FITAPurchaseReport.init(dictionary: dict)
+
+        XCTAssertTrue(report.orderId == "51-13412")
+        XCTAssertNil(report.userId)
+
+        reporter!.send(report, completionHandler:{ (error:Error?) -> () in
+            if error != nil {
+                XCTAssertNil(error)
+                expectation.fulfill()
+            } else {
+                NSLog("reporter done")
+                expectation.fulfill()
+            }
+        })
+
+        self.waitForExpectations(timeout: 10, handler: { error in
+            XCTAssertNil(error)
+        })
+    }
 }

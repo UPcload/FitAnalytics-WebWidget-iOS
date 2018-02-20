@@ -9,24 +9,26 @@
 #ifndef FITAPurchaseReport_h
 #define FITAPurchaseReport_h
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface FITAPurchaseReport : NSObject
 
-@property (nonatomic) NSString *productSerial;
-@property (nonatomic) NSString *shopArticleCode;
-@property (nonatomic) NSString *userId;
-@property (nonatomic) NSString *purchasedSize;
-@property (nonatomic) NSString *orderId;
-@property (nonatomic) NSString *price;
-@property (nonatomic) NSString *currency;
-@property (nonatomic) NSString *sizeRegion;
-@property (nonatomic) NSString *shop;
-@property (nonatomic) NSString *shopCountry;
-@property (nonatomic) NSString *shopLanguage;
-@property (nonatomic) NSString *shopSizingSystem;
-@property (nonatomic) NSString *ean;
-@property (nonatomic) NSString *funnel;
-@property (nonatomic) NSString *sid;
-@property (nonatomic) NSString *hostname;
+@property (nonatomic, nullable) NSString *productSerial;
+@property (nonatomic, nullable) NSString *shopArticleCode;
+@property (nonatomic, nullable) NSString *userId;
+@property (nonatomic, nullable) NSString *purchasedSize;
+@property (nonatomic, nullable) NSString *orderId;
+@property (nonatomic, nullable) NSString *price;
+@property (nonatomic, nullable) NSString *currency;
+@property (nonatomic, nullable) NSString *sizeRegion;
+@property (nonatomic, nullable) NSString *shop;
+@property (nonatomic, nullable) NSString *shopCountry;
+@property (nonatomic, nullable) NSString *shopLanguage;
+@property (nonatomic, nullable) NSString *shopSizingSystem;
+@property (nonatomic, nullable) NSString *ean;
+@property (nonatomic, nullable) NSString *funnel;
+@property (nonatomic, nullable) NSString *sid;
+@property (nonatomic, nullable) NSString *hostname;
 
 /**
  * Initialize empty
@@ -36,8 +38,10 @@
 /**
  * Initialize with a dictionary
  */
-- (instancetype)initWithDictionary:(NSDictionary *)attrs;
+- (instancetype)initWithDictionary:(nonnull NSDictionary *)attrs;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif /* FITAPurchaseReport_h */

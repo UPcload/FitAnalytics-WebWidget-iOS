@@ -27,6 +27,8 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
 
 @implementation FITAPurchaseReporter
 
+#pragma mark - Public API -
+
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -57,10 +59,13 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
     return [self sendReport:report completionHandler:nil];
 }
 
+#pragma mark - Preprocessing helpers -
+
 - (NSDictionary *)processReport:(FITAPurchaseReport *)report 
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     NSString *value;
+    NSDecimalNumber *price;
 
     if ((value = report.productSerial) != nil)
         [dict setValue:value forKey:@"productId"]; // productSerial is sent as "productId"
@@ -72,8 +77,8 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
         [dict setValue:value forKey:@"purchasedSize"];
     if ((value = report.orderId) != nil)
         [dict setValue:value forKey:@"orderId"];
-    if ((value = report.price) != nil)
-        [dict setValue:value forKey:@"price"];
+    if ((price = report.price) != nil)
+        [dict setValue:[price stringValue] forKey:@"price"];
     if ((value = report.currency) != nil)
         [dict setValue:value forKey:@"currency"];
     if ((value = report.sizeRegion) != nil)

@@ -32,7 +32,7 @@ class ReporterSwiftTests: XCTestCase {
         report.shopArticleCode = "test-article1"
         report.purchasedSize = "M tåll"
         report.sizeRegion = "EU"
-        report.price = "30"
+        report.price = NSDecimalNumber.init(string: "30.0")
         report.currency = "EUR"
         report.shopCountry = "DE"
         report.shopLanguage = "de"
@@ -59,13 +59,13 @@ class ReporterSwiftTests: XCTestCase {
         self.initContext()
         let expectation:XCTestExpectation = self.expectation(description: "finished")
 
-        let dict:Dictionary = [
+        let dict:[String: Any] = [
             "orderId": "51-13412",
             "productSerial": "test-case2",
             "shopArticleCode": "test-article2",
             "purchasedSize": "34/32",
             "sizeRegion": "US",
-            "price": "60",
+            "price": NSDecimalNumber.init(string: "60.0"),
             "currency": "USD",
             "shopCountry": "US",
             "shopLanguage": "en",
@@ -77,6 +77,7 @@ class ReporterSwiftTests: XCTestCase {
         let report:FITAPurchaseReport = FITAPurchaseReport.init(dictionary: dict)
 
         XCTAssertTrue(report.orderId == "51-13412")
+        XCTAssert(report.price == NSDecimalNumber.init(value: 60))
         XCTAssertNil(report.userId)
 
         reporter!.send(report, completionHandler:{ (error:Error?) -> () in

@@ -38,7 +38,7 @@
     report.shopArticleCode = @"test-article1";
     report.purchasedSize = @"M tåll";
     report.sizeRegion = @"EU";
-    report.price = @"30";
+    report.price = [NSDecimalNumber decimalNumberWithString:@"30.0"];
     report.currency = @"EUR";
     report.shopCountry = @"DE";
     report.shopLanguage = @"de";
@@ -74,7 +74,7 @@
         @"shopArticleCode": @"test-article2",
         @"purchasedSize": @"34/32",
         @"sizeRegion": @"US",
-        @"price": @"60",
+        @"price": [NSDecimalNumber decimalNumberWithString:@"60.55"],
         @"currency": @"USD",
         @"shopCountry": @"US",
         @"shopLanguage": @"en",
@@ -117,7 +117,7 @@
     report.productSerial = @"test-69992";
     report.purchasedSize = @"48";
     report.sizeRegion = @"EU";
-    report.price = @"34";
+    report.price = [NSDecimalNumber decimalNumberWithString:@"34"];
     report.currency = @"EUR";
 
     [reporter sendReportAsync:report]
@@ -146,7 +146,7 @@
     report.orderId = @"222-nocallback";
     report.productSerial = @"test-case|2";
     report.purchasedSize = @"L";
-    report.price = @"30";
+    report.price = [NSDecimalNumber decimalNumberWithString:@"30"];
     report.currency = @"EUR";
     report.shopCountry = @"DE";
 

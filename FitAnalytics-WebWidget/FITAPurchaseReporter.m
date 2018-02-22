@@ -22,6 +22,7 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
 @interface FITAPurchaseReporter()
 
 @property (nonatomic, strong) NSUserDefaults *defaults;
+@property BOOL isDryRun;
 
 @end
 
@@ -34,6 +35,9 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
     if (self = [super init]) {
         _defaults = [[NSUserDefaults alloc] init];
     }
+
+    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+    _isDryRun = [arguments containsObject:@"com.fitanalytics.isDryRun"];
 
     return self;
 }
@@ -67,8 +71,12 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
     NSString *value;
     NSDecimalNumber *price;
 
-    if ((value = report.productSerial) != nil)
+    if ((value = report.productSerial) != nil) {
+        // prepend the product serial by "test-" in order to avoid skewing metrics by dry runs
+        if (_isDryRun)
+            value = [@"test-" stringByAppendingString:value];
         [dict setValue:value forKey:@"productId"]; // productSerial is sent as "productId"
+    }
     if ((value = report.shopArticleCode) != nil)
         [dict setValue:value forKey:@"variantId"]; // shopArticleCode is sent as "variantId"
     if ((value = report.userId) != nil)

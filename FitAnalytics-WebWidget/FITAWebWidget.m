@@ -28,6 +28,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 @property (nonatomic, weak) id<FITAWebWidgetHandler> handler;
 @property BOOL isLoading;
 @property BOOL isLoaded;
+@property BOOL isDryRun;
 @property (nonatomic, strong) WidgetEventCallback onLoadCallback;
 @property (nonatomic, strong) WidgetMessageCallback onMessageSendCallback;
 @property (nonatomic, strong) NSUserDefaults *defaults;
@@ -50,8 +51,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
         _webView = webView;
         _webView.delegate = self;
         _handler = handler;
-        _isLoading = NO;
-        _isLoaded = NO;
+        [self initShared];
         _defaults = [[NSUserDefaults alloc] init];
     }
 
@@ -85,12 +85,20 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
             // NOOP
         };
         _handler = handler;
-        _isLoading = NO;
-        _isLoaded = NO;
+        [self initShared];
         _defaults = [[NSUserDefaults alloc] init];
     }
 
     return self;
+}
+
+- (void)initShared
+{
+    _isLoading = NO;
+    _isLoaded = NO;
+
+    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+    _isDryRun = [arguments containsObject:@"com.fitanalytics.isDryRun"];
 }
 
 #pragma mark - JS-to-iOS communication -
@@ -307,7 +315,8 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 {
     NSDictionary *arguments;
     NSDictionary *defaultArguments = @{
-       @"open": @YES
+       @"open": @YES,
+       @"blockMetrics": @(_isDryRun)
     };
 
     if (productSerial) {

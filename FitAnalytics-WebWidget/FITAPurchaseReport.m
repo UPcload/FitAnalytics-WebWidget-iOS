@@ -58,8 +58,6 @@
             self.funnel = value;
         if ((value = [attrs valueForKey:@"sid"]) != nil && [self isValueString:(value)])
             self.sid = value;
-        if ((value = [attrs valueForKey:@"hostname"]) != nil && [self isValueString:(value)])
-            self.hostname = value;
     }
 
     return self;

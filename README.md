@@ -36,6 +36,34 @@ https://cocoapods.org/
 **Step 4.** Make sure you always open **Xcode Workspace** instead of Xcode Project. You can do it by
 using **open YourApp.xcworkspace** command in terminal.
 
+## Installation (using the universal binary framework)
+
+Alternatively you can use the pre-built universal binary framework. It's available for download with each release (since v0.4.2). 
+
+It comes in two build flavors: 
+   1) **all** - which includes binary code for both devices (arm7x, arm64) and simulators (i386, x86_64)
+   2) **device_only** - which includes just device-specific binaries (arm7x, arm64). The device-specific flavor is meant for final builds that are meant to be released in App store (which disallows the simulator binary code in apps).
+
+You can find the minimal example project that uses the binary framework in **UniversalFramework/Framework Example** subdirectory of the repository.
+
+**Step 1.** Download the framework package from the release page:
+
+Complete build: [FitAnalytics_WebWidget.framework-v0.4.2-all.tar.gz](https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases/download/untagged-dfcdcc63955b053cc312/FitAnalytics_WebWidget.framework-v0.4.2-all.tar.gz)
+
+Device-only build: [FitAnalytics_WebWidget.framework-v0.4.2-device_only.tar.gz](https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases/download/untagged-dfcdcc63955b053cc312/FitAnalytics_WebWidget.framework-v0.4.2-device_only.tar.gz)
+
+**Step 2.** Unpack the binary framework and add to the XCode project  via "Add files ..." context menu.
+
+**Step 3.** When including header files (see below) add them in the form
+```objc
+#import <FitAnalytics_WebWidget/FITAWebWidget.h>
+...
+```
+instead of 
+```objc
+#import "FITAWebWidget.h"
+...
+```
 ---
 
 ## Widget integration Procedure

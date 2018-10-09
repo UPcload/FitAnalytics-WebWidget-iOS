@@ -127,9 +127,6 @@
 {
     NSLog(@"READY");
 
-    self.loadButton.enabled = YES;
-    self.loadButton.userInteractionEnabled = YES;
-
     [self.widget create:nil options:@{
         @"cart": @YES
     }];
@@ -137,7 +134,15 @@
 
 - (void)webWidgetInitialized:(FITAWebWidget *)widget
 {
+    self.loadButton.enabled = YES;
+    self.loadButton.userInteractionEnabled = YES;
+
     NSLog(@"INIT");
+}
+
+- (void)webWidgetDidFailLoading:(FITAWebWidget *)widget withError:(NSError *)error
+{
+    NSLog(@"INIT ERROR %@", error);
 }
 
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details {
@@ -158,7 +163,7 @@
 }
 
 - (void) webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details {
-    NSLog(@"LOADERROR event %@", productId);
+    NSLog(@"LOADERROR event %@ %@", productId, details);
     
     // Unsupported product, disable all buttons
     

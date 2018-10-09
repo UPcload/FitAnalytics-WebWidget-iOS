@@ -471,6 +471,11 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+     // avoid the error -999 (see: https://discussions.apple.com/thread/1727260?answerId=8877452022#8877452022)
+     if (error.code == NSURLErrorCancelled) {
+         return;
+     }
+
     [self onLoadError:error];
 }
 

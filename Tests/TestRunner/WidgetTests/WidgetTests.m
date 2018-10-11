@@ -49,7 +49,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
 
     [viewController widgetLoad].then(^(){
-        return [widget evaluateJavaScriptAsync:@"String(1 + 1)"];
+        return [self->widget evaluateJavaScriptAsync:@"String(1 + 1)"];
     })
     .then(^(NSString *res) {
         XCTAssertEqualObjects(res, @"2");
@@ -72,15 +72,15 @@
 
     [viewController widgetLoad].then(^(){
     }).then(^(){
-        return [widget initializeDriver];
+        return [self->widget initializeDriver];
     }).then(^(){
-        return [widget evaluateJavaScriptAsync:@"JSON.stringify(window.__driver)"];
+        return [self->widget evaluateJavaScriptAsync:@"JSON.stringify(window.__driver)"];
     }).then(^(NSString *res) {
         XCTAssertEqualObjects(res, @"{}");
-        return [widget evaluateJavaScriptAsync:@"JSON.stringify(!!window.__widgetManager)"];
+        return [self->widget evaluateJavaScriptAsync:@"JSON.stringify(!!window.__widgetManager)"];
     }).then(^(NSString *res) {
         XCTAssertEqualObjects(res, @"true", @"widget manager not present");
-        return [widget testHasManager];
+        return [self->widget testHasManager];
     }).then(^(NSString *res){
         XCTAssertEqualObjects(res, @"true", @"widget manager not present");
         [expectation fulfill];
@@ -92,7 +92,7 @@
     });
     
     [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
-        XCTAssert(!error);
+        XCTAssertNil(error);
     }];
 }
 
@@ -102,12 +102,12 @@
     
     [viewController widgetLoad].then(^(){
     }).then(^(){
-        return [widget initializeDriver];
+        return [self->widget initializeDriver];
     }).then(^(){
-        return [viewController sendProductLoadMessage:@"upcload-XX-test" details:@{ @"test": @"test" }];
+        return [self->viewController sendProductLoadMessage:@"widgetpreview-upper-m" details:@{ @"test": @"test" }];
     }).then(^(NSArray *res) {
         NSLog(@"Response: %@", res);
-        XCTAssertEqualObjects([res objectAtIndex:0], @"upcload-XX-test");
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
         [expectation fulfill];
     })
     .catch(^(NSError *error) {
@@ -117,30 +117,101 @@
     });
     
     [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
-        NSLog(@"Error: %@", error);
-        XCTAssert(!error);
+        XCTAssertNil(error);
     }];
 }
 
-- (void)testWidgetCreateAndOpen {
+- (void)testWidgetCreateWithSerial {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+    
+    [viewController widgetLoad].then(^(){
+    }).then(^(){
+        return [self->widget initializeDriver];
+    }).then(^(NSString *res) {
+        NSLog(@"initialized %@", res);
+        return [self->viewController widgetCreate:@"widgetpreview-upper-m" options:nil];
+    }).then(^(NSArray *res) {
+        NSLog(@"created %@", [res objectAtIndex:0]);
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testWidgetCreateThenConfigureWithSerial {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+    
+    [viewController widgetLoad].then(^(){
+    }).then(^(){
+        return [self->widget initializeDriver];
+    }).then(^(NSString *res) {
+        NSLog(@"initialized %@", res);
+        return [self->viewController widgetCreate:nil options:nil];
+    }).then(^(NSString *res) {
+        return [self->viewController widgetReconfigure:@"widgetpreview-upper-m" options: @{
+            @"shopCountry": @"US",
+            @"shopLanguage": @"en",
+            @"manufacturedSizes": @{
+                @"S": @YES,
+                @"M": @YES,
+                @"L": @NO,
+                @"XL": @YES
+            },
+            @"userId": @"ios-test-0001"
+        }];
+    }).then(^(NSArray *res) {
+        NSLog(@"loaded %@", [res objectAtIndex:0]);
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testWidgetCreateWithOptionsThenOpen {
     [self initContext];
     XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
 
     [viewController widgetLoad].then(^(){
     }).then(^(){
-        return [widget initializeDriver];
-    }).then(^(){
-        return [widget evaluateJavaScriptAsync:@"JSON.stringify(window.__driver)"];
+        return [self->widget initializeDriver];
     }).then(^(NSString *res) {
         NSLog(@"driver %@", res);
-        return [viewController widgetCreate:@"upcload-XX-test" options:nil];
+        return [self->viewController widgetCreate:@"widgetpreview-upper-m" options:@{
+           @"shopCountry": @"US",
+           @"shopLanguage": @"en",
+           @"manufacturedSizes": @{
+               @"S": @YES,
+               @"M": @YES,
+               @"L": @NO,
+               @"XL": @YES
+           },
+           @"userId": @"ios-test-0001"
+        }];
     }).then(^(NSArray *res) {
-        NSLog(@"create");
-        XCTAssertEqualObjects([res objectAtIndex:0], @"upcload-XX-test");
-        return [viewController widgetOpen];
+        NSLog(@"create %@", res);
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
+        return [self->viewController widgetOpen];
     }).then(^(NSArray *res) {
-        NSLog(@"open");
-        XCTAssertEqualObjects([res objectAtIndex:0], @"upcload-XX-test");
+        NSLog(@"open %@", res);
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
         [expectation fulfill];
     })
     .catch(^(NSError *error) {
@@ -150,7 +221,93 @@
     });
 
     [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
-        XCTAssert(!error);
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testWidgetCreateThenOpenWithOptions {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    [viewController widgetLoad].then(^(){
+    }).then(^(){
+        return [self->widget initializeDriver];
+    }).then(^(NSString *res) {
+        return [self->viewController widgetCreate:nil options:@{
+            @"shopCountry": @"US",
+            @"shopLanguage": @"en",
+            @"userId": @"ios-test-0001"
+        }];
+    }).then(^(NSArray *res) {
+        return [self->viewController widgetOpenWithOptions:@"widgetpreview-upper-m" options:@{
+            @"manufacturedSizes": @{
+                @"S": @YES,
+                @"M": @YES,
+                @"L": @NO,
+                @"XL": @YES
+            }
+        }];
+    }).then(^(NSArray *res) {
+        NSLog(@"open %@", res);
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testWidgetMultipleReconfigures {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    [viewController widgetLoad].then(^(){
+    }).then(^(){
+        return [self->widget initializeDriver];
+    }).then(^(NSString *res) {
+        return [self->viewController widgetCreate:nil options:@{
+            @"shopCountry": @"US",
+            @"shopLanguage": @"en",
+        }];
+    }).then(^(NSArray *res) {
+        return [self->viewController widgetReconfigure:@"widgetpreview-upper-m" options:nil];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
+        return [self->viewController widgetReconfigure:@"widgetpreview-upper-w" options:nil];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-w");
+        // only change sizes for the current propduct
+        return [self->viewController widgetReconfigure:nil options:@{
+            @"manufacturedSizes": @{
+                @"S": @YES,
+                @"M": @YES,
+                @"L": @NO,
+                @"XL": @YES
+            }
+        }];
+    }).then(^(NSArray *res) {
+        XCTAssertNil(nil);
+        return [self->viewController widgetReconfigure:@"widgetpreview-shoes-u" options:@{
+            @"manufacturedSizes": [NSNull null]
+        }];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-shoes-u");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssertNil(error);
     }];
 }
 

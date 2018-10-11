@@ -25,3 +25,4 @@ $ xcodebuild \
 
 ```
 
+To use UIWebView for tests instead of WKWebView, add  `com.fitanalytics.useUIWebView` to app launch arguments.

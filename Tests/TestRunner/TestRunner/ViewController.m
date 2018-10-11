@@ -31,24 +31,24 @@
 {
    [super viewDidLoad];
     
-    // we're using the app launch argument 'com.fitanalytics.useWKWebView' presence
-    // for selecting the WKWebView instead of UIWebView
+    // we're using the app launch argument 'com.fitanalytics.useUIWebView' presence
+    // for selecting the UIWebView instead of WKWebView
     NSArray *arguments = [[NSProcessInfo processInfo] arguments];
-    _useWKWebView = [arguments containsObject:@"com.fitanalytics.useWKWebView"];
+    _useUIWebView = [arguments containsObject:@"com.fitanalytics.useUIWebView"];
 
-    // clone frame from UIWebView
+    // clone frame from top view container
     CGRect frame = [self.view frame];
 
-    if (_useWKWebView) {
+    if (_useUIWebView) {
+        NSLog(@"using UIWebView");
+        self.uiWebView = [[UIWebView alloc] initWithFrame:frame];
+        [self.view addSubview:self.uiWebView];
+    }
+    else {
         NSLog(@"using WKWebView");
         // create the WKWebView instance
         self.wkWebView = [[WKWebView alloc] initWithFrame:frame];
         [self.view addSubview:self.wkWebView];
-    }
-    else {
-        NSLog(@"using UIWebView");
-        self.webView = [[UIWebView alloc] initWithFrame:frame];
-        [self.view addSubview:self.webView];
     }
 }
 
@@ -114,11 +114,11 @@
 
 - (FITAWebWidget *)initializeWidget
 {
-    if (_useWKWebView) {
-        self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];
+    if (_useUIWebView) {
+        self.widget = [[FITAWebWidget alloc] initWithWebView:self.uiWebView handler:self];
     }
     else {
-        self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
+        self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];
     }
     return self.widget;
 }

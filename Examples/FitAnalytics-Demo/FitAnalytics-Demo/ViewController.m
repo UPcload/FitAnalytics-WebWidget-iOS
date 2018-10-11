@@ -57,12 +57,16 @@
     self.loadButton.enabled = NO;
     self.loadButton.userInteractionEnabled = NO;
 
-    // we're using the app launch argument 'com.fitanalytics.useWKWebView' presence
-    // for selecting the WKWebView instead of UIWebView
+    // we're using the app launch argument 'com.fitanalytics.useUIWebView' presence
+    // for selecting the UIWebView instead of WKWebView
     NSArray *arguments = [[NSProcessInfo processInfo] arguments];
-    BOOL useWKWebView = [arguments containsObject:@"com.fitanalytics.useWKWebView"];
+    BOOL useUIWebView = [arguments containsObject:@"com.fitanalytics.useUIWebView"];
 
-    if (useWKWebView) {
+    if (useUIWebView) {
+        NSLog(@"using UIWebView");
+        self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
+    }
+    else {
         NSLog(@"using WKWebView");
         // clone frame from UIWebView
         CGRect frame = [self.webView frame];
@@ -75,10 +79,6 @@
         [self.widgetView addSubview:self.wkWebView];
 
         self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];
-    }
-    else {
-        NSLog(@"using UIWebView");
-        self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
     }
 
     [self.widget load];

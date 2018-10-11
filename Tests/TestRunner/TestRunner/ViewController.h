@@ -14,9 +14,9 @@
 
 @interface ViewController : UIViewController
 
-@property (strong, nonatomic, nullable) UIWebView *webView;
+@property (strong, nonatomic, nullable) UIWebView *uiWebView;
 @property (strong, nonatomic, nullable) WKWebView *wkWebView;
-@property BOOL useWKWebView;
+@property BOOL useUIWebView;
 
 @property (nonatomic, strong, nullable) FITAWebWidget *widget;
 

@@ -510,4 +510,9 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
     [self onLoadError:error];
 }
 
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    [self onLoadError:error];
+}
+
 @end

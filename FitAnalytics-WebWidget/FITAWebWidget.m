@@ -338,7 +338,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 
 - (void)onFinishLoad
 {
-    self.isLoading = YES;
+    self.isLoading = NO;
     self.isLoaded = YES;
 
     if (self.onLoadCallback) {

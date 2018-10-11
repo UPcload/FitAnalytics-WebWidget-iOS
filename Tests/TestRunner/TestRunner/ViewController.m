@@ -70,6 +70,14 @@
     }
 }
 
+- (void)webWidgetDidFailLoading:(FITAWebWidget *)widget withError:(NSError *)error
+{
+    if (initResolve) {
+        initResolve(error);
+        initResolve = nil;
+    }
+}
+
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details
 {
     if (productLoadResolve) {
@@ -81,7 +89,9 @@
 - (void) webWidgetDidFailLoadingProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details
 {
     if (productLoadResolve) {
-        productLoadResolve([NSError init]);
+        productLoadResolve([NSError errorWithDomain:@"fita" code:1001 userInfo:@{
+            NSLocalizedDescriptionKey: @"Failed loading the product"
+        }]);
         productLoadResolve = nil;
     }
 }
@@ -138,7 +148,7 @@
 - (AnyPromise *)widgetLoad
 {
     ViewController *view = self;
-    AnyPromise *promise =  [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
         view->readyResolve = resolve;
     }];
     [self.widget load];
@@ -148,9 +158,15 @@
 - (AnyPromise *)widgetCreate:(nullable NSString *)productSerial options:(nullable NSDictionary *)options
 {
     ViewController *view = self;
-    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
-        view->productLoadResolve = resolve;
-    }];
+    AnyPromise *promise;
+
+    if (productSerial != nil) {
+        promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+            view->productLoadResolve = resolve;
+        }];
+    } else {
+        promise = [AnyPromise promiseWithValue: nil];
+    }
     [self.widget create:productSerial options:options];
     return promise;
 }
@@ -178,9 +194,15 @@
 - (AnyPromise *)widgetReconfigure:(nullable NSString *)productSerial options:(nullable NSDictionary *)options
 {
     ViewController *view = self;
-    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
-        view->productLoadResolve = resolve;
-    }];
+    AnyPromise *promise;
+
+    if (productSerial != nil) {
+        promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+            view->productLoadResolve = resolve;
+        }];
+    } else {
+        promise = [AnyPromise promiseWithValue: nil];
+    }
     [self.widget reconfigure:productSerial options:options];
     return promise;
 }

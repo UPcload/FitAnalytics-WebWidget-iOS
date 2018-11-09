@@ -368,14 +368,17 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
     if (!self.isLoading) {
         self.isLoading = YES;
         NSURL *widgetURL = [NSURL URLWithString:kWidgetURLString];
-        NSURLRequest *widgetURLRequest = [NSURLRequest requestWithURL:widgetURL];
-        [self.webView loadRequest:widgetURLRequest];
+        NSURLRequest *widgetURLRequest = [NSURLRequest requestWithURL:widgetURL                 cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+            timeoutInterval:(NSTimeInterval)60
+        ];
+
         if (_webView) {
             [self.webView loadRequest:widgetURLRequest];
         }
         else if (_wkWebView) {
             [self.wkWebView loadRequest:widgetURLRequest];
         }
+
         return YES;
     } else {
         return NO;
@@ -471,10 +474,10 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-     // avoid the error -999 (see: https://discussions.apple.com/thread/1727260?answerId=8877452022#8877452022)
-     if (error.code == NSURLErrorCancelled) {
-         return;
-     }
+    // avoid the error -999 (see: https://discussions.apple.com/thread/1727260?answerId=8877452022#8877452022)
+    if (error.code == NSURLErrorCancelled) {
+        return;
+    }
 
     [self onLoadError:error];
 }

@@ -311,4 +311,90 @@
     }];
 }
 
+// Simulate a situation where the network is failing from the start
+- (void)testWidgetLoadWithNetworkError {
+    if (![self isNethooksConfigured]) {
+        return;
+    }
+    
+
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    // FIREWALL on
+    [self makeRequestAsync:@"enable"]
+    .then(^(){
+        // TCP-RESET on
+        return [self makeRequestAsync:@"block-reset/out/443"];
+    }).then(^(){
+         // status
+         return [self makeRequestAsync:@"status"];
+     }).then(^(NSString *res){
+        NSLog(@"STATUS: %@", res);
+        return [self->viewController widgetLoad];
+    }).then(^(NSError *err) {
+        NSLog(@"LOAD %@", err);
+        XCTFail();
+        [self makeRequestAsync:@"disable"];
+        [expectation fulfill];
+    }).catch(^(NSError *error) {
+        // This should actually happen; the TCP reset should trigger immediate request failure
+        NSLog(@"Error: %@", error);
+        [self makeRequestAsync:@"disable"];
+        [expectation fulfill];
+    });
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        [self makeRequestAsync:@"disable"];
+        XCTAssertNil(error);
+    }];
+}
+
+// Simulate a situation where the network is working initially, but then stops working
+// after the widget container is loaded
+// Note: currently this one fails
+- (void)testWidgetReconfigureWithNetworkError {
+    if (![self isNethooksConfigured]) {
+        return;
+    }
+    
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    // FIREWALL on
+    [self->viewController widgetLoad]
+    .then(^(){
+        NSLog(@"LOAD");
+        return [self->widget initializeDriver];
+    }).then(^(NSString *res) {
+        NSLog(@"INIT: %@", res);
+        return [self->viewController widgetCreate:nil options:@{
+            @"shopCountry": @"US",
+            @"shopLanguage": @"en",
+        }];
+    }).then(^(){
+        return [self makeRequestAsync:@"enable"];
+    }).then(^(){
+        // TCP-RESET on
+        return [self makeRequestAsync:@"block-reset/out/443"];
+    }).then(^(NSArray *res) {
+        return [self->viewController widgetReconfigure:@"widgetpreview-upper-m" options:nil];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
+    }).then(^(){
+        [self makeRequestAsync:@"disable"];
+        [expectation fulfill];
+    }).catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [self makeRequestAsync:@"disable"];
+        [expectation fulfill];
+    });
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        [self makeRequestAsync:@"disable"];
+        XCTAssertNil(error);
+    }];
+}
+
 @end

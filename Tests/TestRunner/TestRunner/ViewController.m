@@ -62,6 +62,19 @@
     }
 }
 
+- (void)webWidgetDidFailLoading:(FITAWebWidget *)widget withError:(NSError *)error
+{
+    NSLog(@"ERR: %@", error);
+    if (readyResolve) {
+        readyResolve(error);
+        readyResolve = nil;
+    }
+    if (initResolve) {
+        initResolve(error);
+        initResolve = nil;
+    }
+}
+
 - (void)webWidgetInitialized:(FITAWebWidget *)widget
 {
     if (initResolve) {
@@ -70,13 +83,13 @@
     }
 }
 
-- (void)webWidgetDidFailLoading:(FITAWebWidget *)widget withError:(NSError *)error
-{
-    if (initResolve) {
-        initResolve(error);
-        initResolve = nil;
-    }
-}
+// - (void)webWidgetDidFailLoading:(FITAWebWidget *)widget withError:(NSError *)error
+// {
+//     if (initResolve) {
+//         initResolve(error);
+//         initResolve = nil;
+//     }
+// }
 
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details
 {

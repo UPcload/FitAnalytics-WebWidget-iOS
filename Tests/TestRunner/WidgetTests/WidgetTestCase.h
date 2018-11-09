@@ -26,6 +26,8 @@
 }
 
 - (void)initContext;
+- (AnyPromise *)makeRequestAsync:(NSString *)urlString;
+- (BOOL)isNethooksConfigured;
 
 @end
 

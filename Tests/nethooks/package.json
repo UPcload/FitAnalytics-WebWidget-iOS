@@ -1,0 +1,14 @@
+{
+  "name": "nethooks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "sudo node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

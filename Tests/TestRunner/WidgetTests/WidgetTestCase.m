@@ -27,4 +27,23 @@
     widget = [viewController initializeWidget];
 }
 
+- (AnyPromise *)makeRequestAsync:(NSString *)path {
+    return [AnyPromise promiseWithResolverBlock:^(PMKResolver resolve){
+      NSString *host = [[[NSProcessInfo processInfo] environment] objectForKey:@"NETHOOKS_HOST"];
+
+      NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", host, path]];
+      NSURLSession *session = [NSURLSession sharedSession];
+      NSLog(@"URL %@", url);
+
+      [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+          resolve(error ? error : [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+      }] resume];
+    }];
+}
+
+- (BOOL)isNethooksConfigured {
+    NSString *host = [[[NSProcessInfo processInfo] environment] objectForKey:@"NETHOOKS_HOST"];
+    return host != nil;
+}
+
 @end

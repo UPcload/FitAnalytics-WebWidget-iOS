@@ -133,6 +133,26 @@
     return self.widget;
 }
 
+- (void)disconnectWebView
+{
+    if (_useUIWebView) {
+        [self.uiWebView removeFromSuperview];
+    }
+    else {
+        [self.wkWebView removeFromSuperview];
+    }
+}
+
+- (void)reconnectWebView
+{
+    if (_useUIWebView) {
+        [self.view addSubview:self.uiWebView];
+    }
+    else {
+        [self.view addSubview:self.wkWebView];
+    }
+}
+
 // for testing the messaging interface
 - (AnyPromise *)sendProductLoadMessage:(NSString *)productId details:(NSDictionary *)details
 {

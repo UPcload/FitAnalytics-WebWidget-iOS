@@ -311,4 +311,105 @@
     }];
 }
 
+// Simulate a situation where the view is disconnected from the start
+- (void)testWidgetLoadWithDisconnectedView {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    //// DISCONNECT
+    [self->viewController disconnectWebView];
+
+    [self->viewController widgetLoad]
+    .then(^(){
+        return [self->widget initializeDriver];
+    }).then(^(NSString *res) {
+        NSLog(@"initialized %@", res);
+        return [self->viewController widgetCreate:nil options:nil];
+    }).then(^(NSString *res) {
+        return [self->viewController widgetReconfigure:@"widgetpreview-upper-m" options: @{
+            @"shopCountry": @"US",
+            @"shopLanguage": @"en",
+            @"manufacturedSizes": @{
+                @"S": @YES,
+                @"M": @YES,
+                @"L": @NO,
+                @"XL": @YES
+            },
+            @"userId": @"ios-test-0001"
+        }];
+    }).then(^(NSArray *res) {
+        NSLog(@"loaded %@", [res objectAtIndex:0]);
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        //// RECONNECT
+        [self->viewController reconnectWebView];
+
+        XCTAssertNil(error);
+    }];
+}
+
+// Simulate a situation where the view is disconnected temporarily
+// after the widget is initialized
+- (void)testWidgetReconfigureWithTempViewDisconnect {
+    [self initContext];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"finished"];
+
+    [viewController widgetLoad].then(^(){
+    }).then(^(){
+        return [self->widget initializeDriver];
+    }).then(^(NSString *res) {
+        return [self->viewController widgetCreate:nil options:@{
+            @"shopCountry": @"US",
+            @"shopLanguage": @"en",
+        }];
+    }).then(^(NSArray *res) {
+        //// DISCONNECT
+        [self->viewController disconnectWebView];
+
+        return [self->viewController widgetReconfigure:@"widgetpreview-upper-m" options:nil];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-m");
+        return [self->viewController widgetReconfigure:@"widgetpreview-upper-w" options:nil];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-upper-w");
+        // only change sizes for the current propduct
+        return [self->viewController widgetReconfigure:nil options:@{
+            @"manufacturedSizes": @{
+                @"S": @YES,
+                @"M": @YES,
+                @"L": @NO,
+                @"XL": @YES
+            }
+        }];
+    }).then(^(NSArray *res) {
+        //// RECONNECT
+        [self->viewController reconnectWebView];
+
+        XCTAssertNil(nil);
+        return [self->viewController widgetReconfigure:@"widgetpreview-shoes-u" options:@{
+            @"manufacturedSizes": [NSNull null]
+        }];
+    }).then(^(NSArray *res) {
+        XCTAssertEqualObjects([res objectAtIndex:0], @"widgetpreview-shoes-u");
+        [expectation fulfill];
+    })
+    .catch(^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        XCTFail();
+        [expectation fulfill];
+    });
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        XCTAssertNil(error);
+    }];
+}
+
 @end

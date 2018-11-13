@@ -22,6 +22,9 @@
 
 - (nonnull FITAWebWidget *)initializeWidget;
 
+- (void)disconnectWebView;
+- (void)reconnectWebView;
+
 - (nonnull AnyPromise *)widgetLoad;
 - (nonnull AnyPromise *)sendProductLoadMessage:(nullable NSString *)productId details:(nullable NSDictionary *)details;
 

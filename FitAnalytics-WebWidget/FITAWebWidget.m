@@ -369,7 +369,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
         self.isLoading = YES;
         NSURL *widgetURL = [NSURL URLWithString:kWidgetURLString];
         NSURLRequest *widgetURLRequest = [NSURLRequest requestWithURL:widgetURL];
-        [self.webView loadRequest:widgetURLRequest];
+
         if (_webView) {
             [self.webView loadRequest:widgetURLRequest];
         }

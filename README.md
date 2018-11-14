@@ -111,7 +111,7 @@ self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:se
 
 <a name="wkwebview-warning"></a>__WARNING__
 
-**Since iOS 12.x update, when using WKWebView, all widget interactions are reliable only when the widget container WebView is connected to the view hierarchy. When the WebView is in a disconnected state (i.e. it has no superview) all HTTP requests inside it begin to fail/timeout silently. To avoid this issue, always keep the WebView connected in the hierarchy and hide it visually (by setting a zero-dimensions frame). We are still looking into a better solution and/or workaround.**
+**Since iOS 12.x update, when using WKWebView, all widget interactions are reliable only when the widget container WebView is connected to the view hierarchy. When the WebView is in a disconnected state (i.e. it has no superview) all HTTP requests inside it begin to fail/timeout silently. To avoid this issue, always keep the WebView connected in the hierarchy and hide it visually (by setting the `hidden` property and the frame dimensions to zero). We are still looking into a better solution and/or workaround.**
 
 ## Methods
 

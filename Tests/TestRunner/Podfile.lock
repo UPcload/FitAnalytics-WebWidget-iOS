@@ -1,29 +1,31 @@
 PODS:
   - FitAnalytics-WebWidget (0.2.0)
-  - PromiseKit (4.2.0):
-    - PromiseKit/Foundation (= 4.2.0)
-    - PromiseKit/QuartzCore (= 4.2.0)
-    - PromiseKit/UIKit (= 4.2.0)
-  - PromiseKit/CorePromise (4.2.0)
-  - PromiseKit/Foundation (4.2.0):
+  - PromiseKit (6.5.2):
+    - PromiseKit/CorePromise (= 6.5.2)
+    - PromiseKit/Foundation (= 6.5.2)
+    - PromiseKit/UIKit (= 6.5.2)
+  - PromiseKit/CorePromise (6.5.2)
+  - PromiseKit/Foundation (6.5.2):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.2.0):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.2.0):
+  - PromiseKit/UIKit (6.5.2):
     - PromiseKit/CorePromise
 
 DEPENDENCIES:
   - FitAnalytics-WebWidget (from `../../FitAnalytics-WebWidget`)
-  - PromiseKit (~> 4.0)
+  - PromiseKit (~> 6.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PromiseKit
 
 EXTERNAL SOURCES:
   FitAnalytics-WebWidget:
-    :path: ../../FitAnalytics-WebWidget
+    :path: "../../FitAnalytics-WebWidget"
 
 SPEC CHECKSUMS:
-  FitAnalytics-WebWidget: d26ba37260c6291145fe178bb9ede4df56d1d057
-  PromiseKit: 08dfb783c161ddcd95b7912421f14c5113fd8318
+  FitAnalytics-WebWidget: 0d563d2cdad515c2743a5b587b7018fd5e862af9
+  PromiseKit: 27c1601bfb73405871b805bcb8cf7e55c4dad3db
 
-PODFILE CHECKSUM: aecd86ae358cb8b28c75556dee67d0126a8b0661
+PODFILE CHECKSUM: b2f55a1432eca1710a017ca20f1ce3219a392752
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3

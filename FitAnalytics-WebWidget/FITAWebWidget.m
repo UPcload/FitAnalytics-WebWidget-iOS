@@ -316,7 +316,8 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
     NSDictionary *arguments;
     NSDictionary *defaultArguments = @{
        @"open": @YES,
-       @"blockMetrics": @(_isDryRun)
+       @"blockMetrics": @(_isDryRun),
+       @"hostname": @"ios"
     };
 
     if (productSerial) {

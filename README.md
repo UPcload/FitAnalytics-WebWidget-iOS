@@ -323,7 +323,7 @@ NSDictionary *reportDefaults = @{
   @"userId": @"003242A32A"
 };
 
-FITAPurchaseReporter *report = [[FITAPurchaseReport alloc] initWithDictionary:reportDefaults];
+FITAPurchaseReport *report = [[FITAPurchaseReport alloc] initWithDictionary:reportDefaults];
 
 report.productSerial = @"test-55322214";
 report.purchasedSize = @"XXL";

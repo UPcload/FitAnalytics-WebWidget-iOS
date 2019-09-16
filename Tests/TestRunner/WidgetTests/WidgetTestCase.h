@@ -21,7 +21,7 @@
 // add instance variables to the test case class
 @protected
     ViewController *viewController;
-    UIWebView *webView;
+    WKWebView *webView;
     FITAWebWidget *widget;
 }
 

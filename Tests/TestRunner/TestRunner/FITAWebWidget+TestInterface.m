@@ -74,7 +74,7 @@ window.__widgetManager && (window.__widgetManager.enableLogs = true);\
 true;\
 ";
 
-@interface FITAWebWidget() <UIWebViewDelegate,WKNavigationDelegate>
+@interface FITAWebWidget() <WKNavigationDelegate>
 @end
 
 typedef void (^EvalCallback)(id, NSError *);

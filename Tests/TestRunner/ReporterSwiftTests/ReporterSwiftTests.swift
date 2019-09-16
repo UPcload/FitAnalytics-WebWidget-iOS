@@ -9,7 +9,7 @@ import PromiseKit
 
 class ReporterSwiftTests: XCTestCase {
     var viewController:ViewController?
-    var webView:UIWebView?
+    var webView:WKWebView?
     var widget:FITAWebWidget?
     var reporter:FITAPurchaseReporter?
 

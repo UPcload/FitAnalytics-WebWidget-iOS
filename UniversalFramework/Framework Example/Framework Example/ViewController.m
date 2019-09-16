@@ -17,13 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // clone frame from UIWebView
+    // clone frame from this view
     CGRect frame = [self.view frame];
     
-    self.webView = [[UIWebView alloc] initWithFrame:frame];
+    self.webView = [[WKWebView alloc] initWithFrame:frame];
     [self.view addSubview:self.webView];
-    
-    self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
+
+    self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.webView handler:self];
     [self.widget load];
 }
 

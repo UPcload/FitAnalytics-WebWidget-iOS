@@ -30,26 +30,13 @@
 - (void)viewDidLoad
 {
    [super viewDidLoad];
-    
-    // we're using the app launch argument 'com.fitanalytics.useUIWebView' presence
-    // for selecting the UIWebView instead of WKWebView
-    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
-    _useUIWebView = [arguments containsObject:@"com.fitanalytics.useUIWebView"];
 
     // clone frame from top view container
     CGRect frame = [self.view frame];
 
-    if (_useUIWebView) {
-        NSLog(@"using UIWebView");
-        self.uiWebView = [[UIWebView alloc] initWithFrame:frame];
-        [self.view addSubview:self.uiWebView];
-    }
-    else {
-        NSLog(@"using WKWebView");
-        // create the WKWebView instance
-        self.wkWebView = [[WKWebView alloc] initWithFrame:frame];
-        [self.view addSubview:self.wkWebView];
-    }
+    // create the WKWebView instance
+    self.wkWebView = [[WKWebView alloc] initWithFrame:frame];
+    [self.view addSubview:self.wkWebView];
 }
 
 #pragma mark - FITAWebWidgetHandler -
@@ -124,33 +111,18 @@
 
 - (FITAWebWidget *)initializeWidget
 {
-    if (_useUIWebView) {
-        self.widget = [[FITAWebWidget alloc] initWithWebView:self.uiWebView handler:self];
-    }
-    else {
-        self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];
-    }
+    self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];
     return self.widget;
 }
 
 - (void)disconnectWebView
 {
-    if (_useUIWebView) {
-        [self.uiWebView removeFromSuperview];
-    }
-    else {
-        [self.wkWebView removeFromSuperview];
-    }
+    [self.wkWebView removeFromSuperview];
 }
 
 - (void)reconnectWebView
 {
-    if (_useUIWebView) {
-        [self.view addSubview:self.uiWebView];
-    }
-    else {
-        [self.view addSubview:self.wkWebView];
-    }
+    [self.view addSubview:self.wkWebView];
 }
 
 // for testing the messaging interface

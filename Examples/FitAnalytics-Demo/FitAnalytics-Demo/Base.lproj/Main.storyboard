@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -89,19 +89,23 @@
                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbH-71-Isc" userLabel="widgetView">
                                 <rect key="frame" x="0.0" y="90" width="320" height="478"/>
                                 <subviews>
-                                    <webView multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnb-a3-Q69">
+                                    <wkWebView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" allowsLinkPreview="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hj-HB-IE3">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                                        <dataDetectorType key="dataDetectorTypes"/>
-                                    </webView>
+                                        <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsPictureInPictureMediaPlayback="NO">
+                                            <dataDetectorTypes key="dataDetectorTypes"/>
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Nnb-a3-Q69" secondAttribute="bottom" id="Lpa-4k-t6Y"/>
-                                    <constraint firstItem="Nnb-a3-Q69" firstAttribute="top" secondItem="JbH-71-Isc" secondAttribute="top" id="OA3-Fk-eK1"/>
-                                    <constraint firstItem="Nnb-a3-Q69" firstAttribute="leading" secondItem="JbH-71-Isc" secondAttribute="leading" id="drz-ex-quO"/>
-                                    <constraint firstAttribute="trailing" secondItem="Nnb-a3-Q69" secondAttribute="trailing" id="kRE-gX-hOo"/>
+                                    <constraint firstAttribute="bottom" secondItem="7hj-HB-IE3" secondAttribute="bottom" id="Na6-fk-dKp"/>
+                                    <constraint firstAttribute="trailing" secondItem="7hj-HB-IE3" secondAttribute="trailing" id="XpY-im-hqz"/>
+                                    <constraint firstItem="7hj-HB-IE3" firstAttribute="top" secondItem="JbH-71-Isc" secondAttribute="top" id="lG2-gT-iEO"/>
+                                    <constraint firstItem="7hj-HB-IE3" firstAttribute="leading" secondItem="JbH-71-Isc" secondAttribute="leading" id="seQ-OP-qWO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -123,13 +127,13 @@
                         <outlet property="productIdInput" destination="gN4-Rp-Nya" id="3Ud-4n-odw"/>
                         <outlet property="recommendButton" destination="dE3-cA-eaT" id="sjj-Cg-xbn"/>
                         <outlet property="recommendDisplay" destination="USv-uR-2f2" id="loa-Ya-IcN"/>
-                        <outlet property="webView" destination="Nnb-a3-Q69" id="F9g-iF-IU8"/>
                         <outlet property="widgetView" destination="JbH-71-Isc" id="brL-hF-7mG"/>
+                        <outlet property="wkWebView" destination="7hj-HB-IE3" id="dpg-qF-oAH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464.80000000000001" y="494.30284857571218"/>
+            <point key="canvasLocation" x="463.125" y="493.3098591549296"/>
         </scene>
     </scenes>
 </document>

@@ -21,9 +21,8 @@ typedef void (^WidgetEventCallback)(FITAWebWidget *);
 typedef void (^WidgetMessageCallback)(id, NSError *);
 
 // FITAWebWidget class extension to hide members
-@interface FITAWebWidget() <UIWebViewDelegate,WKNavigationDelegate>
+@interface FITAWebWidget() <WKNavigationDelegate>
 
-@property (nonatomic, weak) UIWebView *webView;
 @property (nonatomic, weak) WKWebView *wkWebView;
 @property (nonatomic, weak) id<FITAWebWidgetHandler> handler;
 @property BOOL isLoading;
@@ -36,37 +35,6 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 @end
 
 @implementation FITAWebWidget
-
-/**
- * Initialize the controller with UIWebView instance and the callback handler
- * @param webView The UIWebView instance that will contain the load widget container page
- * @param handler The handler contains callbacks that are invoked by the widget
- */
-- (instancetype)initWithUIWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler
-{
-    NSParameterAssert(webView);
-    NSParameterAssert(handler);
-
-    if (self = [super init]) {
-        _webView = webView;
-        _webView.delegate = self;
-        _handler = handler;
-        [self initShared];
-        _defaults = [[NSUserDefaults alloc] init];
-    }
-
-    return self;
-}
-
-/**
- * Legacy initializer that uses UIWebView, for backwards compatibility
- * @param webView The UIWebView instance that will contain the load widget container page
- * @param handler The handler contains callbacks that are invoked by the widget
- */
-- (instancetype)initWithWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler
-{
-    return [self initWithUIWebView:webView handler:handler];
-}
 
 /**
  * Initialize the controller with WKWebView instance and the callback handler
@@ -249,10 +217,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
 
 - (void)evaluateJavaScript:(NSString *)code done:(void (^)(id, NSError *))done
 {
-    if (_webView) {
-        done([self.webView stringByEvaluatingJavaScriptFromString:code], nil);
-    }
-    else if (_wkWebView) {
+    if (_wkWebView) {
         [self.wkWebView evaluateJavaScript:code completionHandler:done];
     }
 }
@@ -264,10 +229,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
         return NO;
     }
     NSString *code = [NSString stringWithFormat:@"window.__widgetManager.receiveMessage('%@');", encodedMessage];
-    if (_webView) {
-        [self.webView stringByEvaluatingJavaScriptFromString:code];
-    }
-    else if (_wkWebView) {
+    if (_wkWebView) {
         [self.wkWebView evaluateJavaScript:code completionHandler:_onMessageSendCallback];
     }
     return YES;
@@ -370,10 +332,7 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
         NSURL *widgetURL = [NSURL URLWithString:kWidgetURLString];
         NSURLRequest *widgetURLRequest = [NSURLRequest requestWithURL:widgetURL];
 
-        if (_webView) {
-            [self.webView loadRequest:widgetURLRequest];
-        }
-        else if (_wkWebView) {
+        if (_wkWebView) {
             [self.wkWebView loadRequest:widgetURLRequest];
         }
         return YES;
@@ -442,41 +401,6 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
     [self createAndSendAction:@"getRecommendation" withArguments:@[
         [self createWidgetOptions:productSerial options:options]
     ]];
-}
-
-#pragma mark - UIWebViewDelegate -
-
-// JS-to-iOS bridge via custom URI schema
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSString *uri = [[request URL] absoluteString];
-
-    if ([uri hasPrefix:kUriPrefix]) {
-        NSString *message = [uri stringByReplacingOccurrencesOfString:kUriPrefix withString:@""];
-        [self receiveMessage:message];
-        return NO;
-    }
-    else if (navigationType == UIWebViewNavigationTypeLinkClicked ) {
-        [[UIApplication sharedApplication] openURL:[request URL]];
-        return NO;
-    }
-    else {
-        return YES;
-    }
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [self onFinishLoad];
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-     // avoid the error -999 (see: https://discussions.apple.com/thread/1727260?answerId=8877452022#8877452022)
-     if (error.code == NSURLErrorCancelled) {
-         return;
-     }
-
-    [self onLoadError:error];
 }
 
 #pragma mark - WKNavigationDelegate -

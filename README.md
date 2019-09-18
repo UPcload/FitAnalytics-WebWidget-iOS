@@ -8,7 +8,7 @@ As a first step, we suggest that you familiarize yourself with the Fit Analytics
 1. Reading through the Fit Analytics website and trying out a sample product - https://www.fitanalytics.com/  
 2. Reading through the Fit Analytics web developers guide - http://developers.fitanalytics.com/documentation  
 
-The integration method currently supported by this SDK is based on loading HTML/JS-based widget code in a separate UIWebView instance and establishing communication between the host app and the embedded web widget.  
+The integration method currently supported by this SDK is based on loading HTML/JS-based widget code in a separate WKWebView instance and establishing communication between the host app and the embedded web widget.  
 
 The SDK introduces a layer that imitates a web-based (JavaScript) integration of the Fit Analytics widget by:  
 1. Exporting the **FitAWebWidget** class, which serves as a main widget controller.   
@@ -89,21 +89,13 @@ Add a property for storing the reference to the widget.
 @property (nonatomic, strong) FITAWebWidget *widget;
 ```
 
-Add a property for the WebView reference. This is the UIWebView instance that will contain the load widget container page.
+Add a property for the WKWebView reference. This is the WKWebView instance that will contain the load widget container page.
 
 ```objc
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet WKWebView *wkWebView;
 ```
 
-Initialize the widget controller with the UIWebView instance and assign self as the callback handler.
-
-```objc
-self.widget = [[FITAWebWidget alloc] initWithWebView:self.webView handler:self];
-```
-
-### WKWebView support
-
-Alternatively, you can initialize the widget controller with a WKWebView instance. In such case, the integration should work exactly the same way as with UIWebView.
+Initialize the widget controller with the WKWebView instance and assign self as the callback handler.
 
 ```objc
 self.widget = [[FITAWebWidget alloc] initWithWKWebView:self.wkWebView handler:self];

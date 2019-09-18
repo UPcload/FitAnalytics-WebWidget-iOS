@@ -6,7 +6,6 @@
 //  Copyright © 2016 FitAnalytics. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
 @protocol FITAWebWidgetHandler;
@@ -14,11 +13,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FITAWebWidget : NSObject
-
-/**
- * Initialize with UIWebView instance and assign the callback handler
- */
-- (instancetype)initWithWebView:(UIWebView *)webView handler:(id<FITAWebWidgetHandler>)handler;
 
 /**
  * Initialize with WKWebView and assign the callback handler

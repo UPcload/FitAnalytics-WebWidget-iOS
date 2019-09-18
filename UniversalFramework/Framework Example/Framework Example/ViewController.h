@@ -12,7 +12,7 @@
 
 @interface ViewController : UIViewController
 
-@property (strong, nonatomic, nullable) UIWebView *webView;
+@property (strong, nonatomic, nullable) WKWebView *webView;
 @property (nonatomic, strong, nullable) FITAWebWidget *widget;
 
 @end

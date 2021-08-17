@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'FitAnalytics-WebWidget'
-  s.version          = '0.2.0'
+  s.version          = '0.5.1'
   s.summary          = 'FitAnalytics WebWidget SDK for iOS'
   s.author           = 'FitAnalytics'
   s.homepage         = 'https://www.fitanalytics.com/'

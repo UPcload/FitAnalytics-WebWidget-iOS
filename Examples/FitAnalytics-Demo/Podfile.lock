@@ -1,5 +1,5 @@
 PODS:
-  - FitAnalytics-WebWidget (0.2.0)
+  - FitAnalytics-WebWidget (0.5.1)
 
 DEPENDENCIES:
   - FitAnalytics-WebWidget (from `../../FitAnalytics-WebWidget`)

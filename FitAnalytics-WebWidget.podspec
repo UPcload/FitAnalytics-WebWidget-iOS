@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.requires_arc     = true
 
   s.framework        = 'UIKit'
-  s.source_files     = '*.{h,m,mm}'
+  s.source_files     = 'FitAnalytics-WebWidget/*.{h,m,mm}'
 end

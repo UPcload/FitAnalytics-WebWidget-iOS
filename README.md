@@ -211,6 +211,8 @@ This method will be called when widget container inside the WebView has successf
 
 This method will be called when widget container inside the WebView has successfully loaded.
 
+ * `widget` .. The widget controller instance
+
 &nbsp;
 
 ```objc
@@ -219,13 +221,18 @@ This method will be called when widget container inside the WebView has successf
 
 This method will be called when widget inside the WebView has failed to load or initialize for some reason.
 
-&nbsp;
+ * `widget` .. The widget controller instance
+ * `error` .. The error instance
 
 ```objc
 - (void)webWidgetDidLoadProduct:(FITAWebWidget *)widget productId:(NSString *)productId details:(NSDictionary *)details;
 ```
 
 This method will be called when the widget has successfully loaded the product info. A successful load means that the product is supported by Fit Analytics and the widget should be able to provide a size recommendation for it.
+
+ * `widget` .. The widget controller instance
+ * `productId` .. The ID of the product
+ * `details` .. The details object.
 
 &nbsp;
 
@@ -235,6 +242,10 @@ This method will be called when the widget has successfully loaded the product i
 
 This method will be called when widget failed to load the product info or the product is not supported.
 
+ * `widget` .. The widget controller instance
+ * `productId` .. The ID of the product
+ * `details` .. The details object.
+
 &nbsp;
 
 ```objc
@@ -242,6 +253,48 @@ This method will be called when widget failed to load the product info or the pr
 ```
 
 This method will be called when the widget has successfully opened after the `open` method call.
+
+ * `widget` .. The widget controller instance
+ * `productId` .. The ID of the product
+
+&nbsp;
+
+```objc
+- (void)webWidgetDidClose:(FITAWebWidget *)widget productId:(NSString *)productId size:(nullable NSString *)size details:(nullable NSDictionary *)details;
+```
+
+This method will be called when user of the widget has specifically requested closing of the widget by clicking on the close button.
+
+ * `widget` .. The widget controller instance
+ * `productId` .. The ID of the product
+ * `size` .. The last recommended size of the product, if there was a recommendation. `null` if there wasn't any recommendation.
+ * `details` .. The details object.
+
+&nbsp;
+
+```objc
+- (void)webWidgetDidAddToCart:(FITAWebWidget *)widget productId:(NSString *)productId size:(nullable NSString *)size details:(nullable NSDictionary *)details;
+```
+
+This method will be called when user of the widget has specifically clicked on the add-to-cart inside the widget.
+
+* `widget` .. The widget controller instance
+* `productId` .. The ID of the product
+* `size` .. The size of the product that should be added to cart.
+* `details` .. The details object.
+
+&nbsp;
+
+```objc
+- (void)webWidgetDidRecommend:(FITAWebWidget *)widget productId:(NSString *)productId size:(nullable NSString *)size details:(nullable NSDictionary *)details;
+```
+
+This method will be called after the `getRecommendation` call on the FITAWebWidget controller, when the widget has received and processed the size recommendation.
+  
+* `productId` .. The ID of the product
+* `size` .. The recommended size of the product.
+* `details` .. The details object.
+
 
 ## Configurable widget options
 

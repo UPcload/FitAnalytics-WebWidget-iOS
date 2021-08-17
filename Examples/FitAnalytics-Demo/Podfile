@@ -1,4 +1,4 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'FitAnalytics-Demo' do
   pod 'FitAnalytics-WebWidget', :path => '../../FitAnalytics-WebWidget'

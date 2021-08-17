@@ -9,9 +9,9 @@ Pod::Spec.new do |s|
     tag: s.version,
     submodules: false
   }
-  s.license          = { type: 'MIT', file: 'LICENSE.md' }
+  s.license          = { type: 'MIT', file: '../LICENSE.md' }
 
-  s.platform         = :ios, '8.0'
+  s.platform         = :ios, '9.0'
   s.requires_arc     = true
 
   s.framework        = 'UIKit'

@@ -6,11 +6,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   FitAnalytics-WebWidget:
-    :path: ../../FitAnalytics-WebWidget
+    :path: "../../FitAnalytics-WebWidget"
 
 SPEC CHECKSUMS:
-  FitAnalytics-WebWidget: d26ba37260c6291145fe178bb9ede4df56d1d057
+  FitAnalytics-WebWidget: 86573b2424585000e1bf5f9dd7bd9e0fd5a6b73e
 
-PODFILE CHECKSUM: 060dc43a6d82d2bfdb5bc957cde24be05f4579c8
+PODFILE CHECKSUM: ffa9b93be7bda49e0f914f4ac5fe532255fb0c73
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.10.2

@@ -24,7 +24,7 @@ Optionally, you can also include the purchase reporting for the order confirmant
 
 **Prerequisities:** 
 1. XCode 7 or higher  
-2. iOS 8 or higher  
+2. iOS 9 or higher  
 
 **Step 1.** Make sure you already have cocoapods installed in your system. Otherwise you can follow the steps in cocoapods documentation to install
 https://cocoapods.org/

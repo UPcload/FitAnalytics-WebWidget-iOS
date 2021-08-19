@@ -2,19 +2,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "FitAnalytics-WebWidget",
+    name: "FITAWebWidget",
     platforms: [
         .iOS(.v9)
     ],
     products: [
         .library(
-            name: "FitAnalytics-WebWidget",
-            targets: ["FitAnalytics-WebWidget"]
+            name: "FITAWebWidget",
+            targets: ["FITAWebWidget"]
         )
     ],
     targets: [
         .target(
-            name: "FitAnalytics-WebWidget",
+            name: "FITAWebWidget",
             path: "FitAnalytics-WebWidget"
         )
     ]

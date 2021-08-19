@@ -1,21 +1,27 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 import PackageDescription
 
 let package = Package(
-    name: "FitAnalytics-WebWidget",
+    name: "FitAnalyticsWebWidget",
     platforms: [
         .iOS(.v9)
     ],
     products: [
         .library(
-            name: "FitAnalytics-WebWidget",
-            targets: ["FitAnalytics-WebWidget"]
+            name: "FitAnalyticsWebWidget",
+            targets: ["FitAnalyticsWebWidget"]
         )
     ],
     targets: [
         .target(
-            name: "FitAnalytics-WebWidget",
-            path: "FitAnalytics-WebWidget"
+            name: "FITAWebWidget",
+            path: "FitAnalytics-WebWidget",
+            publicHeadersPath: "./"
+        ),
+        .target(
+            name: "FitAnalyticsWebWidget",
+            dependencies: ["FITAWebWidget"],
+            path: "Swift"
         )
     ]
 )

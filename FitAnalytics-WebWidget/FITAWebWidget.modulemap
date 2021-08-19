@@ -1,0 +1,4 @@
+module FITAWebWidget {
+  export *
+  header "FITAWebWidget-Bridging-Header.h"
+}

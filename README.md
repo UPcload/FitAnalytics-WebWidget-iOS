@@ -16,7 +16,7 @@ The SDK introduces a layer that imitates a web-based (JavaScript) integration of
 3. Exposing several methods that allow controlling the widget.  
 4. Defining the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller through various events (e.g. when a user closes the widget, when the widget displays a recommendation,   etc.).  
 
-Optionally, you can also include the purchase reporting for the order confirmantion page/view.
+Preferably, you can also include the purchase reporting for the order confirmantion page/view.
 
 ---
 
@@ -308,6 +308,8 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 
 `language` .. the language mutation of the shop (e.g. en, de, fr, es, it, etc.)
 
+`ssid` (Shop Session ID) .. a first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (we **do NOT** use it to track or identify users) 
+
 For the complete list of available widget options and their description, please see https://developers.fitanalytics.com/documentation#list-callbacks-parameters
 
 ---
@@ -322,6 +324,7 @@ The most common attributes are:
 
 * **orderId** .. (required) unique identifier of the order
 * **userId** .. if the user is registered customer, their shop-specific ID
+* **ssid** (Shop Session ID) .. a first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (value **MUST** conform with the one passed in the PDP for the same shopping session)
 * **productSerial** .. serial number/ID of the product (independent of purchased size!); it should match with the `productSerial` that was used for PDP size advisor.
 * **shopArticleCode** .. (optional) the size-specific identifier
 * **purchasedSize** .. the size code of the purchased size
@@ -354,6 +357,8 @@ report.orderId = @"0034";
 report.userId = @"003242A32A";
 report.productSerial = @"test-55322214";
 report.purchasedSize = @"XXL";
+
+report.ssid = @"0a1b2c3d"
 // add additional attributes, such as shopCountry, lanugage etc. here.
 
 [reporter sendReport:report];

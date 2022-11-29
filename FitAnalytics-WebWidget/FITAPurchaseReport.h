@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) NSString *ean;
 @property (nonatomic, nullable) NSString *funnel;
 @property (nonatomic, nullable) NSString *sid;
-@property (nonatomic, nullable) NSString *ssid;
+@property (nonatomic, nullable) NSString *shopSessionId;
 @property (nonatomic, nullable) NSString *hostname;
 
 /**

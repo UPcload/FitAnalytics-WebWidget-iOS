@@ -105,8 +105,8 @@ static NSString *const kSidKey = @"com.fitanalytics.widget.sid";
         [dict setValue:value forKey:@"funnel"];
     if ((value = report.hostname) != nil)
         [dict setValue:value forKey:@"hostname"];
-    if ((ssid = report.ssid) != nil)
-        [dict setValue:value forKey:@"ssid"];
+    if ((value = report.shopSessionId) != nil)
+        [dict setValue:value forKey:@"ssid"]; // shopSessionId is sent as "ssid"
 
     NSString *sid = nil;
     if (report.sid != nil)

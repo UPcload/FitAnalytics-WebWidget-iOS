@@ -39,6 +39,7 @@ class ReporterSwiftTests: XCTestCase {
         report.shopSizingSystem = "MANUFACTURED"
         report.ean = "9783598215001"
         report.funnel = "sizeAdvisor"
+        report.shopSessionId = "artArwAWklfv1S"
     
         reporter!.send(report, completionHandler:{ (error:Error?) -> () in
             if error != nil {
@@ -71,7 +72,8 @@ class ReporterSwiftTests: XCTestCase {
             "shopLanguage": "en",
             "shopSizingSystem": "MANUFACTURED",
             "ean": "9783598215221",
-            "funnel": "sizeChart"
+            "funnel": "sizeChart",
+            "shopSessionId": "crtArwAWklfv2R",
         ]
 
         let report:FITAPurchaseReport = FITAPurchaseReport.init(dictionary: dict)

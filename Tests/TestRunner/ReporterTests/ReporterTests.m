@@ -45,6 +45,7 @@
     report.shopSizingSystem = @"MANUFACTURED";
     report.ean = @"9783598215001";
     report.funnel = @"sizeAdvisor";
+    report.shopSessionId = @"artArwAWklfv1S";
 
     [reporter sendReportAsync:report]
     .then(^() { return PMKAfter(1); }) // wait for 1 sec for both requests to finish
@@ -80,7 +81,8 @@
         @"shopLanguage": @"en",
         @"shopSizingSystem": @"MANUFACTURED",
         @"ean": @"9783598215221",
-        @"funnel": @"sizeChart"
+        @"funnel": @"sizeChart",
+        @"shopSessionId": @"crtArwAWklfv2R",
     }];
 
     [reporter sendReportAsync:report]

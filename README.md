@@ -312,7 +312,7 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 
 /**
  * The product serial number, which is used to identify the product in the Fit Analytics database.
- * If `shopPrefix` is not set, we are going to infer the shop prefix based on the product serial number prefix. E.G. `shopprefix-abcd1234` (`<shop-prefix>-<product-id>`)
+ * If `shopPrefix` is not set, we are going to infer the shop prefix based on the product serial number prefix. E.G. `shopprefix-abcd1234`
  */
 @property (nonatomic, strong) NSString *productSerial;
 
@@ -324,13 +324,21 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 /**
  * All the sizes of your product, each size should be a key in the object, and the value should be a boolean indicating if the size is available or not.
  * They keys should match with the keys in the products' feed.
- * E.G. { M: true, L: false } means that the product is available in size M but not in size L.
+ * E.G. @{
+ *     @"M": @YES,
+ *     @"L": @NO
+ *  };
+ *  means that the product is available in size M but not in size L.
  */
 @property (nonatomic, strong) NSDictionary<NSString *, NSNumber *> *manufacturedSizes;
 
+
 /**
  * In stock sizes for the current product.
- * E.G. [{ value: "M", isAvailable: true }, { value: "L", isAvailable: false }]
+ * E.G. @[
+        @{@"value": @"M", @"isAvailable": @YES},
+        @{@"value": @"L", @"isAvailable": @NO}
+    ]
  */
 @property (nonatomic, strong) NSArray<NSDictionary<NSString *, NSNumber *> *> *sizes;
 

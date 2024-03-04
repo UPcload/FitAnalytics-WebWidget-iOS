@@ -6,7 +6,6 @@ The WebWidget SDK allows integrating the Fit Analytics Size Advisor widget into 
 
 As a first step, we suggest that you familiarize yourself with the Fit Analytics web-based Size Advisor service by:  
 1. Reading through the Fit Analytics website and trying out a sample product - https://www.fitanalytics.com/  
-2. Reading through the Fit Analytics web developers guide - http://developers.fitanalytics.com/documentation  
 
 The integration method currently supported by this SDK is based on loading HTML/JS-based widget code in a separate WKWebView instance and establishing communication between the host app and the embedded web widget.  
 
@@ -16,7 +15,7 @@ The SDK introduces a layer that imitates a web-based (JavaScript) integration of
 3. Exposing several methods that allow controlling the widget.  
 4. Defining the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller through various events (e.g. when a user closes the widget, when the widget displays a recommendation,   etc.).  
 
-Preferably, you can also include the purchase reporting for the order confirmantion page/view.
+Preferably, you can also include the purchase reporting for the order confirmation page/view.
 
 ---
 
@@ -298,19 +297,100 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 
 ## Configurable widget options
 
-`sizes` ..  an array of in-stock sizes for the current product
+```ObjectiveC
+@interface FitAnalyticsWidgetOptions : NSObject
 
-`manufacturedSizes` .. a dictionary of all manfactured sizes for the current product, including their in/out-of-stock status
+/**
+ *  (Shop Session ID) .. a first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (we **do NOT** use it to track or identify users)
+ */
+@property (nonatomic, strong) NSString *shopSessionId;
 
-`userId` .. the shop's user id, in case the user is logged in
+/**
+ * The shop prefix, this is a value that we set internally so we can identify your shop with the product.
+ */
+@property (nonatomic, strong) NSString *shopPrefix;
 
-`shopCountry` .. the ISO code of the shop's country (e.g. US, DE, FR, GB, etc.)
+/**
+ * The product serial number, which is used to identify the product in the Fit Analytics database.
+ * If `shopPrefix` is not set, we are going to infer the shop prefix based on the product serial number prefix. E.G. `shopprefix-abcd1234` (`<shop-prefix>-<product-id>`)
+ */
+@property (nonatomic, strong) NSString *productSerial;
 
-`language` .. the language mutation of the shop (e.g. en, de, fr, es, it, etc.)
+/**
+ * Product thumbnail image URL.
+ */
+@property (nonatomic, strong) NSString *thumb;
 
-`shopSessionId` (Shop Session ID) .. a first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (we **do NOT** use it to track or identify users) 
+/**
+ * All the sizes of your product, each size should be a key in the object, and the value should be a boolean indicating if the size is available or not.
+ * They keys should match with the keys in the products' feed.
+ * E.G. { M: true, L: false } means that the product is available in size M but not in size L.
+ */
+@property (nonatomic, strong) NSDictionary<NSString *, NSNumber *> *manufacturedSizes;
 
-For the complete list of available widget options and their description, please see https://developers.fitanalytics.com/documentation#list-callbacks-parameters
+/**
+ * In stock sizes for the current product.
+ * E.G. [{ value: "M", isAvailable: true }, { value: "L", isAvailable: false }]
+ */
+@property (nonatomic, strong) NSArray<NSDictionary<NSString *, NSNumber *> *> *sizes;
+
+/**
+ * The user identifier based on the shop's user id, for example in case the user is logged in.
+ */
+@property (nonatomic, strong) NSString *userId;
+
+/**
+ * ISO 639-1
+ * E.G. "en"
+ */
+@property (nonatomic, strong) NSString *language;
+
+/**
+ * ISO 3166-1
+ * E.G. "GB"
+ */
+@property (nonatomic, strong) NSString *shopCountry;
+
+/**
+ * Metric system
+ * 0: imperial
+ * 1: metric
+ * 2: british
+ * If it is not set it will be inferred from the shop country.
+ */
+@property (nonatomic) NSInteger metric;
+
+- (void)closeWithProductSerial:(NSString *)productSerial size:(NSString *)size;
+- (void)errorWithProductSerial:(NSString *)productSerial;
+- (void)cartWithProductSerial:(NSString *)productSerial size:(NSString *)size;
+- (void)recommendWithProductSerial:(NSString *)productSerial size:(NSString *)size;
+- (void)loadWithProductSerial:(NSString *)productSerial;
+
+@property (nonatomic, strong) NSString *userAge;
+
+/**
+ * m: man
+ * w: women
+ */
+@property (nonatomic, strong) NSString *userGender;
+
+/**
+ * Even if the `metric` property is set to a different numerical system, the user's weight and height should be in kilograms and centimeters respectively.
+ */
+@property (nonatomic, strong) NSString *userWeight;
+@property (nonatomic, strong) NSString *userHeight;
+
+/**
+ * Women bra measurements
+ * The values described bellow can be obtained from the user's profile after they have filled in their bra measurements.
+ * It is a large subset of possible bra measurements to be described, usually you feed the widget with the measurements available from the profile
+ */
+@property (nonatomic, strong) NSString *userBraBust;
+@property (nonatomic, strong) NSString *userBraCup;
+@property (nonatomic, strong) NSString *userBraSystem;
+
+@end
+```
 
 ---
 

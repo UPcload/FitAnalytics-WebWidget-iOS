@@ -426,8 +426,8 @@ The most common attributes are:
 @property (nonatomic, strong) NSString *productSerial;
 
 /**
-  * (optional) the size-specific identifier
-  */
+ * (optional) the size-specific identifier
+ */
 @property (nonatomic, strong) NSString *shopArticleCode;
 
 /**

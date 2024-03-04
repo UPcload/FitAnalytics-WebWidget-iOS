@@ -10,8 +10,8 @@ As a first step, we suggest that you familiarize yourself with the Fit Analytics
 The integration method currently supported by this SDK is based on loading HTML/JS-based widget code in a separate WKWebView instance and establishing communication between the host app and the embedded web widget.  
 
 The SDK introduces a layer that imitates a web-based (JavaScript) integration of the Fit Analytics widget by:  
-1. Exporting the **FitAWebWidget** class, which serves as a main widget controller.   
-2. Creating and initializing the widget in a provided web view instance.  
+1. Exporting the **FitAWebWidget** class, which serves as a main web view widget controller.
+2. Creating and initializing the widget in a provided web view instance.
 3. Exposing several methods that allow controlling the widget.  
 4. Defining the **FITAWebWidgetHandler** interface, which allows registering various callbacks (by implementing them as interface methods). These callbacks are invoked by the widget controller through various events (e.g. when a user closes the widget, when the widget displays a recommendation,   etc.).  
 
@@ -410,16 +410,69 @@ The usual report is a collection of attributes such as the order ID, the product
 
 The most common attributes are:
 
-* **orderId** .. (required) unique identifier of the order
-* **userId** .. if the user is registered customer, their shop-specific ID
-* **shopSessionId** (Shop Session ID) .. a first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (value **MUST** conform with the one passed in the PDP for the same shopping session)
-* **productSerial** .. serial number/ID of the product (independent of purchased size!); it should match with the `productSerial` that was used for PDP size advisor.
-* **shopArticleCode** .. (optional) the size-specific identifier
-* **purchasedSize** .. the size code of the purchased size
-* **shopCountry** .. if the shop has country-specific versions, specify it via this attribute
-* **language** .. if your shop has language-specific versions, you can specify the language in which the purchase was made (which helps identify the user's sizing system)
+```ObjectiveC
+@interface FitAnalyticsPurchaseOptions : NSObject
 
-For the complete list of possible reported fields and their description, please see https://developers.fitanalytics.com/documentation#sales-data-exchange
+/**
+ *  (Shop Session ID) .. a first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (we **do NOT** use it to track or identify users)
+ * (value **MUST** conform with the one passed in the PDP for the same shopping session)
+ */
+@property (nonatomic, strong) NSString *shopSessionId;
+
+/**
+ * The product serial number, which is used to identify the product in the Fit Analytics database.
+ * If `shopPrefix` is not set, we are going to infer the shop prefix based on the product serial number prefix. E.G. `shopprefix-abcd1234`
+ */
+@property (nonatomic, strong) NSString *productSerial;
+
+/**
+  * (optional) the size-specific identifier
+  */
+@property (nonatomic, strong) NSString *shopArticleCode;
+
+/**
+ * Acts as a size code identifier that we can use when gathering data per size
+ */
+@property (nonatomic, strong) NSString *ean;
+
+/**
+ * Shops' internal order identifier.
+ */
+@property (nonatomic, strong) NSString *orderId;
+
+/**
+ * It should match the size that is available in the product's feed.
+ */
+@property (nonatomic, strong) NSString *purchasedSize;
+
+/**
+ * The user identifier based on the shop's user id, for example in case the user is logged in.
+ */
+@property (nonatomic, strong) NSString *userId;
+
+/**
+ * ISO 639-1
+ * E.G. "en"
+ */
+@property (nonatomic, strong) NSString *language;
+
+/**
+ * ISO 3166-1
+ * E.G. "GB"
+ */
+@property (nonatomic, strong) NSString *shopCountry;
+
+@property (nonatomic, assign) NSNumber *price;
+
+@property (nonatomic, assign) NSNumber *quantity;
+
+/**
+ * E.G. "EUR" | "USD" | "GBP"
+ */
+@property (nonatomic, strong) NSString *currency;
+
+@end
+```
 
 ### Usage
 

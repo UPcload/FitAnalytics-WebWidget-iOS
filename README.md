@@ -368,11 +368,11 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
  */
 @property (nonatomic) NSInteger metric;
 
-- (void)closeWithProductSerial:(NSString *)productSerial size:(NSString *)size;
-- (void)errorWithProductSerial:(NSString *)productSerial;
-- (void)cartWithProductSerial:(NSString *)productSerial size:(NSString *)size;
-- (void)recommendWithProductSerial:(NSString *)productSerial size:(NSString *)size;
-- (void)loadWithProductSerial:(NSString *)productSerial;
+- (void)close:(NSString *)productSerial size:(NSString *)size;
+- (void)error:(NSString *)productSerial;
+- (void)cart:(NSString *)productSerial size:(NSString *)size;
+- (void)recommend:(NSString *)productSerial size:(NSString *)size;
+- (void)load:(NSString *)productSerial;
 
 @property (nonatomic, strong) NSString *userAge;
 

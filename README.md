@@ -64,7 +64,7 @@ instead of
 #import "FITAWebWidget.h"
 ...
 ```
-**Step 4.** Include the provided `Info.plist` file placed in the Resources folder in your Xcode project. The `Info.plist` file included in this repository provides privacy usage descriptions for data collection by the SDK. 
+**Step 4.** Review information provided in the `Info.plist` file placed in the Resource folder and include what is needed in your privacyInfo.xcprivacy file. 
 
 ---
 

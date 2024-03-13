@@ -44,9 +44,9 @@
     <string>POPUP</string>
 
     
-    <!--NEED CONFIRMATION!!!! Provide description for HTTP cookie usage -->
+    <!-- Provide description for HTTP cookie usage -->
     <key>NSHTTPCookieUsageDescription</key>
-    <string>We use cookies to enhance your shopping experience and provide personalized recommendations.</string>
+    <string>We use client generated session ID to track purchases and returns to improve ML models (we do NOT use it to track or identify users).</string>
   
     <!-- Additional Keys for User Input -->
     <key>NSUserTrackingUsageDescription</key>

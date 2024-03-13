@@ -35,7 +35,7 @@
         <string>UIInterfaceOrientationPortrait</string>
     </array>
     
-	<!-- FitAnalytics WebWidget SDK Configuration -->
+	<!-- NEED CONFIRMATION!!!! FitAnalytics WebWidget SDK Configuration -->
     <key>NSPrivacyCollectedDataTypeUserID</key>
     <string>userId</string>
     <key>FAWebWidgetSessionId</key>

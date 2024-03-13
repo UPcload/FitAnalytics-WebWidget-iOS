@@ -53,8 +53,8 @@
     <string>We collect height, weight, body shape and fit preference to provide personalized size recommendations.</string>
     <key>NSUserTrackingPurchaseDescription</key>
     <string>We collect purchase information to improve size recommendation ML models.</string>
-	<key>NSPrivacyShopSessionIDUsageDescription</key>
-	<string>We collect shop session IDs to be able to connect FF usage with purchase and returns to improve ML models.</string>
+    <key>NSPrivacyShopSessionIDUsageDescription</key>
+    <string>We collect shop session IDs to be able to connect FF usage with purchase and returns to improve ML models.</string>
 
 </dict>
 </plist>

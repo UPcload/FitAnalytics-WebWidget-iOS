@@ -35,6 +35,7 @@ https://cocoapods.org/
 **Step 4.** Make sure you always open **Xcode Workspace** instead of Xcode Project. You can do it by
 using **open YourApp.xcworkspace** command in terminal.
 
+
 ## Installation (using the universal binary framework)
 
 Alternatively you can use the pre-built universal binary framework. It's available for download with each release (since v0.4.2). 
@@ -63,6 +64,8 @@ instead of
 #import "FITAWebWidget.h"
 ...
 ```
+**Step 4.** Review information provided in the `Info.plist` file placed in the Resource folder and include what is needed in your privacyInfo.xcprivacy file. 
+
 ---
 
 ## Widget integration Procedure
@@ -533,3 +536,9 @@ If you wish to wait until reporting has finished, you can pass a callback functi
 }]
 ```
 
+### Privacy Information
+
+The `Info.plist` file includes usage descriptions for the following data collected by the SDK:
+- User input data such as height, weight, body shapes and fit preference
+- User Id for Fit Finder profile creation and serving immediate recomendations
+- Session identifiers for tracking usage within the app to connect Fit Finder usage with purchases and returns for better ML model performance 

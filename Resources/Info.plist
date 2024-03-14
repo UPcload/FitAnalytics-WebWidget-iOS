@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleDisplayName</key>
+    <string>FitAnalytics</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+    <key>UIMainStoryboardFile</key>
+    <string>Main</string>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>armv7</string>
+    </array>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    
+	<!-- FitAnalytics WebWidget SDK Configuration -->
+    <key>NSPrivacyCollectedDataTypeUserID</key>
+    <string>userId</string>
+    <key>FAWebWidgetSessionId</key>
+    <string>shopSessionId</string>
+    <key>FAWebWidgetWidgetType</key>
+    <string>POPUP</string>
+
+    
+    <!-- Provide description for HTTP cookie usage -->
+    <key>NSHTTPCookieUsageDescription</key>
+    <string>We use client generated session ID to track purchases and returns to improve ML models (we do NOT use it to track or identify users).</string>
+  
+    <!-- Additional Keys for User Input -->
+    <key>NSUserTrackingUsageDescription</key>
+    <string>We collect height, weight, body shape and fit preference to provide personalized size recommendations.</string>
+    <key>NSUserTrackingPurchaseDescription</key>
+    <string>We collect purchase information to improve size recommendation ML models.</string>
+    <key>NSPrivacyShopSessionIDUsageDescription</key>
+    <string>We collect shop session IDs to be able to connect FF usage with purchase and returns to improve ML models.</string>
+
+</dict>
+</plist>

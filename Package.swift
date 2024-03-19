@@ -16,12 +16,13 @@ let package = Package(
         .target(
             name: "FITAWebWidget",
             path: "FitAnalytics-WebWidget",
+            resources: [.copy("PrivacyInfo.xcprivacy")],
             publicHeadersPath: "./"
         ),
         .target(
             name: "FitAnalyticsWebWidget",
             dependencies: ["FITAWebWidget"],
             path: "Swift"
-        )
+        ),
     ]
 )

@@ -2,22 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <!-- FitAnalytics WebWidget SDK Configuration -->
-  <key>NSPrivacyCollectedDataTypeUserID</key>
-  <string>userId</string>
-  <key>FAWebWidgetSessionId</key>
-  <string>shopSessionId</string>
-  <key>FAWebWidgetWidgetType</key>
-  <string>POPUP</string>
-  <!--Provide description for HTTP cookie usage -->
-  <key>NSHTTPCookieUsageDescription</key>
-  <string>We use cookies to enhance your shopping experience and provide personalized recommendations.</string>
-  <!-- Additional Keys for User Input -->
-  <key>NSUserTrackingUsageDescription</key>
-  <string>We collect height, weight, body shape and fit preference to provide personalized size recommendations.</string>
-  <key>NSUserTrackingPurchaseDescription</key>
-  <string>We collect purchase information to improve size recommendation ML models.</string>
-  <key>NSPrivacyShopSessionIDUsageDescription</key>
-  <string>We collect shop session IDs to be able to connect FF usage with purchase and returns to improve ML models.</string>
+	<key>NSPrivacyTracking</key>
+	<false/>
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyCollectedDataType</key>
+			<string>NSPrivacyCollectedDataTypeUserID</string>
+			<key>NSPrivacyCollectedDataTypeLinked</key>
+			<true/>
+			<key>NSPrivacyCollectedDataTypeTracking</key>
+			<false/>
+			<key>NSPrivacyCollectedDataTypePurposes</key>
+			<array>
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array/>
 </dict>
 </plist>

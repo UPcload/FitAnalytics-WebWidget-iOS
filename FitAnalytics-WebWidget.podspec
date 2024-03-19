@@ -16,4 +16,5 @@ Pod::Spec.new do |s|
 
   s.framework        = 'UIKit'
   s.source_files     = 'FitAnalytics-WebWidget/*.{h,m,mm}'
+  s.resource_bundles = {"FitAnalytics-WebWidget" => ["FitAnalytics-WebWidget/PrivacyInfo.xcprivacy"]}
 end

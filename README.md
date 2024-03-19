@@ -48,9 +48,9 @@ You can find the minimal example project that uses the binary framework in **Uni
 
 **Step 1.** Download the framework package from the release page:
 
-Complete build: [FitAnalytics_WebWidget.framework-v0.4.2-all.tar.gz](https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases/download/v0.4.2/FitAnalytics_WebWidget.framework-v0.4.2-all.tar.gz)
+Complete build: [FitAnalytics_WebWidget.framework-v0.5.3-all.tar.gz](https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases/download/v0.5.3/FitAnalytics_WebWidget.framework-v0.5.3-all.tar.gz)
 
-Device-only build: [FitAnalytics_WebWidget.framework-v0.4.2-device_only.tar.gz](https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases/download/v0.4.2/FitAnalytics_WebWidget.framework-v0.4.2-device_only.tar.gz)
+Device-only build: [FitAnalytics_WebWidget.framework-v0.5.3-device_only.tar.gz](https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases/download/v0.5.3/FitAnalytics_WebWidget.framework-v0.5.3-device_only.tar.gz)
 
 **Step 2.** Unpack the binary framework and add to the XCode project  via "Add files ..." context menu.
 
@@ -64,7 +64,6 @@ instead of
 #import "FITAWebWidget.h"
 ...
 ```
-**Step 4.** Review information provided in the `Info.plist` file placed in the Resource folder and include what is needed in your privacyInfo.xcprivacy file. 
 
 ---
 

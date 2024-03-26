@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "FITAWebWidget+TestInterface.h"
-#import "FITAPurchaseReporter.h"
+#import "FitAnalytics_WebWidget/FITAPurchaseReporter.h"
 
 @interface ReporterTestCase: XCTestCase {
 

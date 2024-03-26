@@ -13,7 +13,7 @@
 
 @import PromiseKit;
 
-#import "FITAWebWidget.h"
+#import "FitAnalytics_WebWidget/FITAWebWidget.h"
 
 @interface FITAWebWidget (TestInterface)
 

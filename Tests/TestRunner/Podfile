@@ -1,9 +1,8 @@
 platform :ios, '11.0'
 
 def shared_pods
-  use_frameworks!
   pod 'FitAnalytics-WebWidget', :path => '../../'
-  pod "PromiseKit", "~> 6.0"
+  pod 'PromiseKit', '~> 8.0'
 end
 
 target 'TestRunner' do

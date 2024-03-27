@@ -118,6 +118,7 @@
 				1D22D5271DAAF65B0074AE7B /* Sources */,
 				1D22D5281DAAF65B0074AE7B /* Frameworks */,
 				1D22D5291DAAF65B0074AE7B /* Resources */,
+				F89B8F894127C0D0ABDBDA39 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,6 +177,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		F89B8F894127C0D0ABDBDA39 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FitAnalytics-Demo/Pods-FitAnalytics-Demo-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FitAnalytics-WebWidget/FitAnalytics-WebWidget.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FitAnalytics-WebWidget.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FitAnalytics-Demo/Pods-FitAnalytics-Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FF05E95B18238E06E9A24340 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

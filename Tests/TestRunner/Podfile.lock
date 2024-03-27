@@ -1,5 +1,5 @@
 PODS:
-  - FitAnalytics-WebWidget (0.5.3)
+  - FitAnalytics-WebWidget (0.5.4)
   - PromiseKit (8.1.1):
     - PromiseKit/CorePromise (= 8.1.1)
     - PromiseKit/Foundation (= 8.1.1)
@@ -23,9 +23,9 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  FitAnalytics-WebWidget: 10f7fa8a112bf480bf824242645a4e31eaba4516
+  FitAnalytics-WebWidget: ef18ef48a96a914949f84da5b58ee6ac30f78456
   PromiseKit: d1be44b474e5acfa16adf007a1f49f104e10fead
 
-PODFILE CHECKSUM: 1cbb40bc02c2b34d9747a0fca625776b61cdc56a
+PODFILE CHECKSUM: 7681e44ba5678b5667a78cfeb7e581d8a524a786
 
 COCOAPODS: 1.15.2

@@ -1,5 +1,5 @@
 PODS:
-  - FitAnalytics-WebWidget (0.5.3)
+  - FitAnalytics-WebWidget (0.5.4)
 
 DEPENDENCIES:
   - FitAnalytics-WebWidget (from `../../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  FitAnalytics-WebWidget: 10f7fa8a112bf480bf824242645a4e31eaba4516
+  FitAnalytics-WebWidget: ef18ef48a96a914949f84da5b58ee6ac30f78456
 
 PODFILE CHECKSUM: feda208acd2c6e10e6b4cab4bd25f4b30e2fbf77
 

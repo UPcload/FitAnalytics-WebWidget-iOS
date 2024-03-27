@@ -46,11 +46,7 @@ It comes in two build flavors:
 
 You can find the minimal example project that uses the binary framework in **UniversalFramework/Framework Example** subdirectory of the repository.
 
-**Step 1.** Download the framework package from the release page:
-
-Complete build: [FitAnalytics_WebWidget.framework-v0.5.3-all.tar.gz](https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases/download/v0.5.3/FitAnalytics_WebWidget.framework-v0.5.3-all.tar.gz)
-
-Device-only build: [FitAnalytics_WebWidget.framework-v0.5.3-device_only.tar.gz](https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases/download/v0.5.3/FitAnalytics_WebWidget.framework-v0.5.3-device_only.tar.gz)
+**Step 1.** Download the framework package from the (release page)[https://github.com/UPcload/FitAnalytics-WebWidget-iOS/releases]
 
 **Step 2.** Unpack the binary framework and add to the XCode project  via "Add files ..." context menu.
 

@@ -345,6 +345,7 @@
 					BA8DBBEB2034969A0016BA26 = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = 6R6H7839X5;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 						TestTargetID = BA7E53B01E3F777C001CA657;
 					};
@@ -462,7 +463,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TestRunner/Pods-TestRunner-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TestRunner/Pods-TestRunner-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FitAnalytics-WebWidget/FitAnalytics_WebWidget.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
@@ -473,7 +474,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestRunner/Pods-TestRunner-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestRunner/Pods-TestRunner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8FC4CE2390AA51E3978BCA79 /* [CP] Embed Pods Frameworks */ = {
@@ -482,7 +483,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FitAnalytics-WebWidget/FitAnalytics_WebWidget.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
@@ -493,7 +494,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AA5FE2E0635EB296F604329D /* [CP] Embed Pods Frameworks */ = {
@@ -502,7 +503,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FitAnalytics-WebWidget/FitAnalytics_WebWidget.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
@@ -513,7 +514,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B8A2F3EA02BCCEAA0E406747 /* [CP] Embed Pods Frameworks */ = {
@@ -522,7 +523,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FitAnalytics-WebWidget/FitAnalytics_WebWidget.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
@@ -533,7 +534,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CA43714B410CF61379EB4B08 /* [CP] Check Pods Manifest.lock */ = {
@@ -703,7 +704,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "Pods/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -755,7 +756,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "Pods/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -820,7 +821,7 @@
 					"Pods/**",
 				);
 				INFOPLIST_FILE = ReporterSwiftTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -857,7 +858,7 @@
 					"Pods/**",
 				);
 				INFOPLIST_FILE = ReporterSwiftTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -879,7 +880,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEVELOPMENT_TEAM = 6R6H7839X5;
 				INFOPLIST_FILE = WidgetTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.WidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -897,7 +898,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEVELOPMENT_TEAM = 6R6H7839X5;
 				INFOPLIST_FILE = WidgetTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.WidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -916,7 +917,7 @@
 				DEVELOPMENT_TEAM = 6R6H7839X5;
 				HEADER_SEARCH_PATHS = "../../FitAnalytics-WebWidget";
 				INFOPLIST_FILE = ReporterTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -938,7 +939,7 @@
 				DEVELOPMENT_TEAM = 6R6H7839X5;
 				HEADER_SEARCH_PATHS = "../../FitAnalytics-WebWidget";
 				INFOPLIST_FILE = ReporterTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

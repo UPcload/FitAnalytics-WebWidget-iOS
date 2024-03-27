@@ -10,7 +10,7 @@
 #define FITAPurchaseReporter_TestInterface_h
 
 #import <Foundation/Foundation.h>
-#import "FITAPurchaseReporter.h"
+#import "FitAnalytics_WebWidget/FITAPurchaseReporter.h"
 
 @import PromiseKit;
 

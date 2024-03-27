@@ -14,15 +14,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "FITAWebWidget",
+            name: "FitAnalyticsWebWidget",
             path: "FitAnalytics-WebWidget",
             resources: [.copy("PrivacyInfo.xcprivacy")],
             publicHeadersPath: "./"
-        ),
-        .target(
-            name: "FitAnalyticsWebWidget",
-            dependencies: ["FITAWebWidget"],
-            path: "Swift"
-        ),
+        )
     ]
 )

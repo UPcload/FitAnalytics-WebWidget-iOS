@@ -328,17 +328,14 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
  *  };
  *  means that the product is available in size M but not in size L.
  */
-@property (nonatomic, strong) NSDictionary<NSString *, NSNumber *> *manufacturedSizes;
+@property (nonatomic, strong) NSDictionary<NSString *, BOOL *> *manufacturedSizes;
 
 
 /**
  * In stock sizes for the current product.
- * E.G. @[
-        @{@"value": @"M", @"isAvailable": @YES},
-        @{@"value": @"L", @"isAvailable": @NO}
-    ]
+ * E.G. @[ @"S", @"XL" ]
  */
-@property (nonatomic, strong) NSArray<NSDictionary<NSString *, NSNumber *> *> *sizes;
+@property (nonatomic, strong) NSArray<NSString *> *sizes;
 
 /**
  * The user identifier based on the shop's user id, for example in case the user is logged in.
@@ -394,6 +391,11 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 @property (nonatomic, strong) NSString *userBraBust;
 @property (nonatomic, strong) NSString *userBraCup;
 @property (nonatomic, strong) NSString *userBraSystem;
+
+/**
+ * Enforces the mobile view, so in tablets you will see the phone widget layout.
+ */
+@property (nonatomic, assign) BOOL showMobile;
 
 @end
 ```

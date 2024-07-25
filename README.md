@@ -404,7 +404,9 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 
 ## Purchase reporting
 
-Purchase reporting usually means that when the user receives a confirmation of a successful purchases, namely, the user sees the Order Confirmation Page (a.k.a OCP or checkout page), the app will report all items in the order to Fit Analytics. The reporting is done by sending a simple HTTP request.
+Providing purchase data not only provides you with insights but also continually enhances the value Fit Finder and our personalized recommendations add to your e-commerce platform. Therefore, we highly recommend you to set up purchase reporting on your end.
+
+The reporting is done by sending a simple HTTP request.
 
 The usual report is a collection of attributes such as the order ID, the product serial for each purchased item, purchased size, price, currency, etc.
 

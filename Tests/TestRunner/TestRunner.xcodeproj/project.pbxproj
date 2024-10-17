@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		374D58ED9E38C1F1E3856688 /* Pods_ReporterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02668E3008536679B865D02B /* Pods_ReporterTests.framework */; };
-		A24C00BA68F422EF68FE7CD9 /* Pods_WidgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0E60A5C29FC3E5ADA0FC41 /* Pods_WidgetTests.framework */; };
-		A7EEAD5C5CBF0F627E60F63B /* Pods_TestRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211E02DC9E32CF7ECD45D025 /* Pods_TestRunner.framework */; };
+		7265BFCBBD715BC941055951 /* libPods-TestRunner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 943484F53317A0F3E2E3BCD2 /* libPods-TestRunner.a */; };
+		A6BF851D8344675549C15922 /* libPods-ReporterSwiftTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EF72387B0043AFC87DEB4D /* libPods-ReporterSwiftTests.a */; };
 		BA7E53B61E3F777C001CA657 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7E53B51E3F777C001CA657 /* main.m */; };
 		BA7E53B91E3F777C001CA657 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7E53B81E3F777C001CA657 /* AppDelegate.m */; };
 		BA7E53BC1E3F777C001CA657 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7E53BB1E3F777C001CA657 /* ViewController.m */; };
@@ -23,7 +22,8 @@
 		BAAB077C1EF14BE6006F1DCE /* WidgetTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BAAB077B1EF14BE6006F1DCE /* WidgetTestCase.m */; };
 		BAB4FC2E1FB4B8A80045F3CB /* ReporterTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB4FC001FB49FDF0045F3CB /* ReporterTestCase.m */; };
 		BAB4FC311FB4BA7B0045F3CB /* FITAPurchaseReporter+TestInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB4FC301FB4BA7B0045F3CB /* FITAPurchaseReporter+TestInterface.m */; };
-		D73DAC383F2910B1A0FD4F84 /* Pods_ReporterSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD32B555955A343741493EF /* Pods_ReporterSwiftTests.framework */; };
+		D9DDA1773981DAF969957E8E /* libPods-ReporterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FE8A6D2BE4298E26A8BC6D /* libPods-ReporterTests.a */; };
+		EE838352BA136F69BBE3016B /* libPods-WidgetTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FE8BFD2329BFF95C64AB00 /* libPods-WidgetTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,14 +51,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02668E3008536679B865D02B /* Pods_ReporterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReporterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DE11828278B6C5FC1FB3FA9 /* Pods-WidgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetTests/Pods-WidgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0E3CC30650942A502887FC5A /* Pods-ReporterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReporterTests/Pods-ReporterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1097B83AD3CA369A3524B82E /* Pods-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UITests/Pods-UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		211E02DC9E32CF7ECD45D025 /* Pods_TestRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36FE8A6D2BE4298E26A8BC6D /* libPods-ReporterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReporterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		392006A0B4312D63680A494F /* Pods-ReporterSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		907C4F9349095430604D8EA3 /* Pods-ReporterSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9C0E60A5C29FC3E5ADA0FC41 /* Pods_WidgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		943484F53317A0F3E2E3BCD2 /* libPods-TestRunner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestRunner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6FB93D855A366C544D6C28 /* Pods-ReporterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReporterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReporterTests/Pods-ReporterTests.release.xcconfig"; sourceTree = "<group>"; };
 		A0AB93FF35B66EA48BEA8DE8 /* Pods-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UITests/Pods-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		A15BD6CBD519443EBC7B1E17 /* Pods-WidgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetTests/Pods-WidgetTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,9 +90,10 @@
 		BAB6C116203346EE006450A2 /* ReporterSwiftTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ReporterSwiftTests-Bridging-Header.h"; path = "ReporterSwiftTests/ReporterSwiftTests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		BAB6C117203346EF006450A2 /* ReporterSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReporterSwiftTests.swift; path = ReporterSwiftTests/ReporterSwiftTests.swift; sourceTree = SOURCE_ROOT; };
 		D34F55E4C972AF3A0EBC2EC8 /* Pods_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBD32B555955A343741493EF /* Pods_ReporterSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReporterSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D0C70286678452D86C0F9D /* Pods-TestRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestRunner/Pods-TestRunner.release.xcconfig"; sourceTree = "<group>"; };
 		E32708061CB96D32E78F89E7 /* Pods-TestRunner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestRunner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestRunner/Pods-TestRunner.debug.xcconfig"; sourceTree = "<group>"; };
+		E5FE8BFD2329BFF95C64AB00 /* libPods-WidgetTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WidgetTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7EF72387B0043AFC87DEB4D /* libPods-ReporterSwiftTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReporterSwiftTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7EEAD5C5CBF0F627E60F63B /* Pods_TestRunner.framework in Frameworks */,
+				7265BFCBBD715BC941055951 /* libPods-TestRunner.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D73DAC383F2910B1A0FD4F84 /* Pods_ReporterSwiftTests.framework in Frameworks */,
+				A6BF851D8344675549C15922 /* libPods-ReporterSwiftTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A24C00BA68F422EF68FE7CD9 /* Pods_WidgetTests.framework in Frameworks */,
+				EE838352BA136F69BBE3016B /* libPods-WidgetTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				374D58ED9E38C1F1E3856688 /* Pods_ReporterTests.framework in Frameworks */,
+				D9DDA1773981DAF969957E8E /* libPods-ReporterTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,11 +135,11 @@
 		0CE7160BCFBE2222D0D145C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				211E02DC9E32CF7ECD45D025 /* Pods_TestRunner.framework */,
 				D34F55E4C972AF3A0EBC2EC8 /* Pods_UITests.framework */,
-				9C0E60A5C29FC3E5ADA0FC41 /* Pods_WidgetTests.framework */,
-				02668E3008536679B865D02B /* Pods_ReporterTests.framework */,
-				DBD32B555955A343741493EF /* Pods_ReporterSwiftTests.framework */,
+				F7EF72387B0043AFC87DEB4D /* libPods-ReporterSwiftTests.a */,
+				36FE8A6D2BE4298E26A8BC6D /* libPods-ReporterTests.a */,
+				943484F53317A0F3E2E3BCD2 /* libPods-TestRunner.a */,
+				E5FE8BFD2329BFF95C64AB00 /* libPods-WidgetTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 				BA7E53AD1E3F777C001CA657 /* Sources */,
 				BA7E53AE1E3F777C001CA657 /* Frameworks */,
 				BA7E53AF1E3F777C001CA657 /* Resources */,
-				7B55FD1015C03BDC4BE235E4 /* [CP] Embed Pods Frameworks */,
+				F067F57E9E18073ABB22C2BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,7 +275,7 @@
 				BA8DBBE82034969A0016BA26 /* Sources */,
 				BA8DBBE92034969A0016BA26 /* Frameworks */,
 				BA8DBBEA2034969A0016BA26 /* Resources */,
-				B8A2F3EA02BCCEAA0E406747 /* [CP] Embed Pods Frameworks */,
+				856C2D5EE2B5F002711B062B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,7 +295,7 @@
 				BAAB076C1EF13C2A006F1DCE /* Sources */,
 				BAAB076D1EF13C2A006F1DCE /* Frameworks */,
 				BAAB076E1EF13C2A006F1DCE /* Resources */,
-				8FC4CE2390AA51E3978BCA79 /* [CP] Embed Pods Frameworks */,
+				7807E92C9E6519BB0F1B1A9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -315,7 +315,7 @@
 				BAB4FC201FB4B8920045F3CB /* Sources */,
 				BAB4FC211FB4B8920045F3CB /* Frameworks */,
 				BAB4FC221FB4B8920045F3CB /* Resources */,
-				AA5FE2E0635EB296F604329D /* [CP] Embed Pods Frameworks */,
+				CBD7BC2BCEA0064BBC80B0FE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -457,84 +457,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7B55FD1015C03BDC4BE235E4 /* [CP] Embed Pods Frameworks */ = {
+		7807E92C9E6519BB0F1B1A9C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TestRunner/Pods-TestRunner-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FitAnalytics-WebWidget/FitAnalytics_WebWidget.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FitAnalytics-WebWidget/FitAnalytics-WebWidget.bundle",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FitAnalytics_WebWidget.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FitAnalytics-WebWidget.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestRunner/Pods-TestRunner-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8FC4CE2390AA51E3978BCA79 /* [CP] Embed Pods Frameworks */ = {
+		856C2D5EE2B5F002711B062B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FitAnalytics-WebWidget/FitAnalytics_WebWidget.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FitAnalytics-WebWidget/FitAnalytics-WebWidget.bundle",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FitAnalytics_WebWidget.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FitAnalytics-WebWidget.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WidgetTests/Pods-WidgetTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA5FE2E0635EB296F604329D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FitAnalytics-WebWidget/FitAnalytics_WebWidget.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FitAnalytics_WebWidget.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8A2F3EA02BCCEAA0E406747 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FitAnalytics-WebWidget/FitAnalytics_WebWidget.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FitAnalytics_WebWidget.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReporterSwiftTests/Pods-ReporterSwiftTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CA43714B410CF61379EB4B08 /* [CP] Check Pods Manifest.lock */ = {
@@ -555,6 +511,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CBD7BC2BCEA0064BBC80B0FE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FitAnalytics-WebWidget/FitAnalytics-WebWidget.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FitAnalytics-WebWidget.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReporterTests/Pods-ReporterTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E587121BFEE0DC4C627FC956 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -571,6 +545,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F067F57E9E18073ABB22C2BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestRunner/Pods-TestRunner-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FitAnalytics-WebWidget/FitAnalytics-WebWidget.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FitAnalytics-WebWidget.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestRunner/Pods-TestRunner-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -703,7 +695,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "Pods/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -755,7 +746,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "Pods/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -778,6 +768,11 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.TestRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -794,6 +789,11 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.TestRunner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -813,23 +813,24 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6R6H7839X5;
+				DEVELOPMENT_TEAM = 2ACE8FWYV4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				HEADER_SEARCH_PATHS = (
-					"../../FitAnalytics-WebWidget",
-					"Pods/**",
-				);
 				INFOPLIST_FILE = ReporterSwiftTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "ReporterSwiftTests/ReporterSwiftTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Debug;
@@ -850,22 +851,23 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6R6H7839X5;
+				DEVELOPMENT_TEAM = 2ACE8FWYV4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				HEADER_SEARCH_PATHS = (
-					"../../FitAnalytics-WebWidget",
-					"Pods/**",
-				);
 				INFOPLIST_FILE = ReporterSwiftTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ReporterSwiftTests/ReporterSwiftTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Release;
@@ -884,6 +886,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.WidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Debug;
@@ -902,6 +909,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.WidgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Release;
@@ -921,9 +933,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ReporterTests/ReporterTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Debug;
@@ -943,8 +960,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitanalytics.ReporterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ReporterTests/ReporterTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestRunner.app/TestRunner";
 			};
 			name = Release;

@@ -25,7 +25,7 @@ $ xcodebuild \
   -workspace TestRunner.xcworkspace \
   -scheme TestRunner \
   -sdk iphonesimulator \
-  -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.4' \
+  -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.4' \
   -only-testing:ReporterTests \
   test | xcpretty --color
 

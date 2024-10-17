@@ -12,7 +12,7 @@
 #import "ViewController.h"
 
 #import "FITAWebWidget+TestInterface.h"
-#import "FitAnalytics_WebWidget/FITAWebWidgetHandler.h"
+#import "FITAWebWidgetHandler.h"
 
 @interface ViewController () <FITAWebWidgetHandler> {
 

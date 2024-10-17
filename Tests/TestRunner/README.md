@@ -1,8 +1,8 @@
 # TestRunner
 
 ## Pre-requisites
-Install (xcpretty)[https://github.com/xcpretty/xcpretty]
 
+Install (xcpretty)[https://github.com/xcpretty/xcpretty]
 
 Build and run all tests from command line:
 

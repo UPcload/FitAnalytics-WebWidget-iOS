@@ -22,8 +22,8 @@ Preferably, you can also include the purchase reporting for the order confirmati
 ## Installation (using Cocoapods)
 
 **Prerequisities:** 
-1. XCode 7 or higher  
-2. iOS 9 or higher  
+1. XCode 15 or higher  
+2. iOS 12 or higher
 
 **Step 1.** Make sure you already have cocoapods installed in your system. Otherwise you can follow the steps in cocoapods documentation to install
 https://cocoapods.org/
@@ -41,8 +41,8 @@ using **open YourApp.xcworkspace** command in terminal.
 Alternatively you can use the pre-built universal binary framework. It's available for download with each release (since v0.4.2). 
 
 It comes in two build flavors: 
-   1) **all** - which includes binary code for both devices (arm7x, arm64) and simulators (i386, x86_64)
-   2) **device_only** - which includes just device-specific binaries (arm7x, arm64). The device-specific flavor is meant for final builds that are meant to be released in App store (which disallows the simulator binary code in apps).
+   1) **all** - which includes binary code for devices (arm64) and simulators (arm64, x86_64)
+   2) **device_only** - which includes just device-specific binaries (arm64). The device-specific flavor is meant for final builds that are meant to be released in App store (which disallows the simulator binary code in apps).
 
 You can find the minimal example project that uses the binary framework in **UniversalFramework/Framework Example** subdirectory of the repository.
 

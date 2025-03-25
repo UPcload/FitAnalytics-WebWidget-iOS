@@ -416,7 +416,9 @@ typedef void (^WidgetMessageCallback)(id, NSError *);
         decisionHandler(WKNavigationActionPolicyCancel);
     }
     else if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
-        [[UIApplication sharedApplication] openURL:[navigationAction.request URL]];
+        [[UIApplication sharedApplication] openURL:[navigationAction.request URL]
+                                           options:@{}
+                                 completionHandler:nil];
         decisionHandler(WKNavigationActionPolicyCancel);
     }
     else {

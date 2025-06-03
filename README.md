@@ -5,11 +5,12 @@
 The WebWidget SDK allows integrating the Fit Analytics Size Advisor widget into your own iOS app.
 
 As a first step, we suggest that you familiarize yourself with the Fit Analytics web-based Size Advisor service by:  
-1. Reading through the Fit Analytics website and trying out a sample product - https://www.fitanalytics.com/  
+1. Reading through the Fit Analytics website and trying out a sample product - https://www.fitanalytics.com/
+2. Reading through the Fit Analytics Native Apps Integration guide - http://developers.fitanalytics.com/native-apps
 
 The integration method currently supported by this SDK is based on loading HTML/JS-based widget code in a separate WKWebView instance and establishing communication between the host app and the embedded web widget.  
 
-The SDK introduces a layer that imitates a web-based (JavaScript) integration of the Fit Analytics widget by:  
+The SDK introduces a layer that exposes an imperative interface to the embedded Fit Analytics widget by:  
 1. Exporting the **FitAWebWidget** class, which serves as a main web view widget controller.
 2. Creating and initializing the widget in a provided web view instance.
 3. Exposing several methods that allow controlling the widget.  
@@ -123,7 +124,16 @@ Create a widget instance inside the container page by passing the `productSerial
 This method should be called only after the **WebWidgetDidBecomeReady** callback has been called (or inside the callback) and will return a `true` when the widget was successfully created.
 
 ```objc
-[self.widget create:@"example-123456" options:@{ "sizes": @[ @"S", @"XL" ] }];
+[self.widget create:@"example-123456" options:@{ 
+   @"shopPrefix": @"example",
+   @"shopLanguage": @"en",
+   @"shopCountry": @"GB",
+   @"manufacturedSizes": @{
+      @"S": @YES,
+      @"XL": @NO
+   },
+   @"cart": @YES
+}];
 ```
 
 &nbsp;
@@ -143,7 +153,7 @@ Show the actual widget. It may trigger loading additional resources over network
 Configure the widget with new productSerial and/or options and show it. See `open` above for more details.
 
 ```objc
-[self.widget open:@"example-123456" options:@{ "sizes": @[ @"S", @"XL" ] ];
+[self.widget open:@"example-123456" options:@{ @"manufacturedSizes": @{ @"S": @YES, @"XL": @NO ] ];
 ```
 
 &nbsp;
@@ -187,7 +197,7 @@ Configure the widget with the new productSerial and/or widget options. If the `p
 
 // OR
 
-[self.widget reconfigure:nil options:@{ "sizes": @[ @"XL" ] ];
+[self.widget reconfigure:nil options:@{ @"manufacturedSizes": @[ @"XL": @YES ] ];
 ```
 
 Reconfigure the widget with a new product serial and/or widget options object.
@@ -299,12 +309,7 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 @interface FitAnalyticsWidgetOptions : NSObject
 
 /**
- *  (Shop Session ID) .. a first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (we **do NOT** use it to track or identify users)
- */
-@property (nonatomic, strong) NSString *shopSessionId;
-
-/**
- * The shop prefix, this is a value that we set internally so we can identify your shop with the product.
+ * (required) The shop prefix, this is a value that we set internally so we can identify your shop with the product.
  */
 @property (nonatomic, strong) NSString *shopPrefix;
 
@@ -332,10 +337,15 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 
 
 /**
- * In stock sizes for the current product.
+ * (deprecated) In stock sizes for the current product.
  * E.G. @[ @"S", @"XL" ]
  */
 @property (nonatomic, strong) NSArray<NSString *> *sizes;
+
+/**
+ * A first-party client generated session ID: we use it to track purchases and keep our data more consistent (we **do NOT** use it to track or identify users)
+ */
+@property (nonatomic, strong) NSString *shopSessionId;
 
 /**
  * The user identifier based on the shop's user id, for example in case the user is logged in.
@@ -343,13 +353,19 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
 @property (nonatomic, strong) NSString *userId;
 
 /**
- * ISO 639-1
+ * the ISO-code of shop's current language
  * E.G. "en"
  */
 @property (nonatomic, strong) NSString *language;
 
 /**
- * ISO 3166-1
+ * (required) the ISO-code of shop's default language
+ * E.G. "en"
+ */
+@property (nonatomic, strong) NSString *shopLanguage;
+
+/**
+ * (required) the ISO country code of the current shop
  * E.G. "GB"
  */
 @property (nonatomic, strong) NSString *shopCountry;
@@ -363,12 +379,15 @@ This method will be called after the `getRecommendation` call on the FITAWebWidg
  */
 @property (nonatomic) NSInteger metric;
 
-- (void)close:(NSString *)productSerial size:(NSString *)size;
-- (void)error:(NSString *)productSerial;
-- (void)cart:(NSString *)productSerial size:(NSString *)size;
-- (void)recommend:(NSString *)productSerial size:(NSString *)size;
-- (void)load:(NSString *)productSerial;
+/**
+ * Enable the add-to-cart integration; specifically, if this is enabled and the recommended size is available, the widget will display the Add-to-cart button on the results screen. When the user clicks the button, the SDK will call the provided `webWidgetDidAddToCart` callback. 
+ */
+@property (nonatomic, assign) BOOL cart;
 
+
+/**
+ * User's current age in years
+ */
 @property (nonatomic, strong) NSString *userAge;
 
 /**
@@ -414,9 +433,13 @@ The most common attributes are:
 
 ```ObjectiveC
 @interface FitAnalyticsPurchaseOptions : NSObject
+/**
+ * (require) The shop prefix, this is a value that we set internally so we can identify your shop with the product.
+ */
+@property (nonatomic, strong) NSString *shop;
 
 /**
- *  (Shop Session ID) .. a first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (we **do NOT** use it to track or identify users)
+ * A first-party client generated session ID (can be a cookie): we use it to track purchases and keep our data more consistent (we **do NOT** use it to track or identify users)
  * (value **MUST** conform with the one passed in the PDP for the same shopping session)
  */
 @property (nonatomic, strong) NSString *shopSessionId;

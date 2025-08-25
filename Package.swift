@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "FitAnalyticsWebWidget",
     platforms: [
-        .iOS(.v9)
+        .iOS(.v12)
     ],
     products: [
         .library(

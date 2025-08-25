@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   }
   s.license          = { type: 'MIT', file: 'LICENSE.md' }
 
-  s.platform         = :ios, '11.0'
+  s.platform         = :ios, '12.0'
   s.requires_arc     = true
 
   s.framework        = 'UIKit'
